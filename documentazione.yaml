@@ -1,3 +1,13 @@
+Repository:
+    origin:
+        -   https://github.com/slecca9700vvf/gestione_richieste.git
+    branch di sviluppo:
+        -   develop
+    branch di test:
+        -   test
+    branch di prod:
+        -   master
+
 Comandi utilizzati per la creazione/gestione del progetto:
     Creazione App con template tipescript:
         -   create-react-app gestione_richieste --template typescript
