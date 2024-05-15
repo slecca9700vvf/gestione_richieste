@@ -1,0 +1,39 @@
+Comandi utilizzati per la creazione/gestione del progetto:
+    Creazione App con template tipescript:
+        -   create-react-app gestione_richieste --template typescript
+    
+    Avvio del development server:
+        -   npm start
+
+    Build del progetto per ambiente di produzione:
+        -   npm run build
+
+    Avvio script di test:
+        -   npm test
+
+    Rimuovere file di esempio del progetto (App component di default):
+        -   npm run eject
+    Removes this tool and copies build dependencies, configuration files
+    and scripts into the app directory. If you do this, you can’t go back!
+
+Avvio del server di sviluppo (Utilizzato per la verifica dei componenti):
+        -   cd gestione_richieste
+        -   npm start
+
+
+Guide e tutorial:
+    Tutorial React:
+        -   https://react.dev/
+    Installazione axios (già fatto):
+        -   npm i axios
+    Installazione redux (già fatto):
+        -   https://react-redux.js.org/introduction/getting-started
+
+
+
+
+
+
+
+Estensioni da installare su Visual Studio Code:
+    - Material Icon Theme
