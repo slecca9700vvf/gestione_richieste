@@ -4,14 +4,18 @@ import './index.css';
 import HomePage from './Components/UI/HomePage/HomePage';
 import Authentication from './Components/UI/Authentication/Authentication'
 import reportWebVitals from './reportWebVitals';
+import Header from './Components/UI/Header/Header';
+import Footer from './Components/UI/Footer/Footer';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <HomePage/>
-    <Authentication />
+    {/* <HomePage/> */}
+    <Header/>
+      <Authentication />
+    <Footer/>
   </React.StrictMode>
 );
 
