@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Login from './Login';
 import Logged from './Logged';
 import './Authentication.css';
 
 function Authentication() {
-  //gestita tramite state
+  //gestita tramite state/context
   let isLoggedIn = false;
 
   return (
