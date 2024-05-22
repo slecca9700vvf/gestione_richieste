@@ -1,7 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import './Authentication.css';
+import AuthenticationContext from '../Authentication';
+
+
+const updateStatus = () => {
+  const userName = 1;
+  return (
+    <AuthenticationContext.Provider value={userName}>
+    </AuthenticationContext.Provider>
+  );
+}
 
 function Login() {
+
+
+
 
   return (
     <div className="request form-container">
@@ -12,12 +25,12 @@ function Login() {
           </label>
           <input type="text" id="title" placeholder={"Username"} required/>
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           <label>
             {"Password"}
           </label>
           <input type="password" id="title" placeholder={"Password"} required/>
-        </div>
+        </div> */}
         <input type="submit" value="Login"/>
       </form>  
   </div>
