@@ -1,20 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import HomePage from './Components/UI/HomePage/HomePage';
-import Authentication from './Components/UI/Authentication/Authentication'
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import HomePage from './Components/UI/HomePage/HomePage';
 import Header from './Components/UI/Header/Header';
 import Footer from './Components/UI/Footer/Footer';
+import Authentication from './Components/Authentication';
+import Request from './Components/Request/Request';
+import Sector from './Components/Sector/Sector';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    {/* <HomePage/> */}
     <Header/>
-      <Authentication />
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage/>}/>
+          <Route path="/login" element={<Authentication/>}/>
+          <Route path="/richiesta" element={<Request/>}/>
+          <Route path="/settore" element={<Sector/>}/>
+        </Routes>
+      </BrowserRouter>
     <Footer/>
   </React.StrictMode>
 );

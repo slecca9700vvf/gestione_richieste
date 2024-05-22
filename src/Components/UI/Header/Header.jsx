@@ -9,6 +9,14 @@ function Header() {
             </nav>
             <div className="header-block">
                 Header Block
+                <nav>
+                <ul>
+                        <li><a href="/">home page</a></li>
+                        <li><a href="/login">login</a></li>
+                        <li><a href="/richiesta">richiesta</a></li>
+                        <li><a href="/settore">settore</a></li>
+                    </ul>
+                </nav>
             </div>
         </header>
     );
