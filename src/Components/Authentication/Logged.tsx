@@ -1,7 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import './Authentication.css';
 
 function Logged() {
+
+  const logoutDispatch = useDispatch();
   return (
     <div className="request form-container">
       <div className="form-group">
@@ -10,9 +13,16 @@ function Logged() {
           </label>
         </div>
       <div className="form-group">
-        <button type="button" >
-          Logout
-        </button>
+      <button
+        onClick={
+            () => {
+                logoutDispatch({
+                  type: "LOGOUT",
+                });
+            }
+        }
+      >Login
+      </button>
       </div>
     </div>
 );
