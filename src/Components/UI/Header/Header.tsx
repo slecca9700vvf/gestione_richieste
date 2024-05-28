@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 import './Header.css';
 
 function Header() {
-
-    const isLoggedStore = useSelector(
-        (isLogged:any) => isLogged.AuthReducer
-    )
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    useEffect(() => {
+        const storedUserLoggedInInformation = localStorage.getItem('utente');
+     
+        if (storedUserLoggedInInformation === "loggato") {
+          setIsLoggedIn(true);
+        }
+    }, []);
+    
+    const ulStyle = {color: "black"};
     
     return (
         <header className="header">
@@ -15,12 +21,13 @@ function Header() {
             </nav>
             <div className="header-block">
                 Header Block
+
                 <nav>
-                <ul>
-                        <li><a href="/">home page</a></li>
-                        <li><a href="/login">{isLoggedStore ? "Utente" : "login"}</a></li>
-                        <li><a href="/richiesta">richiesta</a></li>
-                        <li><a href="/settore">settore</a></li>
+                    <ul>
+                        <li><a style={ulStyle} href="/">home page</a></li>
+                        <li><a style={ulStyle} href="/login">{isLoggedIn ? "Utente" : "login"}</a></li>
+                        <li><a style={ulStyle} href="/richiesta">richiesta</a></li>
+                        <li><a style={ulStyle} href="/settore">settore</a></li>
                     </ul>
                 </nav>
             </div>

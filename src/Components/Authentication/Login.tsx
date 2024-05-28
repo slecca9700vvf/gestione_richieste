@@ -4,26 +4,25 @@ import { useDispatch } from "react-redux";
 import { ILogin } from '../../Interfaces/ILogin'
 import axios from 'axios';  //impriamo axios per il servizio
 
-
 function Login() {
   const labelOK = "OK";
   const labelKO = "OK";
+  const API = "http://localhost:3000";
 
   const [username, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const verifyUser = (username: string, password: string) => {
+  const verifyUser:any = (username: string, password: string) => {
     if(username === "" || password === "") {
       return {"status": labelKO}
     }
-
     // TODO Call backend API
 
     // let userObj = {
     //   username,
     //   password
     // }
-    // axios.post<ILogin>(
+    // await axios.post<ILogin>(
     //   "http://localhost:3000/login.json", userObj
     // )
     //   .then(
