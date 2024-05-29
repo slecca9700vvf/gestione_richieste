@@ -1,15 +1,11 @@
 
 import React, {useState, useEffect} from "react";
+import { useSelector } from "react-redux";
 
 const CheckAuth = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    useEffect(() => {
-        const storedUserLoggedInInformation = localStorage.getItem('utente');
-    
-        if (storedUserLoggedInInformation === "loggato") {
-            setIsLoggedIn(true);
-        }
-    }, []);
+    const isLoggedIn = useSelector(
+        (isLogged:any) => isLogged.Auth
+    )
     return isLoggedIn;
     
 };

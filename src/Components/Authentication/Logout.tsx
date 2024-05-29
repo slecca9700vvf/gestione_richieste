@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import './Authentication.css';
 
-function Logged() {
+function Logout() {
 
   const logoutDispatch = useDispatch();
   return (
@@ -21,7 +21,7 @@ function Logged() {
                 });
             }
         }
-      >Login
+      >Logout
       </button>
       </div>
     </div>
@@ -29,4 +29,4 @@ function Logged() {
 }
 
 
-export default Logged;
+export default Logout;

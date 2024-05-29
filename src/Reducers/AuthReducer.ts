@@ -13,7 +13,10 @@ export const AuthReducer = (
             console.log("ciaso sto uscendo")
             localStorage.removeItem("utente");
             return isLogged;
+        case "VERIFY":
+            return isLogged;
         default:
+            localStorage.removeItem("utente");
             return isLogged;
     }
 }

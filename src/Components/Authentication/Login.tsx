@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './Authentication.css';
 import { useDispatch } from "react-redux";
-import { ILogin } from '../../Interfaces/ILogin'
+// import { ILogin } from './Interfaces/ILogin'
 import axios from 'axios';  //impriamo axios per il servizio
 
 function Login() {
