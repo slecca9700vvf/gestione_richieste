@@ -1,14 +1,12 @@
 import React from 'react';
 import './Footer.css';
+import labels from '../../../Labels.json'
 
 function Footer() {
     return (
         <footer className="site-footer">
             <div className="container">
-                Footer
-            </div>
-            <div className="site-footer__bottom">
-                Footer bottom
+                { labels.footer_description }
             </div>
         </footer>
     );

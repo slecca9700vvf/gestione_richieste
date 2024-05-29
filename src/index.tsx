@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -9,6 +11,9 @@ import Footer from './Components/UI/Footer/Footer';
 import Authentication from './Components/UI/Authentication/Authentication';
 import Request from './Components/Request/Request';
 import Sector from './Components/Sector/Sector';
+import { Provider } from 'react-redux';
+import appStore from './Store/Store';
+import ProtectedRoute from './Components/Common/ProtectedRoute';
 
 
 const root = ReactDOM.createRoot(
@@ -16,16 +21,24 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Header/>
-    <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage/>}/>
-          <Route path="/login" element={<Authentication/>}/>
-          <Route path="/richiesta" element={<Request/>}/>
-          <Route path="/settore" element={<Sector/>}/>
-        </Routes>
-      </BrowserRouter>
-    <Footer/>
+    <Provider store={appStore}>
+      <Header/>
+      <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage/>}/>
+            <Route path="/login" element={<Authentication/>}/>
+            <Route path="/richiesta" element={
+              <ProtectedRoute>
+                <Request/>
+              </ProtectedRoute>}/>
+            <Route path="/settore" element={
+              <ProtectedRoute>
+                <Sector/>
+              </ProtectedRoute>}/>
+          </Routes>
+        </BrowserRouter>
+      <Footer/>
+    </Provider>
   </React.StrictMode>
 );
 
