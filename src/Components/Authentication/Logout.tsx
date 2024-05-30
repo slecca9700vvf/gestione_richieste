@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import './Authentication.css';
+import labels from '../../Labels.json'
 
 function Logout() {
 
@@ -9,7 +10,7 @@ function Logout() {
     <div className="request form-container">
       <div className="form-group">
           <label>
-            {"Loggato!"}
+            { labels.auth.authenticated }
           </label>
         </div>
       <div className="form-group">
@@ -21,7 +22,7 @@ function Logout() {
                 });
             }
         }
-      >Logout
+      >{ labels.auth.logout }
       </button>
       </div>
     </div>

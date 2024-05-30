@@ -1,7 +1,38 @@
-{   "site-name": "Progetto Gestione richieste",
-    "header_title": "Progetto Gestione richieste - Sito web",
-    "footer_description": "Dipartimento dei Vigili del Fuoco del Soccorso Pubblico e della Difesa Civile - Direzione Centrale per l’innovazione tecnologica, la digitalizzazione e per i beni e le risorse logistiche e strumentali",
-    "new_request": "Richiesta",
+{   
+    "general" : {
+        "site_name": "Progetto Gestione richieste"
+    },
+    "header" : {
+        "title": "Progetto Gestione richieste - Sito web",
+        "description": "Sottotitolo"
+    },
+    "footer": {
+        "title": "Dipartimento dei Vigili del Fuoco del Soccorso Pubblico e della Difesa Civile",
+        "description": "Direzione Centrale per l’innovazione tecnologica, la digitalizzazione e per i beni e le risorse logistiche e strumentali"
+    },
+    "auth": {
+        "username": "Username",
+        "password": "Password",
+        "login": "Login",
+        "logout": "Logout",
+        "authenticated": "authenticated"
+    },
+    "forms": {
+        "request": {
+            "menu": "Richiesta",
+            "new": "Inserimento Richiesta"
+        },
+        "sector": {
+            "menu": "Settore",
+            "new": "Inserimento Settore di Competenza",
+            "description": "Descrizione del settore:",
+            "additional_info": "Altro Input di Testo:"
+        },
+        "request_type": {
+            "menu": "Tipologia richieste"
+        }
+    },
     "home_page": "Home Page",
-    "new_sector": "Settore"
+    "label_yes": "Si",
+    "label_no": "No"
 }

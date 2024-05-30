@@ -5,11 +5,10 @@ import labels from '../../../Labels.json'
 
 function Header() {
     const isLogged = CheckAuth();
-    console.log(labels.header_title)
     return (
         <header className="header">
             <nav className="header-top">
-               { labels.header_title } 
+               { labels.header.title } 
             </nav>
             {/* TODO: Gestire voce di menu active 
                 <a className="nav-link active" ...>
@@ -25,10 +24,10 @@ function Header() {
                                 <a className="nav-link" aria-current="page" href="/">{ labels.home_page }</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/richiesta">{  labels.new_request }</a>
+                                <a className="nav-link" href="/richiesta">{  labels.forms.request.menu }</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/settore">{  labels.new_sector }</a>
+                                <a className="nav-link" href="/settore">{  labels.forms.sector.menu }</a>
                             </li>
                         </ul>
                         <span className="nav-item">

@@ -6,7 +6,10 @@ function Footer() {
     return (
         <footer className="site-footer">
             <div className="container">
-                { labels.footer_description }
+                <span>{ labels.footer.title }</span>
+                <br/>
+                <br/>
+                { labels.footer.description }
             </div>
         </footer>
     );

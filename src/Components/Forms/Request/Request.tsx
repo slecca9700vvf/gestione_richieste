@@ -1,10 +1,11 @@
 import React from 'react';
 import './Request.css';
+import labels from '../../../Labels.json'
 
 function Request() {
   return (
       <div className="request form-container">
-        <h2>Inserimento Richiesta</h2>
+        <h2>{ labels.forms.request.new }</h2>
         <form className="form-container" action="#">
         <div className="form-group-hidden">
           {/* <label for="#userID">
@@ -40,10 +41,10 @@ function Request() {
             {"E' una richiesta personale?"}
           </label>
           <label>
-            <input type="radio" name="isPersonal" value="true"/>Si
+            <input type="radio" name="isPersonal" value="true"/>{ labels.label_yes }
           </label>
           <label>
-            <input type="radio" name="isPersonal" value="false"/>No
+            <input type="radio" name="isPersonal" value="false"/>{ labels.label_no }
           </label>
 
         </div>

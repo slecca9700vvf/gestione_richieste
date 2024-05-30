@@ -3,6 +3,7 @@ import './Authentication.css';
 import { useDispatch } from "react-redux";
 // import ILogin from './Interfaces/ILogin'
 import axios from 'axios';  //impriamo axios per il servizio
+import labels from '../../Labels.json'
 
 function Login() {
   const labelOK = "OK";
@@ -45,12 +46,12 @@ function Login() {
       <form action="#">
         <div className="form-group">
           <label>
-            {"Username"}
+            { labels.auth.username }
           </label>
           <input 
             type="text"
             id="username"
-            placeholder={"Username"}
+            placeholder={ labels.auth.username }
             value={username}
             onChange={
               (tagUsername) => {
@@ -63,12 +64,12 @@ function Login() {
         </div>
         <div className="form-group">
           <label>
-            {"Password"}
+            { labels.auth.password }
           </label>
           <input
             type="password"
             id="password"
-            placeholder={"Password"}
+            placeholder={ labels.auth.password }
             value={password}
             onChange={
               (tagPassword) => {
@@ -92,7 +93,7 @@ function Login() {
                       }
                     }
                 }
-          >Login
+          >{ labels.auth.login }
           </button>
       </form>  
   </div>

@@ -9,8 +9,8 @@ import HomePage from './Components/UI/HomePage/HomePage';
 import Header from './Components/UI/Header/Header';
 import Footer from './Components/UI/Footer/Footer';
 import Authentication from './Components/Authentication/Authentication';
-import Request from './Components/Request/Request';
-import Sector from './Components/Sector/Sector';
+import Request from './Components/Forms/Request/Request';
+import Sector from './Components/Forms/Sector/Sector';
 import { Provider } from 'react-redux';
 import appStore from './Store/Store';
 import ProtectedRoute from './Components/Common/ProtectedRoute';
@@ -30,13 +30,15 @@ root.render(
             <Route path="/richiesta" element={
               <ProtectedRoute>
                 <Request/>
-              </ProtectedRoute>}/>
+              </ProtectedRoute>}
+            />
             <Route path="/settore" element={
               <ProtectedRoute>
                 <Sector/>
-              </ProtectedRoute>}/>
+              </ProtectedRoute>}
+            />
           </Routes>
-        </BrowserRouter>
+      </BrowserRouter>
       <Footer/>
     </Provider>
   </React.StrictMode>
