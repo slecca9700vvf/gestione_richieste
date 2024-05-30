@@ -1,9 +1,7 @@
-{
-    "site-name": "Progetto Gestione richieste",
+{    "site-name": "Progetto Gestione richieste",
     "header_title": "Progetto Gestione richieste - Sito web",
     "footer_description": "Dipartimento dei Vigili del Fuoco del Soccorso Pubblico e della Difesa Civile - Direzione Centrale per l’innovazione tecnologica, la digitalizzazione e per i beni e le risorse logistiche e strumentali",
     "new_request": "Richiesta",
     "home_page": "Home Page",
     "new_sector": "Settore"
-
 }
