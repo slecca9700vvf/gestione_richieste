@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import './Authentication.css';
 import { useDispatch } from "react-redux";
 // import ILogin from './Interfaces/ILogin'
-import axios from 'axios';  //impriamo axios per il servizio
-import labels from '../../Labels.json'
+import axios from 'axios';
+import api from '../../API-Labels/api.json'
+import labels from '../../API-Labels/labels.json'
+
 
 function Login() {
   const labelOK = "OK";
   const labelKO = "OK";
-  const API = "http://localhost:3000";
+
+  console.log(api.base_url)
 
   const [username, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");

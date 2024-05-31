@@ -1,6 +1,7 @@
 import React from 'react';
 import './Sector.css';
-import labels from '../../../Labels.json'
+import labels from '../../../API-Labels/labels.json'
+
 
 function Sector() {
     return (

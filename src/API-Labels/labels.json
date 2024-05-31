@@ -32,7 +32,10 @@
             "menu": "Tipologia richieste"
         }
     },
-    "home_page": "Home Page",
+    "home_page": {
+        "title": "Benvenuto nella Home Page dell'App",
+        "menu": "Home"
+    },
     "label_yes": "Si",
     "label_no": "No"
 }

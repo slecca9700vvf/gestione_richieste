@@ -1,10 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import './Authentication.css';
-import labels from '../../Labels.json'
+import labels from '../../API-Labels/labels.json'
 
 function Logout() {
-
   const logoutDispatch = useDispatch();
   return (
     <div className="request form-container">

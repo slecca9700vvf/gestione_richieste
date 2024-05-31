@@ -1,5 +1,3 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
 import CheckAuth from '../Authentication/CheckAuth';
 import { Navigate } from 'react-router-dom';
 

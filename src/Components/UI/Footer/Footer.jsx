@@ -1,6 +1,6 @@
 import React from 'react';
-import './Footer.css';
-import labels from '../../../Labels.json'
+import labels from '../../../API-Labels/labels.json'
+
 
 function Footer() {
     return (

@@ -1,0 +1,53 @@
+@import 'variables';
+
+.header {
+    background-color: $bg-header;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    
+    .navbar-top {
+        background-color: $bg-header;
+        width: 100%;    
+    }
+    
+    .navbar-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .header-block {
+        background-color: #720000;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 30vh;
+    }
+    
+    .flag-container {
+        width: 100%;
+        .flag-container-table {
+            margin: 0px;
+            width: 100%;
+            height: 5px;
+
+            .flag-green {
+                background-color: green;
+            }
+            .flag-white {
+                background-color: white;
+            }
+            
+            .flag-red {
+                background-color: red;
+            }
+        }   
+    }
+}
