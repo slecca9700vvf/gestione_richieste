@@ -1,0 +1,46 @@
+.sidebar-container {
+    width: 250px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px;
+}
+
+.item-container {
+    margin-bottom: 10px;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #34495e;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: #3b5998;
+    }
+}
+
+.subitem-container {
+    padding-left: 20px;
+    background-color: #34495e;
+}
+
+.subitem {
+    padding: 5px 10px;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: #3b5998;
+    }
+}
+
+.item-link {
+    color: white;
+    text-decoration: none;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}

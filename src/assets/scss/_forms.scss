@@ -1,0 +1,13 @@
+.form-group {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+}
+
+.form-container {
+    .form-group {
+        label {
+            color: red;
+        }
+    }
+}
