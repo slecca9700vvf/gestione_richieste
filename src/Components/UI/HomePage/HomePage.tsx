@@ -11,7 +11,7 @@ function HomePage() {
   const user:IUser = {
     name: "pippo",
     surname: "pluto",
-    code: "paperino" 
+    idUtente: "paperino" 
   }
 
   return (

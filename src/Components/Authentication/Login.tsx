@@ -1,105 +1,130 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-// import ILogin from './Interfaces/ILogin'
+import { ILoginResponse } from "../../Interfaces/ILogin";
 import axios from 'axios';
 import api from '../../API-Labels/api.json'
 import labels from '../../API-Labels/labels.json'
+import { IUserLogin } from '../../Interfaces/IUser';
+import { sanitize } from '../Common/Sanitize';
 
+interface IResponse {
+  data: object | null,
+  status: string
+}
 
 function Login() {
-  const labelOK = "OK";
-  const labelKO = "OK";
-
-  console.log(api.base_url)
-
-  const [username, setUserName] = useState<string>("");
+  const [accountName, setAccountName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
-  const verifyUser:any = (username: string, password: string) => {
-    if(username === "" || password === "") {
-      return {"status": labelKO}
-    }
-    // TODO Call backend API
-
-    // let userObj = {
-    //   username,
-    //   password
-    // }
-    // await axios.post<ILogin>(
-    //   "http://localhost:3000/login.json", userObj
-    // )
-    //   .then(
-    //     (response) => {
-    //       console.log(response.data)
-    //       return response.data
-    //     }
-    //   )
-    //   .catch(
-    //     (error) => {
-    //         console.log(error)
-    //     }
-    // )
-
-    return {"status": labelOK}
-  };
   const loginDispatch = useDispatch();
+  
+  const verifyUser:any = async(accountName: string, password: string) => {
+    if(accountName === "" || password === "") {
+      return "Dati errati o vuoti!";
+    }
+    
+    let userObj:IUserLogin = {
+      accountName,
+      password
+    }
+    
+    try {
+      //TODO Change call to post and use userObj as request -> uncomment next lines ;)
+      // const response = await axios.post<ILoginResponse>(
+      const response = await axios.get<ILoginResponse>(
+          api.base_url + api.login.url + accountName,
+        // userObj
+      );
+      
+      if(Object.keys(response.data).length > 0) {
+        let tmpResponse:IResponse = {
+          data: {
+            user: response.data.utente,
+            token: response.data.token,
+            menu: response.data.menuObject,              
+          },
+          status: labels.general.labelOK
+        }
+
+        return tmpResponse;
+      } else {
+        let tmpResponse:IResponse = {
+          data: null,
+          status: labels.general.labelKO
+        }
+        return tmpResponse;
+      }
+    } catch (error) {
+      let tmpResponse:IResponse = {
+        data: { error },
+        status: labels.general.labelKO
+      }
+      return tmpResponse;
+    }
+  };
+  
   return (
     <div className="request form-container">
       <form action="#">
         <div className="form-group">
           <label>
-            { labels.auth.username }
+          { labels.auth.username }
           </label>
           <input 
-            type="text"
-            id="username"
-            placeholder={ labels.auth.username }
-            value={username}
-            onChange={
-              (tagUsername) => {
-                // TODO: Bonificare per evitare attacchi XSS
-                setUserName(tagUsername.target.value)
-              }
+          type="text"
+          id="username"
+          placeholder={ labels.auth.username }
+          value={accountName}
+          onChange={
+            (tagUsername) => {
+              setAccountName(tagUsername.target.value)
             }
-            required
+          }
+          required
           />
         </div>
         <div className="form-group">
           <label>
-            { labels.auth.password }
+          { labels.auth.password }
           </label>
           <input
-            type="password"
-            id="password"
-            placeholder={ labels.auth.password }
-            value={password}
-            onChange={
-              (tagPassword) => {
-                // TODO: Bonificare per evitare attacchi XSS
-                setPassword(tagPassword.target.value)
-              }
+          type="password"
+          id="password"
+          placeholder={ labels.auth.password }
+          value={password}
+          onChange={
+            (tagPassword) => {
+              setPassword(tagPassword.target.value)
             }
-            required
+          }
+          required
           />
         </div>
-
-
         <button
-                onClick={
-                    () => {
-                      if(verifyUser(username, password)?.status === labelOK) {
-                        console.log("user verificato")
-                        loginDispatch({
-                          type: "LOGIN",
-                        });
-                      }
-                    }
-                }
-          >{ labels.auth.login }
-          </button>
+        onClick={
+          async () => {
+            const userResponse = await verifyUser(sanitize(accountName), sanitize(password));
+            if(userResponse.data !== null && userResponse.status === labels.general.labelOK) {
+              loginDispatch({
+                type: "LOGIN",
+                user: userResponse.data.user,
+                token: userResponse.data.token,
+                menu: userResponse.data.menu,
+              });
+            } else {
+              if(userResponse.data === null) {
+                alert("controlla i dati inseriti!")
+              }
+              else {
+                console.log("errore: " + userResponse)
+              }
+            }
+          }
+        }
+        >{ labels.auth.login }
+        </button>
       </form>  
-  </div>
-);
+    </div>
+  );
 }
 
 export default Login;

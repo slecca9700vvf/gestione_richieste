@@ -31,19 +31,30 @@ const root = ReactDOM.createRoot(
 
 const menuItems = [
   {
-    title: 'Item 1',
+    title: 'Nuove Richieste - tutti',
     url: '',
     subItems: [
-      { title: 'SubItem 1.1', url: '/richiesta' },
-      { title: 'SubItem 1.11', url: '/richiesta' },
+      { title: 'Inserimento', url: '/richiesta' },
+      { title: 'Elenco richieste in sospeso', url: '/richiesta' },
+      // { title: 'Gestione', url: '/richiesta' },
+      { title: 'Storico rich effettuate da utente', url: '/richiesta' },
     ],
   },
   {
-    title: 'Item 2',
+    title: 'Gestion - solo referenti',
     url: '',
     subItems: [
-      { title: 'SubItem 2.1', url: 'https://example.com/subitem2-1' },
-      { title: 'SubItem 2.2', url: 'https://example.com/subitem2-2' },
+      { title: 'Elenco richieste da elabroare', url: '/richiesta' },
+      // { title: 'Gestione', url: '/richiesta' },
+      { title: 'Storico rich elaborate', url: '/richiesta' },
+    ],
+  },
+  {
+    title: 'Amministrazione - solo admin',
+    url: '',
+    subItems: [
+      { title: 'Associazione ruoli - uffici', url: 'https://example.com/subitem2-1' },
+      { title: '', url: 'https://example.com/subitem2-2' },
     ],
   },
   { title: 'Item 3', url: 'https://example.com/item3' },

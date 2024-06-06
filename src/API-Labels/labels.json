@@ -1,6 +1,8 @@
 {   
     "general" : {
-        "site_name": "Progetto Gestione richieste"
+        "site_name": "Progetto Gestione richieste",
+        "labelOK": "OK",
+        "labelKO": "OK"
     },
     "header" : {
         "title": "Progetto Gestione richieste - Sito web",

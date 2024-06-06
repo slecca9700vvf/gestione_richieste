@@ -21,7 +21,9 @@ function Header() {
                     <div className='collapse navbar-collapse navbar-container' id='navbarNavDropdown'>
                         <ul className='navbar-nav'>
                             <li className='nav-item'>
-                                <a className='nav-link' aria-current='page' href='/'>{ labels.home_page.menu }</a>
+                                <a className='nav-link' aria-current='page' href='/'>
+                                    <img src='/homepage.svg' title={labels.home_page.menu} alt={labels.home_page.menu}/> 
+                                </a>
                             </li>
                             <li className='nav-item'>
                                 <a className='nav-link' href='/richiesta'>{  labels.forms.request.menu }</a>
