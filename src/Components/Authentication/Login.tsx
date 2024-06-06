@@ -6,6 +6,7 @@ import api from '../../API-Labels/api.json'
 import labels from '../../API-Labels/labels.json'
 import { IUserLogin } from '../../Interfaces/IUser';
 import { sanitize } from '../Common/Sanitize';
+import loginJSON from '../../API-Labels/defaultLogin.json'
 
 interface IResponse {
   data: object | null,
@@ -22,6 +23,19 @@ function Login() {
       return "Dati errati o vuoti!";
     }
     
+    //Remove next lines
+    let tmpResponse:IResponse = {
+      data: {
+        user: loginJSON.utente,
+        token: loginJSON.token,
+        menu: loginJSON.menuObject,              
+      },
+      status: labels.general.labelOK
+    }
+    return tmpResponse
+
+    //uncomment next lines
+    /* TODO Login call
     let userObj:IUserLogin = {
       accountName,
       password
@@ -60,6 +74,7 @@ function Login() {
       }
       return tmpResponse;
     }
+    */
   };
   
   return (

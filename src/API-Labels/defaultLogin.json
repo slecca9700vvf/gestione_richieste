@@ -1,0 +1,54 @@
+{
+    "utente": {
+        "idUtente": 1,
+        "account": "nome.cognome",
+        "nome": "nome",
+        "cognome": "cognome",
+        "cf": "aaabb123dsads",
+        "classificazioneUtenteApp": 0,
+        "emailUtente": "nome.cognome@vigilfuoco.it",
+        "attivo": false
+    },
+    "menuObject": {
+        "voce_menu2": {
+            "titolo": "Voce Menu 2",
+            "sottovoci": [
+                {
+                    "titolo": "Sottovoce 2.1",
+                    "url": "/voce_menu2/sottovoce2.1"
+                },
+                {
+                    "titolo": "Sottovoce 2.2",
+                    "url": "/voce_menu2/sottovoce2.2"
+                },
+                {
+                    "titolo": "Sottovoce 2.3",
+                    "url": "/voce_menu2/sottovoce2.3"
+                }
+            ]
+        },
+        "voce_menu1": {
+            "titolo": "Voce Menu 1",
+            "sottovoci": [
+                {
+                    "titolo": "Sottovoce 1.1",
+                    "url": "/voce_menu1/sottovoce1.1"
+                },
+                {
+                    "titolo": "Sottovoce 1.2",
+                    "url": "/voce_menu1/sottovoce1.2"
+                },
+                {
+                    "titolo": "Sottovoce 1.3",
+                    "url": "/voce_menu1/sottovoce1.3"
+                }
+            ]
+        },
+        "home": {
+            "titolo": "Home",
+            "url": "/"
+        }
+    },
+    "token": "sadsadsad.lF15WM-xloRNNWMbm1KCpyYCWYnCZNd49rJ59bv0pDJElj5Hmn0PgtW40IC2GRvuha1JMJVHSVw05bVKXau-Xw",
+    "note": "Utente nome.cognome già censito a DB."
+}
