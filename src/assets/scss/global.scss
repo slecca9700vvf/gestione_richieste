@@ -86,3 +86,13 @@ input[type="submit"]:hover, button:hover {
 .main {
   width: 100%;
 }
+
+button[type=submit] {
+  background-color: $submit-button;
+  border: 0;
+  // color: $submit-button
+
+  &:hover {
+      background-color: $submit-button-over;
+  }
+}

@@ -2,7 +2,9 @@
     "general" : {
         "site_name": "Progetto Gestione richieste",
         "labelOK": "OK",
-        "labelKO": "OK"
+        "labelKO": "KO",
+        "label_yes": "Si",
+        "label_no": "No"
     },
     "header" : {
         "title": "Progetto Gestione richieste - Sito web",
@@ -26,7 +28,14 @@
     "forms": {
         "request": {
             "menu": "Richiesta",
-            "new": "Inserimento Richiesta"
+            "new": "Inserimento Richiesta",
+            "title": "Titolo",
+            "description": "Descrizione",
+            "type": "Tipologia",
+            "isPersonal": "E' una richiesta personale?",
+            "notes": "Note",
+            "submit": "Invia richiesta",
+            "submit_in_progress": "Invio in corso"
         },
         "sector": {
             "menu": "Settore",
@@ -41,7 +50,5 @@
     "home_page": {
         "title": "Benvenuto nella Home Page dell'App",
         "menu": "Home"
-    },
-    "label_yes": "Si",
-    "label_no": "No"
+    }
 }
