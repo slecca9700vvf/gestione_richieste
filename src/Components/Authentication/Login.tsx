@@ -92,6 +92,7 @@ function Login() {
         user: userResponse.data.user,
         token: userResponse.data.token,
         menu: userResponse.data.menu,
+        note: userResponse.data.note
       });
     } else {
       if(userResponse.data === null) {

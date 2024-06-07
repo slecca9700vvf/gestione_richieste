@@ -8,7 +8,8 @@ export const AuthReducer = (
         type: string,
         user?: IUser,
         token?: string,
-        menu?: string
+        menu?: string,
+        note?: string
     },
 ) => {
     switch(action.type) {
@@ -22,6 +23,7 @@ export const AuthReducer = (
                 localStorage.setItem("user", JSON.stringify(action.user));
                 localStorage.setItem("token", JSON.stringify(action.token));
                 localStorage.setItem("menu", JSON.stringify(action.menu));
+                localStorage.setItem("note", JSON.stringify(action.note));
                 localStorage.setItem("user_name", JSON.stringify(capitalize(action.user.nome.toLowerCase())));
                 localStorage.setItem("user_surname", JSON.stringify(capitalize(action.user.cognome.toLowerCase())));
                 isLogged = true;
@@ -34,6 +36,7 @@ export const AuthReducer = (
             localStorage.removeItem("user_surname");
             localStorage.removeItem("token");
             localStorage.removeItem("menu");
+            localStorage.removeItem("note");
             return isLogged;
         default:
             return isLogged;
