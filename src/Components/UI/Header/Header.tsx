@@ -5,8 +5,8 @@ import labels from '../../../API-Labels/labels.json'
 
 function Header() {
     const isLogged = CheckAuth(); 
-    const name = localStorage.getItem("user_name")?.replaceAll("\"","");
-    const surname = localStorage.getItem("user_surname")?.replaceAll("\"","");
+    const name = localStorage.getItem("user_name");
+    const surname = localStorage.getItem("user_surname");
 
     return (
         <header className='header'>

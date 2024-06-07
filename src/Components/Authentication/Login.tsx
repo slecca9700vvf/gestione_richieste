@@ -60,6 +60,7 @@ function Login() {
             user: response.data.utente,
             token: response.data.token,
             menu: response.data.menuObject,              
+            note: response.data.note,              
           },
           status: labels.general.labelOK
         }
