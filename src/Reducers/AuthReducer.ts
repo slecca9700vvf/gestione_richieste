@@ -1,5 +1,7 @@
 import { IUser } from "../Interfaces/IUser";
 
+const capitalize = (string:string) => string && string[0].toUpperCase() + string.slice(1)
+
 export const AuthReducer = (
     isLogged: boolean = false,
     action: {
@@ -16,25 +18,24 @@ export const AuthReducer = (
                 action.user !== undefined &&
                 action.token !== undefined &&
                 action.menu !== undefined
-            ) {
+            ) {                
                 localStorage.setItem("user", JSON.stringify(action.user));
                 localStorage.setItem("token", JSON.stringify(action.token));
                 localStorage.setItem("menu", JSON.stringify(action.menu));
+                localStorage.setItem("user_name", JSON.stringify(capitalize(action.user.nome.toLowerCase())));
+                localStorage.setItem("user_surname", JSON.stringify(capitalize(action.user.cognome.toLowerCase())));
                 isLogged = true;
             }
             return isLogged;
         case "LOGOUT":
             isLogged = false;
             localStorage.removeItem("user");
+            localStorage.removeItem("user_name");
+            localStorage.removeItem("user_surname");
             localStorage.removeItem("token");
             localStorage.removeItem("menu");
-            return isLogged;
-        case "VERIFY":
             return isLogged;
         default:
-            localStorage.removeItem("user");
-            localStorage.removeItem("token");
-            localStorage.removeItem("menu");
             return isLogged;
     }
 }

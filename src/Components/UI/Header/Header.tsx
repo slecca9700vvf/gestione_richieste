@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CheckAuth from '../../Authentication/CheckAuth';
 import labels from '../../../API-Labels/labels.json'
 
 
 function Header() {
-    const isLogged = CheckAuth();
+    const isLogged = CheckAuth(); 
+    const name = localStorage.getItem("user_name")?.replaceAll("\"","");
+    const surname = localStorage.getItem("user_surname")?.replaceAll("\"","");
+
     return (
         <header className='header'>
             <nav className='header-top'>
@@ -33,7 +36,7 @@ function Header() {
                             </li>
                         </ul>
                         <span className='nav-item'>
-                            <a className='nav-link' href='/login'>{ isLogged ? 'Nome Cognome' : 'Login' }</a>
+                        <a className='nav-link' href='/login'>{ isLogged ? name + " " + surname : 'Login' }</a>
                         </span>
                     </div>
                 </div>

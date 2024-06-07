@@ -16,8 +16,12 @@
         "username": "Username",
         "password": "Password",
         "login": "Login",
+        "login_in_progress": "Login in corso",
         "logout": "Logout",
-        "authenticated": "authenticated"
+        "authenticated": "authenticated",
+        "forget_password": "Hai dimenticato la passowrd?",
+        "reset_psw_link": "http://accounts.dipvvf.it",
+        "error": "Controlla i dati inseriti"
     },
     "forms": {
         "request": {
