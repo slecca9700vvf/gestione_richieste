@@ -8,12 +8,10 @@ function Logout() {
 
   const handleSubmit = async (event:any) => {
     event.preventDefault();
-    console.log()
       logoutDispatch({
         type: "LOGOUT",
       });
   }
-
 
   return (
     <div className="sign-out--wrapper">
