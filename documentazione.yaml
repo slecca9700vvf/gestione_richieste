@@ -1,4 +1,5 @@
 Repository:
+<<<<<<< Updated upstream
     origin:
         -   https://github.com/slecca9700vvf/gestione_richieste.git
     branch di sviluppo:
@@ -7,6 +8,61 @@ Repository:
         -   test
     branch di prod:
         -   master
+=======
+    FE:
+        origin:
+            -   https://github.com/slecca9700vvf/gestione_richieste.git
+        branch di sviluppo:
+            -   develop
+        branch di test:
+            -   test
+        branch di prod:
+            -   master
+    BE:
+        origin:
+            -   https://github.com/antoniorobertoditerlizzi/mgrBE.git
+        branch:
+            -   main
+
+Comandi utili su git:
+    clone del repository (da fare per scaricare il progetto):
+        -   git clone https://github.com/slecca9700vvf/gestione_richieste.git
+    cambio branch:
+        -   git checkout nome_branch
+        -   esempio: git checkout develop
+    allineamento del codice in locale:
+        -   git pull origin nome_branch
+        -   esempio: git pull origin develop
+    nuovo branch per svuluppare la feature:
+        -   git checkout -b nuovo_branch
+        -   esempio: git checkout -b sidebar
+    commit dei cambiamenti effettuati:
+        -   git commit -m "Messaggio del commit - funzionalità sviluppate"
+        -   esempio: git commit -m "Fix style componente Login"
+    allineamento del codice locale sul repository:
+        -   da effettuare solo dopo aver fatto pull, commit, nuovo pull e risolto eventuali conflitti
+        -   git push origin nome_branch
+        -   esempio: git push origin develop
+
+Flusso deploy:
+    -   clone del progetto (solo all'inizio)
+    -   git pull (prima di sviluppare ogni componente)
+    -   creazione nuovo branch e sviluppo funzionalità
+    -   commit delle modifiche
+    -   pull del branch principale (se ci si è staccati da develop git pull origin develop nel branch)
+    -   risolvere eventuali conflitti
+    -   push su nuovo branch -> git push origin nuovo_branch
+    -   apertura pull request su GitHub
+    -   SOLO DOPO APPROVAZIONE DELLE MODIFICHE DA PARTE DEL RESTO DEL TEAM
+        -   spostarsi su develop -> git checkoute develop
+        -   git merge nome_branch
+        -   git push origin develop
+
+Avvio app react:
+    -   git pull origin develop
+    -   npm i
+    -   npm start
+>>>>>>> Stashed changes
 
 Comandi utilizzati per la creazione/gestione del progetto:
     Creazione App con template tipescript:

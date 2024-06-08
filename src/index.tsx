@@ -28,38 +28,6 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-
-const menuItems = [
-  {
-    title: 'Nuove Richieste - tutti',
-    url: '',
-    subItems: [
-      { title: 'Inserimento', url: '/richiesta' },
-      { title: 'Elenco richieste in sospeso', url: '/richiesta' },
-      // { title: 'Gestione', url: '/richiesta' },
-      { title: 'Storico rich effettuate da utente', url: '/richiesta' },
-    ],
-  },
-  {
-    title: 'Gestion - solo referenti',
-    url: '',
-    subItems: [
-      { title: 'Elenco richieste da elabroare', url: '/richiesta' },
-      // { title: 'Gestione', url: '/richiesta' },
-      { title: 'Storico rich elaborate', url: '/richiesta' },
-    ],
-  },
-  {
-    title: 'Amministrazione - solo admin',
-    url: '',
-    subItems: [
-      { title: 'Associazione ruoli - uffici', url: 'https://example.com/subitem2-1' },
-      { title: '', url: 'https://example.com/subitem2-2' },
-    ],
-  },
-  { title: 'Item 3', url: 'https://example.com/item3' },
-];
-
 root.render(
   <React.StrictMode>
     <Provider store={appStore}>
@@ -69,7 +37,7 @@ root.render(
         {/* TODO Recuperare routes, recuperare menu */}
 
 
-        <Sidebar menuItems={menuItems}></Sidebar>
+        <Sidebar></Sidebar>
         <BrowserRouter>
             <Routes>
               <Route path="/" element={<HomePage/>}/>

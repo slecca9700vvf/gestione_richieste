@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { CheckAuth } from '../../Authentication/RetrieveAuthUser';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import defultMenu from '../../../API-Labels/defaultMenu.json'
 
 // Definizione delle interfacce per i props
 interface SidebarProps {
@@ -18,7 +20,15 @@ interface SubItem {
 }
 
 // Componente Sidebar principale
-const Sidebar: React.ComponentType<SidebarProps> = ({ menuItems }) => {
+function Sidebar() {
+
+  let menuItems = defultMenu.menu;
+  const isLogged = CheckAuth();
+  if(isLogged) {
+    let menu = localStorage.getItem("menu");
+    menuItems = menu !== null ? JSON.parse(menu) : menuItems;
+  }
+  
   return (
     <div className="sidebar-container">
       {menuItems.map((item, index) => (
@@ -29,7 +39,8 @@ const Sidebar: React.ComponentType<SidebarProps> = ({ menuItems }) => {
 };
 
 // Componente per ogni voce principale del menu
-const SidebarItem: React.ComponentType<{ item: MenuItem }> = ({ item }) => {
+function SidebarItem ( item:any ) {
+  item = item.item;
   const [isOpen, setIsOpen] = useState(false); // Stato per gestire l'apertura/chiusura del sotto-menu
 
   const toggleOpen = () => {
@@ -40,17 +51,17 @@ const SidebarItem: React.ComponentType<{ item: MenuItem }> = ({ item }) => {
       <div className="item-container">
         <div className="item-header" onClick={toggleOpen}>
           {/* Se l'oggetto ha subItems, l'URL deve essere vuoto */}
-          {item.subItems ? (
-            <span className="item-title">{item.title}</span>
+          {item.sottovoci ? (
+            <span className="item-title">{item.titolo}</span>
           ) : (
-            <a className="item-link" href={item.url}>{item.title}</a>
+            <a className="item-link" href={item.url}>{item.titolo}</a>
           )}
-          {item.subItems && (isOpen ? <FaChevronUp /> : <FaChevronDown />)}
+          {item.sottovoci && (isOpen ? <FaChevronUp /> : <FaChevronDown />)}
         </div>
         {isOpen && item.subItems && (
           <div className="subitem-container">
-            {item.subItems.map((subItem, index) => (
-              <SidebarSubItem key={index} subItem={subItem} />
+            {item.sottovoci.map((subItem:any, index:any) => (
+              <SubItem key={index} subItem={subItem} />
             ))}
           </div>
         )}
@@ -59,7 +70,7 @@ const SidebarItem: React.ComponentType<{ item: MenuItem }> = ({ item }) => {
 };
 
 // Componente per ogni voce del sotto-menu
-const SidebarSubItem: React.ComponentType<{ subItem: SubItem }> = ({ subItem }) => {
+function SubItem(subItem:any) {
   return (
     <div className="subitem">
       <a className="item-link" href={subItem.url}>{subItem.title}</a>

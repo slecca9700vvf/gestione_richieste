@@ -8,7 +8,7 @@ export interface ILoginCall {
 
 export interface ILoginResponse {
     utente: IUser,
-    menuObject: IMenuItem,
+    menu: IMenuItem,
     token: string,
     note?: string,
 }

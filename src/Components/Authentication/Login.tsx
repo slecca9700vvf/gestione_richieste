@@ -59,12 +59,11 @@ function Login() {
           data: {
             user: response.data.utente,
             token: response.data.token,
-            menu: response.data.menuObject,              
+            menu: response.data.menu,              
             note: response.data.note,              
           },
           status: labels.general.labelOK
-        }
-        
+        }        
         return tmpResponse;
       } else {
         let tmpResponse:IResponse = {
@@ -80,7 +79,6 @@ function Login() {
       }
       return tmpResponse;
     }
-    /**/
   };
   
   const handleSubmit = async (event:any) => {
