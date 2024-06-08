@@ -1,4 +1,4 @@
-import CheckAuth from '../Authentication/CheckAuth';
+import { CheckAuth } from '../Authentication/RetrieveAuthUser';
 import { Navigate } from 'react-router-dom';
 
 const ProtectedRoute = ( { children }:any ) =>  {

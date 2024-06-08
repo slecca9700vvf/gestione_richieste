@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CheckAuth from '../../Authentication/CheckAuth';
+import { CheckAuth, RetrieveUserData } from '../../Authentication/RetrieveAuthUser';
 import labels from '../../../API-Labels/labels.json'
 
 

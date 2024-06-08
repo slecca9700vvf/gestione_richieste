@@ -1,14 +1,4 @@
 Repository:
-<<<<<<< Updated upstream
-    origin:
-        -   https://github.com/slecca9700vvf/gestione_richieste.git
-    branch di sviluppo:
-        -   develop
-    branch di test:
-        -   test
-    branch di prod:
-        -   master
-=======
     FE:
         origin:
             -   https://github.com/slecca9700vvf/gestione_richieste.git
@@ -62,19 +52,18 @@ Avvio app react:
     -   git pull origin develop
     -   npm i
     -   npm start
->>>>>>> Stashed changes
 
 Comandi utilizzati per la creazione/gestione del progetto:
-    Creazione App con template tipescript:
+    Creazione App con template tipescript (già fatto):
         -   create-react-app gestione_richieste --template typescript
     
     Avvio del development server:
         -   npm start
 
-    Build del progetto per ambiente di produzione:
+    Build del progetto per ambiente di produzione (non fare):
         -   npm run build
 
-    Avvio script di test:
+    Avvio script di test (non fare):
         -   npm test
 
     Rimuovere file di esempio del progetto (App component di default):
@@ -94,12 +83,6 @@ Guide e tutorial:
         -   npm i axios
     Installazione redux (già fatto):
         -   https://react-redux.js.org/introduction/getting-started
-
-
-
-
-
-
 
 Estensioni da installare su Visual Studio Code:
     - Material Icon Theme

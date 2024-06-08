@@ -24,16 +24,6 @@
         z-index: 1;
         // animation: showSignInForm 1s;
     }
-
-    button[type=submit] {
-        background-color: $submit-button;
-        border: 0;
-        // color: $submit-button
-    
-        &:hover {
-            background-color: $submit-button-over;
-        }
-    }
   }
 
   
