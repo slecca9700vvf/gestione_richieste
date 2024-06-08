@@ -58,7 +58,7 @@ function SidebarItem ( item:any ) {
           )}
           {item.sottovoci && (isOpen ? <FaChevronUp /> : <FaChevronDown />)}
         </div>
-        {isOpen && item.subItems && (
+        {isOpen && item.sottovoci && (
           <div className="subitem-container">
             {item.sottovoci.map((subItem:any, index:any) => (
               <SubItem key={index} subItem={subItem} />
@@ -71,9 +71,10 @@ function SidebarItem ( item:any ) {
 
 // Componente per ogni voce del sotto-menu
 function SubItem(subItem:any) {
+  subItem = subItem.subItem;
   return (
     <div className="subitem">
-      <a className="item-link" href={subItem.url}>{subItem.title}</a>
+      <a className="item-link" href={subItem.url}>{subItem.titolo}</a>
     </div>
   );
 };
