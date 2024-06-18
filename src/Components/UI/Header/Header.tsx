@@ -2,16 +2,10 @@ import React, { useState } from 'react';
 import { CheckAuth, RetrieveUserData } from '../../Authentication/RetrieveAuthUser';
 import labels from '../../../API-Labels/labels.json'
 import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import { deepOrange, deepPurple } from '@mui/material/colors';
-
-
-import ListSubheader from '@mui/material/ListSubheader';
+import { deepPurple } from '@mui/material/colors';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-
 import Button from '@mui/material/Button';
 import Collapse from '@mui/material/Collapse';
 
@@ -25,7 +19,7 @@ function Header() {
 	const [open, setOpen] = useState(false); 
 
 	const handleClick = () => {
-	setOpen(!open);
+	    setOpen(!open);
 	};
 		  
     return (
@@ -45,10 +39,7 @@ function Header() {
                                     <img src='https://seeklogo.com/images/V/vigili-del-fuoco-logo-6CE6125E8E-seeklogo.com.png' width="20%" height="20%" title={labels.home_page.menu} alt={labels.home_page.menu}/> 
                                 </a>
                             </li>
-                    
-                          
                         </ul>
-						
 						{/*<span className='nav-item'>
 							<a className='nav-link' href='/login'>{ isLogged ? name + " " + surname : 'Login' }</a>
                         </span>
@@ -58,7 +49,6 @@ function Header() {
                         </span>*/}
 						
 						{/* inserire menu di 3 voci contenente Dettaglio utente - Info - Logout visibile al click sull'Avatar*/}
-						
 						 <div>
 						  <Button style={{backgroundColor: 'transparent', color: '#000', padding: '10px 20px'}} variant="contained"  onClick={handleClick} startIcon={<Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>}>
 							{ isLogged ? name + " " + surname : 'Login' }
@@ -80,9 +70,6 @@ function Header() {
 							</List>
 						  </Collapse>
 						</div>
-							
-						  
-
                     </div>
                 </div>
             </nav>
