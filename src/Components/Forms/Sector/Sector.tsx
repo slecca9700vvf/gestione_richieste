@@ -1,18 +1,18 @@
 import React from 'react';
 import './Sector.css';
-import labels from '../../../API-Labels/labels.json'
+import { getLabelByName } from '../../Exports/Labels';
 
 
-function Sector() {
+const Sector = () => {
     return (
         <div className="sector form-container">
-        <h2>{ labels.forms.sector.new }</h2>
+        <h2>{ getLabelByName("forms_sector_new") }</h2>
             <form action="#" method="post">
-                <label htmlFor="sector">{ labels.forms.sector.description }</label>
-                <input type="text" id="sector" name="sector" placeholder="Inserisci la descrizione del settore..." required/>
-                <label htmlFor="additionalInfo">{ labels.forms.sector.additional_info }</label>
-                <input type="text" id="additionalInfo" name="additionalInfo" placeholder="Inserisci altro testo..." required/>
-                <input type="submit" value="Invia"/>
+                <label htmlFor="sector">{ getLabelByName("forms_sector_description") }</label>
+                <input type="text" id="sector" name="sector" placeholder={ getLabelByName("forms_sector_description_placeholder") } required/>
+                <label htmlFor="sector">{ getLabelByName("forms_sector_additional_info") }</label>
+                <input type="text" id="sector" name="sector" placeholder={ getLabelByName("forms_sector_additional_info_placeholder") } required/>
+                <input type="submit" value={ getLabelByName("forms_sector_submit") }/>
             </form>
         </div>
         );

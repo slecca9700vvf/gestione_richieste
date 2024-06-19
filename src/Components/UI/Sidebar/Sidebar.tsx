@@ -20,8 +20,7 @@ interface SubItem {
 }
 
 // Componente Sidebar principale
-function Sidebar() {
-
+const Sidebar = () => {
   let menuItems = defultMenu.menu;
   const isLogged = CheckAuth();
   if(isLogged) {
@@ -42,30 +41,29 @@ function Sidebar() {
 function SidebarItem ( item:any ) {
   item = item.item;
   const [isOpen, setIsOpen] = useState(false); // Stato per gestire l'apertura/chiusura del sotto-menu
-
   const toggleOpen = () => {
     setIsOpen(!isOpen);
   };
-
+  
   return (
-      <div className="item-container">
-        <div className="item-header" onClick={toggleOpen}>
-          {/* Se l'oggetto ha subItems, l'URL deve essere vuoto */}
-          {item.sottovoci ? (
-            <span className="item-title">{item.titolo}</span>
-          ) : (
-            <a className="item-link" href={item.url}>{item.titolo}</a>
-          )}
-          {item.sottovoci && (isOpen ? <FaChevronUp /> : <FaChevronDown />)}
-        </div>
-        {isOpen && item.sottovoci && (
-          <div className="subitem-container">
-            {item.sottovoci.map((subItem:any, index:any) => (
-              <SubItem key={index} subItem={subItem} />
-            ))}
-          </div>
+    <div className="item-container">
+      <div className="item-header" onClick={toggleOpen}>
+        {/* Se l'oggetto ha subItems, l'URL deve essere vuoto */}
+        {item.sottovoci ? (
+          <span className="item-title">{item.titolo}</span>
+        ) : (
+          <a className="item-link" href={item.url}>{item.titolo}</a>
         )}
+        {item.sottovoci && (isOpen ? <FaChevronUp /> : <FaChevronDown />)}
       </div>
+      {isOpen && item.sottovoci && (
+        <div className="subitem-container">
+          {item.sottovoci.map((subItem:any, index:any) => (
+            <SubItem key={index} subItem={subItem} />
+          ))}
+        </div>
+      )}
+    </div>
   );
 };
 

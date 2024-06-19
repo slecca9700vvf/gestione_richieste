@@ -21,8 +21,6 @@ import Authentication from './Components/Authentication/Authentication';
 import Request from './Components/Forms/Request/Request';
 import Sector from './Components/Forms/Sector/Sector';
 import Sidebar from './Components/UI/Sidebar/Sidebar';
-import routes from './API-Labels/routes';
-
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -33,16 +31,13 @@ root.render(
     <Provider store={appStore}>
       <Header/>
       <div className='app-content'>
-
         {/* TODO Recuperare routes, recuperare menu */}
-
-
         <Sidebar></Sidebar>
         <BrowserRouter>
             <Routes>
               <Route path="/" element={<HomePage/>}/>
               <Route path="/login" element={<Authentication/>}/>
-              <Route path="/richiesta" element={
+              <Route path="/richiesta/:request_id" element={
                 <ProtectedRoute>
                   <Request/>
                 </ProtectedRoute>}

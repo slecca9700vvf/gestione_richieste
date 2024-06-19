@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { CheckAuth, RetrieveUserData } from '../../Authentication/RetrieveAuthUser';
-import labels from '../../../API-Labels/labels.json'
+import { getLabelByName } from "../../Exports/Labels";
 
-
-function Header() {
+const Header = () => {
     const isLogged = CheckAuth(); 
     const name = localStorage.getItem("user_name");
     const surname = localStorage.getItem("user_surname");
@@ -11,7 +10,7 @@ function Header() {
     return (
         <header className='header'>
             <nav className='header-top'>
-               { labels.header.title } 
+               { getLabelByName("header_title") } 
             </nav>
             {/* TODO: Gestire voce di menu active 
                 <a className='nav-link active' ...>
@@ -25,14 +24,14 @@ function Header() {
                         <ul className='navbar-nav'>
                             <li className='nav-item'>
                                 <a className='nav-link' aria-current='page' href='/'>
-                                    <img src='/homepage.svg' title={labels.home_page.menu} alt={labels.home_page.menu}/> 
+                                    <img src='/homepage.svg' title={ getLabelByName("home_page_menu") } alt={getLabelByName("home_page_menu")}/> 
                                 </a>
                             </li>
                             <li className='nav-item'>
-                                <a className='nav-link' href='/richiesta'>{  labels.forms.request.menu }</a>
+                                <a className='nav-link' href='/richiesta'>{  getLabelByName("forms_request_menu") }</a>
                             </li>
                             <li className='nav-item'>
-                                <a className='nav-link' href='/settore'>{  labels.forms.sector.menu }</a>
+                                <a className='nav-link' href='/richiesta'>{  getLabelByName("forms_sector_menu") }</a>
                             </li>
                         </ul>
                         <span className='nav-item'>

@@ -1,14 +1,14 @@
 import React from 'react';
-import labels from '../../../API-Labels/labels.json'
+import { getLabelByName } from '../../Exports/Labels';
 
-function Footer() {
+const Footer = () => {
     return (
         <footer className="footer">
             <div className="container">
-                <span>{ labels.footer.title }</span>
+                <span>{ getLabelByName("footer_title") }</span>
                 <br/>
                 <br/>
-                { labels.footer.description }
+                { getLabelByName("footer_description") }
             </div>
         </footer>
     );

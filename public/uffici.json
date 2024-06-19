@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "name": "uff_info",
+            "value": "Ufficio Informatica"
+        },
+        {
+            "name": "uff_presonale",
+            "value": "Ufficio Personale"
+        }
+    ],
+    "status": "OK"
+}

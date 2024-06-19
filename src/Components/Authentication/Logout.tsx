@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Button, Alert } from "react-bootstrap";
-import labels from '../../API-Labels/labels.json'
+import { getLabelByName } from "../Exports/Labels";
 
 function Logout() {
   const logoutDispatch = useDispatch();
@@ -19,7 +19,7 @@ function Logout() {
       <div className="sign-out--backdrop"></div>
       <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
           <Button className="w-100" variant="primary" type="submit">
-            { labels.auth.logout }
+            { getLabelByName("labelOK") }
           </Button>
       </Form>  
     </div>
