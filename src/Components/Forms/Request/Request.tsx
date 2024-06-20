@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Button } from "react-bootstrap";
-import './Request.css';
 import { getLabelByName } from "../../Exports/Labels";
 import DynamicFormField from '../DynamicFormField';
 import { useParams } from 'react-router-dom';
