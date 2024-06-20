@@ -196,7 +196,7 @@ const Labels: Array<ILabel> = [
         language: "it"
     },
     {
-        name: "form_all_priority",
+        name: "forms_all_priority",
         value: "Priorità",
         language: "it"
     },

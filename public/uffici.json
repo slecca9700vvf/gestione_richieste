@@ -7,6 +7,10 @@
         {
             "name": "uff_presonale",
             "value": "Ufficio Personale"
+        },
+        {
+            "name": "uff_rls",
+            "value": "Ufficio RLS"
         }
     ],
     "status": "OK"

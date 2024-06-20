@@ -35,7 +35,7 @@
             }
         },
         {
-            "name": "forms_request_6_text",
+            "name": "forms_all_priority",
             "type": "select",
             "subitems": [
                 {
