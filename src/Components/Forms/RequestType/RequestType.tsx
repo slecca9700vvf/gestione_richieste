@@ -1,5 +1,4 @@
 import React from 'react';
-import './RequestType.css';
 
 function RequestType() {
   return (
