@@ -229,5 +229,10 @@ const Labels: Array<ILabel> = [
         name: "home_page_menu",
         value: "Home",
         language: "it"
+    },
+    {
+        name: "forms_request_type_submit",
+        value: "Compila la richiesta",
+        language: "it"
     }
 ]

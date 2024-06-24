@@ -3,12 +3,12 @@
         {
             "name": "info",
             "id_tipologia": "6",
-            "value": "Materiale Informatico"
+            "value": "Acquisto Materiale Informatico"
         },
         {
             "name": "log",
             "id_tipologia": "2",
-            "value": "Materiale Logistico"
+            "value": "Acquisto Materiale Logistico"
         },
         {
             "name": "dpi",
