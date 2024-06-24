@@ -1,0 +1,19 @@
+{
+    "data": [
+        {
+            "name": "info",
+            "id_tipologia": "6",
+            "value": "Materiale Informatico"
+        },
+        {
+            "name": "log",
+            "id_tipologia": "2",
+            "value": "Materiale Logistico"
+        },
+        {
+            "name": "dpi",
+            "id_tipologia": "3",
+            "value": "DPI"
+        }
+    ]
+}

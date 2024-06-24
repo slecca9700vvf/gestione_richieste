@@ -215,6 +215,11 @@ const Labels: Array<ILabel> = [
         value: "Titolo",
         language: "it"
     },
+    {   
+        name: "field_request_type",
+        value: "Inserisci tipologia richiesta",
+        language: "it"
+    },
     {
         name: "home_page_title",
         value: "Benvenuto nella Home Page dell'App",
