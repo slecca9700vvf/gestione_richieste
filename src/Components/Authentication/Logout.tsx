@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Form, Button, Alert } from "react-bootstrap";
 import { getLabelByName } from "../Exports/Labels";
 
-function Logout() {
+const Logout = () => {
   const logoutDispatch = useDispatch();
 
   const handleSubmit = async (event:any) => {

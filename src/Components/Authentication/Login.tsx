@@ -11,7 +11,7 @@ import { IResponse } from '../../Interfaces/IRequest'
 //TODO Remove next line
 import loginJSON from '../../API-Labels/defaultLogin.json'
 
-function Login() {
+const Login = () => {
   const [accountName, setAccountName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
