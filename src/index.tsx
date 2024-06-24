@@ -37,7 +37,7 @@ root.render(
             <Routes>
               <Route path="/" element={<HomePage/>}/>
               <Route path="/login" element={<Authentication/>}/>
-              <Route path="/richiesta/:request_id" element={
+              <Route path="/richiesta/:request_id?" element={
                 <ProtectedRoute>
                   <Request/>
                 </ProtectedRoute>}

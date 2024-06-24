@@ -19,7 +19,7 @@ function Logout() {
       <div className="sign-out--backdrop"></div>
       <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
           <Button className="w-100" variant="primary" type="submit">
-            { getLabelByName("labelOK") }
+            { getLabelByName("auth_logout") }
           </Button>
       </Form>  
     </div>

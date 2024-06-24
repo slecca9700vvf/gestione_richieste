@@ -34,6 +34,8 @@ const Request = () => {
   const handleSubmit = (event:any) => {
     setLoading(true);
     event.preventDefault();
+    console.log(event);
+
     alert("richiesta");
     setLoading(false);
   }
@@ -82,6 +84,8 @@ async function getFields(request_id:any) {
   let response_data:any;
   let response_data_second:any;
 
+  console.log(request_id);
+
   switch(request_id) {
     case "3":
       break;
@@ -109,6 +113,12 @@ async function getFields(request_id:any) {
 
         return response_data;
       break;
+      default:
+        response_data = fieldsAll.data;
+        return response_data;
+      break;
+
+
   }
 }
 
