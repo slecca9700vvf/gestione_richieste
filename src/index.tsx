@@ -15,6 +15,7 @@ import ProtectedRoute from './Components/Common/ProtectedRoute';
 
 // Import dei componenti
 import HomePage from './Components/UI/HomePage/HomePage';
+import Dashboard from './Components/UI/Dashboard/Dashboard';
 import Header from './Components/UI/Header/Header';
 import Footer from './Components/UI/Footer/Footer';
 import Authentication from './Components/Authentication/Authentication';
@@ -36,6 +37,7 @@ root.render(
         <BrowserRouter>
             <Routes>
               <Route path="/" element={<HomePage/>}/>
+              <Route path="/dashboard" element={<Dashboard/>}/>
               <Route path="/login" element={<Authentication/>}/>
               <Route path="/richiesta/:request_id" element={
                 <ProtectedRoute>
