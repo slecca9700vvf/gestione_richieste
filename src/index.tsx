@@ -37,7 +37,11 @@ root.render(
         <BrowserRouter>
             <Routes>
               <Route path="/" element={<HomePage/>}/>
-              <Route path="/dashboard" element={<Dashboard/>}/>
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <Dashboard/>
+                </ProtectedRoute>
+              }/>
               <Route path="/login" element={<Authentication/>}/>
               <Route path="/richiesta/:request_id" element={
                 <ProtectedRoute>

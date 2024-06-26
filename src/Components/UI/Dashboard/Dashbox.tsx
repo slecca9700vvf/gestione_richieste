@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
-interface ricezione {
-  classeRuolo: string,
-  Intestazione: string,
+interface IReceivedData {
+  classRole: string,
+  Header: string,
   Link: string
 }
 
-const Dashbox = ({ classeRuolo,Intestazione,Link }: ricezione) => {
+const Dashbox = ({ classRole,Header,Link }: IReceivedData) => {
   return (
     <div className="dashbox">
-      <div className={classeRuolo}>
-        {Intestazione}
+      <div className={classRole}>
+        {Header}
       </div>
       <div>
         <a href={Link}>Vai al dettaglio</a> 

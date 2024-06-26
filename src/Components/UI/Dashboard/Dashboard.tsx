@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { CheckAuth, RetrieveUserData } from '../../Authentication/RetrieveAuthUser';
 import Dashbox from './Dashbox';
-import { ArrayDashBox } from './dashjsontemp';
+import { ArrayDashBox } from './IDashboardData';
+import { getLabelByName } from "../../Exports/Labels";
 
 const Dashboard = () => {
-  const isLogged = CheckAuth();
   const user = RetrieveUserData();
   
-
   return (
     <div id="dashboard">
-      <h4>Benvenuto sulla tua scrivania virtuale di Gestione Richieste</h4>
-      <h4>di seguito trovi i contenuti che richiedono al più presto la tua attenzione</h4>
+      <p><span>{  getLabelByName("dashboard_title") }</span></p>
+      <p><span>{  getLabelByName("dashboard_subtitle") }</span></p>
       {
-        ArrayDashBox.filter(dashbox => dashbox.utente == user.name).map(filteredDashbox => (
-          <Dashbox classeRuolo={filteredDashbox.classeRuolo} Intestazione={filteredDashbox.Intestazione} Link={filteredDashbox.Link} />
+        ArrayDashBox.filter(dashbox => dashbox.user == user.name).map(filteredDashbox => (
+          <Dashbox classRole={filteredDashbox.classRole} Header={filteredDashbox.Header} Link={filteredDashbox.Link} />
         ))}
       
     </div>
@@ -23,3 +22,4 @@ const Dashboard = () => {
 }
 
 export default Dashboard;
+

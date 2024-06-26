@@ -49,6 +49,16 @@ const Labels: Array<ILabel> = [
         language: "it"
     },
     {
+        name: "dashboard_title",
+        value: "Benvenuto sulla tua scrivania virtuale di Gestione Richieste",
+        language: "it"
+    },
+    {
+        name: "dashboard_subtitle",
+        value: "di seguito trovi i contenuti che richiedono al più presto la tua attenzione",
+        language: "it"
+    },
+    {
         name: "footer_title",
         value: "Dipartimento dei Vigili del Fuoco del Soccorso Pubblico e della Difesa Civile",
         language: "it"
