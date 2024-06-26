@@ -39,6 +39,11 @@ const Labels: Array<ILabel> = [
         language: "it"
     },
     {
+        name: "label_go_details",
+        value: "Vai al dettaglio",
+        language: "it"
+    },
+    {
         name: "header_title",
         value: "Progetto Gestione richieste - Sito web",
         language: "it"
@@ -46,6 +51,16 @@ const Labels: Array<ILabel> = [
     {
         name: "header_description",
         value: "Sottotitolo",
+        language: "it"
+    },
+    {
+        name: "dashboard_title",
+        value: "Benvenuto sulla tua scrivania virtuale di Gestione Richieste",
+        language: "it"
+    },
+    {
+        name: "dashboard_subtitle",
+        value: "di seguito trovi i contenuti che richiedono al più presto la tua attenzione",
         language: "it"
     },
     {
