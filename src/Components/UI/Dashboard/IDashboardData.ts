@@ -1,8 +1,10 @@
+// TODO da verificare dopo implementazione WS
+
 export interface IDashboardData {
     user: string,
     classRole: string,
-    Header: string,
-    Link: string
+    header: string,
+    link: string
 }
 
 
@@ -10,68 +12,68 @@ export const ArrayDashBox: Array<IDashboardData> = [
     {
         user: "Antonio",
         classRole: "ruolouser",
-        Header: "Richieste in bozza (n.?)",
-        Link: "#"
+        header: "Richieste in bozza (n.?)",
+        link: "#"
     },
     {
         user: "Antonio",
         classRole: "ruolouser",
-        Header: "Richieste Integrazione (n.?)",
-        Link: "#"
+        header: "Richieste Integrazione (n.?)",
+        link: "#"
     },
     {
         user: "Antonio",
         classRole: "ruolouser",
-        Header: "Negato Consenso (n.?)",
-        Link: "#"
-    },
-    {
-        user: "Antonio",
-        classRole: "ruoloresp",
-        Header: "Richieste da approvare Ref. (n.?)",
-        Link: "#"
+        header: "Negato Consenso (n.?)",
+        link: "#"
     },
     {
         user: "Antonio",
         classRole: "ruoloresp",
-        Header: "Richieste da approvare Resp. (n.?)",
-        Link: "#"
+        header: "Richieste da approvare Ref. (n.?)",
+        link: "#"
+    },
+    {
+        user: "Antonio",
+        classRole: "ruoloresp",
+        header: "Richieste da approvare Resp. (n.?)",
+        link: "#"
     },
     {
         user: "Antonio",
         classRole: "ruoloevas",
-        Header: "Richieste da evadere (n.?)",
-        Link: "#"
+        header: "Richieste da evadere (n.?)",
+        link: "#"
     },
     {
         user: "Simone",
         classRole: "ruolouser",
-        Header: "Richieste in bozza (n.?)",
-        Link: "#"
+        header: "Richieste in bozza (n.?)",
+        link: "#"
     },
     {
         user: "Simone",
         classRole: "ruolouser",
-        Header: "Richieste Integrazione (n.?)",
-        Link: "#"
+        header: "Richieste Integrazione (n.?)",
+        link: "#"
     },
     {
         user: "Simone",
         classRole: "ruolouser",
-        Header: "Negato Consenso (n.?)",
-        Link: "#"
+        header: "Negato Consenso (n.?)",
+        link: "#"
     },
     {
         user: "Raffaele",
         classRole: "ruolouser",
-        Header: "Richieste Integrazione (n.?)",
-        Link: "#"
+        header: "Richieste Integrazione (n.?)",
+        link: "#"
     },
     {
         user: "Raffaele",
         classRole: "ruoloevas",
-        Header: "Richieste da evadere (n.?)",
-        Link: "#"
+        header: "Richieste da evadere (n.?)",
+        link: "#"
     }
 
 ]

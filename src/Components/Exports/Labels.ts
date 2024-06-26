@@ -39,6 +39,11 @@ const Labels: Array<ILabel> = [
         language: "it"
     },
     {
+        name: "label_go_details",
+        value: "Vai al dettaglio",
+        language: "it"
+    },
+    {
         name: "header_title",
         value: "Progetto Gestione richieste - Sito web",
         language: "it"

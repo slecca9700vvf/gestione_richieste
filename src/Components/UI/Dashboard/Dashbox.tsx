@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
+import { getLabelByName } from "../../Exports/Labels";
 
 interface IReceivedData {
   classRole: string,
-  Header: string,
-  Link: string
+  header: string,
+  link: string
 }
 
-const Dashbox = ({ classRole,Header,Link }: IReceivedData) => {
+const Dashbox = ({ classRole,header,link }: IReceivedData) => {
   return (
     <div className="dashbox">
       <div className={classRole}>
-        {Header}
+        {header}
       </div>
       <div>
-        <a href={Link}>Vai al dettaglio</a> 
-        <a className="ico" href={Link}>-&gt;</a> 
+        <a href={link}>{  getLabelByName("label_go_details") }</a> 
+        <a className="ico" href={link}>-&gt;</a> 
       </div>
       
     </div>
