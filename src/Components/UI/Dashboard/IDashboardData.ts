@@ -11,19 +11,19 @@ export interface IDashboardData {
 export const ArrayDashBox: Array<IDashboardData> = [
     {
         user: "Antonio",
-        classRole: "ruolouser",
+        classRole: "ruoloutente",
         header: "Richieste in bozza (n.?)",
         link: "#"
     },
     {
         user: "Antonio",
-        classRole: "ruolouser",
+        classRole: "ruoloutente",
         header: "Richieste Integrazione (n.?)",
         link: "#"
     },
     {
         user: "Antonio",
-        classRole: "ruolouser",
+        classRole: "ruoloutente",
         header: "Negato Consenso (n.?)",
         link: "#"
     },
@@ -47,25 +47,25 @@ export const ArrayDashBox: Array<IDashboardData> = [
     },
     {
         user: "Simone",
-        classRole: "ruolouser",
+        classRole: "ruoloutente",
         header: "Richieste in bozza (n.?)",
         link: "#"
     },
     {
         user: "Simone",
-        classRole: "ruolouser",
+        classRole: "ruoloutente",
         header: "Richieste Integrazione (n.?)",
         link: "#"
     },
     {
         user: "Simone",
-        classRole: "ruolouser",
+        classRole: "ruoloutente",
         header: "Negato Consenso (n.?)",
         link: "#"
     },
     {
         user: "Raffaele",
-        classRole: "ruolouser",
+        classRole: "ruoloutente",
         header: "Richieste Integrazione (n.?)",
         link: "#"
     },
