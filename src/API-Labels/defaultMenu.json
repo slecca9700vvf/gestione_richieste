@@ -1,31 +1,8 @@
 {
     "menu": [
-        {
-            "titolo": "Nuove Richieste - tutti",
-            "url": "",
-            "sottovoci": [
-                { "titolo": "Inserimento", "url": "/richiesta" },
-                { "titolo": "Elenco richieste in sospeso", "url": "/richiesta" },
-                { "titolo": "Storico rich effettuate da utente", "url": "/richiesta" }
-            ]
-        },
-        {
-            "titolo": "Gestion - solo referenti",
-            "url": "",
-            "sottovoci": [
-                { "titolo": "Elenco richieste da elabroare", "url": "/richiesta" },
-                { "titolo": "Storico rich elaborate", "url": "/richiesta" }
-            ]
-        },
-        {
-            "titolo": "Amministrazione - solo admin",
-            "url": "",
-            "sottovoci": [
-                { "titolo": "Associazione ruoli - uffici", "url": "https://example.com/subitem2-1" },
-                { "titolo": "", "url": "https://example.com/subitem2-2" }
-            ]
-        },
-        { "titolo": "Home Page", "url": "/" },
-        { "titolo": "Login", "url": "/login" }
+        { "titolo": "Login", "url": "/login"},
+        { "titolo": "Novità software", "url": "/" },
+        { "titolo": "Documentazione", "url": "/" },
+        { "titolo": "Link utili", "url": "/" }
     ]
 }

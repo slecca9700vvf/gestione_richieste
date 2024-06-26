@@ -19,6 +19,7 @@ import Dashboard from './Components/UI/Dashboard/Dashboard';
 import Header from './Components/UI/Header/Header';
 import Footer from './Components/UI/Footer/Footer';
 import Authentication from './Components/Authentication/Authentication';
+import Logout from './Components/Authentication/Logout';
 import Request from './Components/Forms/Request';
 import Sector from './Components/Forms/Sector';
 import Sidebar from './Components/UI/Sidebar/Sidebar';
@@ -43,6 +44,7 @@ root.render(
                 </ProtectedRoute>
               }/>
               <Route path="/login" element={<Authentication/>}/>
+              <Route path="/logout" element={<Logout/>}/>
               <Route path="/richiesta/:request_id?" element={
                 <ProtectedRoute>
                   <Request/>

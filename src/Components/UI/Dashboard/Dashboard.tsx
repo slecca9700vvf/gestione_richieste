@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { CheckAuth, RetrieveUserData } from '../../Authentication/RetrieveAuthUser';
+import React from 'react';
+import { RetrieveUserData } from '../../Authentication/RetrieveAuthUser';
 import Dashbox from './Dashbox';
 import { getLabelByName } from "../../Exports/Labels";
 // TODO da verificare dopo implementazione WS
@@ -14,8 +14,8 @@ const Dashboard = () => {
       <p><span>{  getLabelByName("dashboard_subtitle") }</span></p>
       {
         // TODO da verificare dopo implementazione WS
-        ArrayDashBox.filter(dashbox => dashbox.user == user.name).map(filteredDashbox => (
-          <Dashbox classRole={filteredDashbox.classRole} header={filteredDashbox.header} link={filteredDashbox.link} />
+        ArrayDashBox.filter(dashbox => dashbox.user === user.name).map((filteredDashbox, index) => (
+          <Dashbox key={index} classRole={filteredDashbox.classRole} header={filteredDashbox.header} link={filteredDashbox.link} />
         ))}
       
     </div>
