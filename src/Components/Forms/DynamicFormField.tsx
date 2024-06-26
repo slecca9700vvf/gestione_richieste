@@ -166,10 +166,13 @@ async function getData(field:IRequestFormField) {
         status: "KO"
     }
     let api = getApiByName(field.get_data?.api || "");
+    
+    //TODO Remove next line
+    api.url = "http://localhost:3000/uffici.json"
+    
     if(api !== null) {
         await axios.get<IResponse>(
-            "http://localhost:3000/uffici.json"
-            // api.url,
+            api.url,
             // userObj
         ).then((response) => {
             tmpResponse = {

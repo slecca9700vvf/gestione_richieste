@@ -1,6 +1,5 @@
 import React from 'react';
-import './Sector.css';
-import { getLabelByName } from '../../Exports/Labels';
+import { getLabelByName } from '../Exports/Labels';
 
 
 const Sector = () => {

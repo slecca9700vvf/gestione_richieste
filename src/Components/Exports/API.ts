@@ -35,5 +35,10 @@ const API: Array<IApi> = [
         name: "getRequestFields",
         url: "/api/request/fields?request_id=",
         type: "GET",
-    },    
+    },
+    {
+        name: "getRequestTypes",
+        url: "/api/request/types",
+        type: "GET",
+    },
 ]

@@ -18,8 +18,8 @@ import HomePage from './Components/UI/HomePage/HomePage';
 import Header from './Components/UI/Header/Header';
 import Footer from './Components/UI/Footer/Footer';
 import Authentication from './Components/Authentication/Authentication';
-import Request from './Components/Forms/Request/Request';
-import Sector from './Components/Forms/Sector/Sector';
+import Request from './Components/Forms/Request';
+import Sector from './Components/Forms/Sector';
 import Sidebar from './Components/UI/Sidebar/Sidebar';
 
 const root = ReactDOM.createRoot(
@@ -37,7 +37,7 @@ root.render(
             <Routes>
               <Route path="/" element={<HomePage/>}/>
               <Route path="/login" element={<Authentication/>}/>
-              <Route path="/richiesta/:request_id" element={
+              <Route path="/richiesta/:request_id?" element={
                 <ProtectedRoute>
                   <Request/>
                 </ProtectedRoute>}
