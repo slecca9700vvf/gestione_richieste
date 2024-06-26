@@ -1,0 +1,60 @@
+{
+    "data": [
+        {
+            "name": "forms_all_offices",
+            "type": "select",
+            "get_data": {
+                "api": "getUserOffices",
+                "params": [
+                    {
+                        "name": "nome",
+                        "value": "valore"
+                    }
+                ]
+            },
+            "attributes": {
+                "required": true,
+                "multiple": false
+            }
+        },
+        {
+            "name": "forms_all_priority",
+            "type": "select",
+            "subitems": [
+                {
+                    "name": "low",
+                    "value": "Bassa"
+                },
+                {
+                    "name": "medium",
+                    "value": "Media"
+                },
+                {
+                    "name": "high",
+                    "value": "Alta"
+                }
+            ],
+            "attributes": {
+                "required": true,
+                "multiple": false
+            }
+        },
+        {
+            "name": "forms_request_6_title",
+            "type": "text",
+            "value": "Richiesta materiale Informatico",
+            "attributes": {
+                "required": true,
+                "multiple": false
+            }
+        },
+        {
+            "name": "forms_request_6_text",
+            "type": "textarea",
+            "attributes": {
+                "required": true,
+                "multiple": false
+            }
+        }
+    ]
+}

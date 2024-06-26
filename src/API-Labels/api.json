@@ -1,7 +1,0 @@
-{
-    "base_url": "http://localhost:8080",
-    "login": {
-        "url": "/api/utente/login?accountName=",
-        "type": "GET"
-    }
-}

@@ -15,14 +15,13 @@ import ProtectedRoute from './Components/Common/ProtectedRoute';
 
 // Import dei componenti
 import HomePage from './Components/UI/HomePage/HomePage';
+import Dashboard from './Components/UI/Dashboard/Dashboard';
 import Header from './Components/UI/Header/Header';
 import Footer from './Components/UI/Footer/Footer';
 import Authentication from './Components/Authentication/Authentication';
-import Request from './Components/Forms/Request/Request';
-import Sector from './Components/Forms/Sector/Sector';
+import Request from './Components/Forms/Request';
+import Sector from './Components/Forms/Sector';
 import Sidebar from './Components/UI/Sidebar/Sidebar';
-import routes from './API-Labels/routes';
-
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -33,16 +32,18 @@ root.render(
     <Provider store={appStore}>
       <Header/>
       <div className='app-content'>
-
         {/* TODO Recuperare routes, recuperare menu */}
-
-
         <Sidebar></Sidebar>
         <BrowserRouter>
             <Routes>
               <Route path="/" element={<HomePage/>}/>
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <Dashboard/>
+                </ProtectedRoute>
+              }/>
               <Route path="/login" element={<Authentication/>}/>
-              <Route path="/richiesta" element={
+              <Route path="/richiesta/:request_id?" element={
                 <ProtectedRoute>
                   <Request/>
                 </ProtectedRoute>}

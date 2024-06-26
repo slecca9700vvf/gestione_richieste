@@ -2,19 +2,16 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { ILoginResponse } from "../../Interfaces/ILogin";
 import axios from 'axios';
-import api from '../../API-Labels/api.json'
-import labels from '../../API-Labels/labels.json'
+import { getApiByName } from "../Exports/API";
+import { getLabelByName } from "../Exports/Labels";
 import { IUserLogin } from '../../Interfaces/IUser';
 import { sanitize } from '../Common/Sanitize';
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
+import { IResponse } from '../../Interfaces/IRequest'
+//TODO Remove next line
 import loginJSON from '../../API-Labels/defaultLogin.json'
 
-interface IResponse {
-  data: object | null,
-  status: string
-}
-
-function Login() {
+const Login = () => {
   const [accountName, setAccountName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -27,7 +24,7 @@ function Login() {
       return "Dati errati o vuoti!";
     }
     
-    //Remove next lines
+    //TODO Remove next lines
     // let tmpResponse:IResponse = {
     //   data: {
     //     user: loginJSON.utente,
@@ -49,8 +46,10 @@ function Login() {
     try {
       //TODO Change call to post and use userObj as request -> uncomment next lines ;)
       // const response = await axios.post<ILoginResponse>(
+      const api_login_url = getApiByName("login").url;
+
       const response = await axios.get<ILoginResponse>(
-        api.base_url + api.login.url + accountName,
+        api_login_url + accountName,
         // userObj
       );
       
@@ -62,20 +61,20 @@ function Login() {
             menu: response.data.menu,              
             note: response.data.note,              
           },
-          status: labels.general.labelOK
+          status: getLabelByName("labelOK")
         }        
         return tmpResponse;
       } else {
         let tmpResponse:IResponse = {
           data: null,
-          status: labels.general.labelKO
+          status: getLabelByName("labelKO")
         }
         return tmpResponse;
       }
     } catch (error) {
       let tmpResponse:IResponse = {
         data: { error },
-        status: labels.general.labelKO
+        status: getLabelByName("labelKO")
       }
       return tmpResponse;
     }
@@ -85,7 +84,7 @@ function Login() {
     event.preventDefault();
     setLoading(true);
     const userResponse = await verifyUser(sanitize(accountName), sanitize(password));
-    if(userResponse.data !== null && userResponse.status === labels.general.labelOK) {
+    if(userResponse.data !== null && userResponse.status === getLabelByName("labelOK")) {
       loginDispatch({
         type: "LOGIN",
         user: userResponse.data.user,
@@ -99,7 +98,7 @@ function Login() {
       }
       else {
         setErrorLogin(true)
-        console.log("errore: " + userResponse)
+        console.error(userResponse)
       }
     }
     setLoading(false);
@@ -107,7 +106,7 @@ function Login() {
   
   const handlePassword = (event:any) => {
     event.preventDefault();
-    window.open( labels.auth.reset_psw_link, "_blank");
+    window.open( getLabelByName("auth_reset_psw_link"), "_blank");
   };
   return (
     <div className="sign-in--wrapper">
@@ -116,11 +115,11 @@ function Login() {
       
       <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
         <Form.Group className="mb-2" controlId="accountName">
-          <Form.Label>{ labels.auth.username }</Form.Label>
+          <Form.Label>{ getLabelByName("auth_username") }</Form.Label>
           <Form.Control
             type="text"
             value={accountName}
-            placeholder={ labels.auth.username }
+            placeholder={ getLabelByName("auth_username") }
             onChange={
               (tagUsername) => {
                 setAccountName(tagUsername.target.value)
@@ -130,10 +129,10 @@ function Login() {
           />
         </Form.Group>
         <Form.Group className="mb-2" controlId="password">
-          <Form.Label>{ labels.auth.password }</Form.Label>
+          <Form.Label>{ getLabelByName("auth_password") }</Form.Label>
           <Form.Control
             type="password"
-            placeholder={ labels.auth.password }
+            placeholder={ getLabelByName("auth_password") }
             value={password}
             onChange={
               (tagPassword) => {
@@ -145,11 +144,11 @@ function Login() {
         </Form.Group>
         {!loading ? (
           <Button className="w-100" variant="primary" type="submit">
-            { labels.auth.login }
+            { getLabelByName("auth_login") }
           </Button>
         ) : (
           <Button className="w-100" variant="primary" type="submit" disabled>
-            { labels.auth.login_in_progress }
+            { getLabelByName("auth_login_in_progress") }
           </Button>
         )}
         {errorLogin ? (
@@ -158,7 +157,7 @@ function Login() {
               className="text-muted px-0"
               variant="link"
             >
-              { labels.auth.error }
+            { getLabelByName("auth_error") }
             </Button>
           </div>
         ) : ''}
@@ -169,8 +168,8 @@ function Login() {
             variant="link"
             onClick={handlePassword}
           >
-            { labels.auth.forget_password }
-          </Button>
+            { getLabelByName("auth_forget_password") }
+            </Button>
         </div>
       </Form>  
     </div>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { CheckAuth, RetrieveUserData } from '../../Authentication/RetrieveAuthUser';
-import labels from '../../../API-Labels/labels.json'
 import Avatar from '@mui/material/Avatar';
 import { deepPurple } from '@mui/material/colors';
 import List from '@mui/material/List';
@@ -9,9 +8,9 @@ import ListItemText from '@mui/material/ListItemText';
 import Button from '@mui/material/Button';
 import Collapse from '@mui/material/Collapse';
 
+import { getLabelByName } from "../../Exports/Labels";
 
-
-function Header() {
+const Header = () => {
     const isLogged = CheckAuth(); 
     const name = localStorage.getItem("user_name");
     const surname = localStorage.getItem("user_surname");
@@ -36,7 +35,7 @@ function Header() {
                         <ul className='navbar-nav'>
                             <li className='nav-item'>
                                 <a className='nav-link' aria-current='page' href='/'>
-                                    <img src='https://seeklogo.com/images/V/vigili-del-fuoco-logo-6CE6125E8E-seeklogo.com.png' width="20%" height="20%" title={labels.home_page.menu} alt={labels.home_page.menu}/> 
+                                    <img src='https://seeklogo.com/images/V/vigili-del-fuoco-logo-6CE6125E8E-seeklogo.com.png' width="20%" height="20%" title={ getLabelByName("home_page_menu") } alt={ getLabelByName("home_page_menu") }/> 
                                 </a>
                             </li>
                         </ul>

@@ -1,11 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button } from "react-bootstrap";
-import './Request.css';
-import labels from '../../../API-Labels/labels.json'
+import { getLabelByName } from "../../Exports/Labels";
+import DynamicFormField from '../DynamicFormField';
+import { useParams } from 'react-router-dom';
+import { IResponse } from '../../../Interfaces/IRequest';
+import { getApiByName } from '../../Exports/API'
+import axios from 'axios'
 
+//TODO Remove next line
+import fieldsAll from '../../../API-Labels/defaultRequestAll.json'
 
-function Request() {
+const Request = () => {
+  let { request_id } = useParams();
+  const [formFields, setFormFields] = useState<IResponse>();
   const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+          setLoading(true)
+          const response_data = await getFields(request_id);
+          setFormFields(response_data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        } finally {
+            setLoading(false);
+        }
+    }
+    fetchData();
+  }, []);
+
   const handleSubmit = (event:any) => {
     setLoading(true);
     event.preventDefault();
@@ -13,67 +37,78 @@ function Request() {
     setLoading(false);
   }
 
+  let renderedForm:any;
+  if (formFields && Array.isArray(formFields)) {
+    renderedForm = 
+      formFields?.map((field:any) => (
+        <DynamicFormField field={field} setLoading={setLoading} loading={loading} key={field.name}/>
+      ));
+  }
 
   return (
-      <div className="request-container form-container">
-        <h2>{ labels.forms.request.new }</h2>
-        <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
-          <div className="form-group-hidden">
-            <input type="hidden" id="userID" defaultValue={"userID"}/>
+    <div className='form--wrapper request--wrapper'>
+      <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
+        { renderedForm }
+        {!loading ? (
+          <div>
+            <Button className="w-100" variant="secondary" type="reset">
+              { getLabelByName("forms_request_reset") }
+            </Button>
+            <Button className="w-100" variant="primary" type="submit">
+              { getLabelByName("forms_request_submit") }
+            </Button>
           </div>
-          <div className="form-group">
-            <label htmlFor="#title">
-              { labels.forms.request.title }
-            </label>
-            <input type="text" id="title" placeholder={"Titolo richiesta"} required/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="#description">
-              { labels.forms.request.description }
-            </label>
-            {/* <textarea id="description" name="textarea" rows="5" cols="30" placeholder={"Descrizione"} required/> */}
-          </div>
-          <div className="form-group">
-            <label htmlFor="#type">
-              { labels.forms.request.type }
-            </label>
-            {/* le varie options saranno popolate dinamicamente */}
-            <select name="type" id="type">
-              <option value="type1">Tipo 1</option>
-              <option value="type2">Tipo 2</option>
-              <option value="type3">Tipo 3</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="#isPersonal">
-              { labels.forms.request.isPersonal }
-            </label>
-            <label>
-              <input type="radio" name="isPersonal" value="true"/>{ labels.general.label_yes }
-            </label>
-            <label>
-              <input type="radio" name="isPersonal" value="false"/>{ labels.general.label_no }
-            </label>
-
-          </div>
-          <div className="form-group">
-            <label htmlFor="#notes">
-              { labels.forms.request.notes }
-            </label>
-            {/* <textarea id="notes" name="textarea" rows="5" cols="30" placeholder={"Note"} required/> */}
-          </div>
-          {!loading ? (
-          <Button className="w-100" variant="primary" type="submit">
-            { labels.forms.request.submit }
-          </Button>
         ) : (
-          <Button className="w-100" variant="primary" type="submit" disabled>
-            { labels.forms.request.submit_in_progress }
-          </Button>
+          <div>
+            <Button className="w-100" variant="secondary" type="reset">
+              { getLabelByName("forms_request_reset") }
+            </Button>
+            <Button className="w-100 mt-10" variant="primary" type="submit" disabled>
+              { getLabelByName("forms_request_submit") }
+            </Button>
+          </div>
         )}
-        </Form>
+
+      </Form>
     </div>
   );
+}
+
+async function getFields(request_id:any) {
+  let apiAll = getApiByName("getRequestFields").url + "all";
+  let apiSpecific = getApiByName("getRequestFields").url + request_id;
+
+  let response_data:any;
+  let response_data_second:any;
+
+  switch(request_id) {
+    case "3":
+      break;
+    case "6":
+      //TODO Uncomment next lines
+        // await axios.get<IResponse>(
+        //   apiAll
+        // ).then((response) => {
+        //   response_data = response.data.data
+        // }).catch((error) => {
+        //     console.error(error)
+        // });
+
+        // await axios.get<IResponse>(
+        //   apiSpecific
+        // ).then((response) => {
+        //   response_data_second = response.data.data
+        // }).catch((error) => {
+        //     console.error(error)
+        // });
+        // response_data = response_data.concat(response_data_second);
+      
+    //TODO Remove next line
+          response_data = fieldsAll.data;
+
+        return response_data;
+      break;
+  }
 }
 
 export default Request;
