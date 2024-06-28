@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { getLabelByName } from "../../Exports/Labels";
 
 interface IReceivedData {
@@ -10,7 +10,7 @@ interface IReceivedData {
 const Dashbox = ({ classRole,header,link }: IReceivedData) => {
   return (
     <div className="dashbox">
-      <div className={classRole}>
+      <div className={classRole + 'class-role--heading'}>
         {header}
       </div>
       <div>
