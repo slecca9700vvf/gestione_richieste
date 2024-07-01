@@ -283,6 +283,11 @@ const Labels: Array<ILabel> = [
 
     },
     {
+        name: "home_page_success_logout_message",
+        value: "Logout effettuato correttamente!",
+        language: "it"
+    },
+    {
         name: "forms_request_type_submit",
         value: "Compila la richiesta",
         language: "it"

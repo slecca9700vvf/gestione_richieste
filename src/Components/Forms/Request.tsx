@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Button } from "react-bootstrap";
 import { getLabelByName } from "../Exports/Labels";
-import DynamicFormField from './DynamicFormField';
 import { useParams } from 'react-router-dom';
 import { IResponse } from '../../Interfaces/IRequest';
 import { getApiByName } from '../Exports/API'
 import DynamicForm from './DynamicForm'
 import axios from 'axios'
-
 //TODO Remove next line
 import fieldsAll from '../../API-Labels/defaultRequestAll.json'
 
@@ -31,13 +29,12 @@ const Request = () => {
         }
     }
     fetchData();
-  }, []);
+  }, [request_id]);
 
   const handleSubmit = async (event:any) => {
     setLoading(true);
     event.preventDefault();
     let request_id = event.target[0].value;
-    console.log("richiesta con id " + request_id);
     setLoading(false);
     let formFields:IResponse = await getFields(event.target[0].value);
     setFormFields(formFields);
@@ -66,28 +63,29 @@ const Request = () => {
     </Form.Group>;
   }
     
-
   return (
-    <div className='form--wrapper request--wrapper'>
-      {!showPGRForm ? (
-          <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
-              { renderedForm }
+    <div className='main'>
+      <div className='form--wrapper request--wrapper'>
+        {!showPGRForm ? (
+            <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
+                { renderedForm }
 
-              {!loading ? (
-                <Button className="w-100" variant="primary" type="submit">
-                  { getLabelByName("forms_request_type_submit") }
-                </Button>
-              ) : (
-                <Button className="w-100 mt-10" variant="primary" type="submit" disabled>
-                  { getLabelByName("forms_request_type_submit") }
-                </Button>
-              )}
-          </Form>
-        ) : (
-          <DynamicForm fields={formFields}></DynamicForm>
-        )
-      }
-    </div>
+                {!loading ? (
+                  <Button className="w-100" variant="primary" type="submit">
+                    { getLabelByName("forms_request_type_submit") }
+                  </Button>
+                ) : (
+                  <Button className="w-100 mt-10" variant="primary" type="submit" disabled>
+                    { getLabelByName("forms_request_type_submit") }
+                  </Button>
+                )}
+            </Form>
+          ) : (
+            <DynamicForm fields={formFields}></DynamicForm>
+          )
+        }
+      </div>
+    </div>    
   );
 }
 
@@ -143,11 +141,6 @@ async function getFields(request_id:any) {
 
         return response_data;
       break;
-      default:
-        response_data = fieldsAll.data;
-        return response_data;
-      break;
-  }
-}
+  }}
 
 export default Request;

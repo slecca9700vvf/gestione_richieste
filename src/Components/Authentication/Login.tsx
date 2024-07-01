@@ -1,15 +1,13 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import { useDispatch } from "react-redux";
 import { ILoginResponse } from "../../Interfaces/ILogin";
-import axios from 'axios';
 import { getApiByName } from "../Exports/API";
 import { getLabelByName } from "../Exports/Labels";
-import { IUserLogin } from '../../Interfaces/IUser';
 import { sanitize } from '../Common/Sanitize';
 import { Form, Button } from "react-bootstrap";
 import { IResponse } from '../../Interfaces/IRequest'
-//TODO Remove next line
-import loginJSON from '../../API-Labels/defaultLogin.json'
+// import { IUserLogin } from '../../Interfaces/IUser';
 
 const Login = () => {
   const [accountName, setAccountName] = useState<string>("");
@@ -23,25 +21,12 @@ const Login = () => {
     if(accountName === "" || password === "") {
       return "Dati errati o vuoti!";
     }
-    
-    //TODO Remove next lines
-    // let tmpResponse:IResponse = {
-    //   data: {
-    //     user: loginJSON.utente,
-    //     token: loginJSON.token,
-    //     menu: loginJSON.menuObject,              
-    //   },
-    //   status: labels.general.labelOK
+        
+    // TODO Login call    
+    // let userObj:IUserLogin = {
+    //   accountName,
+    //   password
     // }
-    // return tmpResponse
-    
-    //uncomment next lines
-    // TODO Login call
-    
-    let userObj:IUserLogin = {
-      accountName,
-      password
-    }
     
     try {
       //TODO Change call to post and use userObj as request -> uncomment next lines ;)

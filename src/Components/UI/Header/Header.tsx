@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { CheckAuth, RetrieveUserData } from '../../Authentication/RetrieveAuthUser';
+import { CheckAuth } from '../../Authentication/RetrieveAuthUser';
+import Avatar from '@mui/material/Avatar';
+import { deepPurple } from '@mui/material/colors';
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import Button from '@mui/material/Button';
+import Collapse from '@mui/material/Collapse';
+
 import { getLabelByName } from "../../Exports/Labels";
 
 const Header = () => {
@@ -7,11 +15,14 @@ const Header = () => {
     const name = localStorage.getItem("user_name");
     const surname = localStorage.getItem("user_surname");
 
+	const [open, setOpen] = useState(false); 
+
+	const handleClick = () => {
+	    setOpen(!open);
+	};
+		  
     return (
         <header className='header'>
-            <nav className='header-top'>
-               { getLabelByName("header_title") } 
-            </nav>
             {/* TODO: Gestire voce di menu active 
                 <a className='nav-link active' ...>
             */}
@@ -24,19 +35,40 @@ const Header = () => {
                         <ul className='navbar-nav'>
                             <li className='nav-item'>
                                 <a className='nav-link' aria-current='page' href='/'>
-                                    <img src='/homepage.svg' title={ getLabelByName("home_page_menu") } alt={getLabelByName("home_page_menu")}/> 
+                                    <img src='https://seeklogo.com/images/V/vigili-del-fuoco-logo-6CE6125E8E-seeklogo.com.png' width="20%" height="20%" title={ getLabelByName("home_page_menu") } alt={ getLabelByName("home_page_menu") }/> 
                                 </a>
                             </li>
-                            <li className='nav-item'>
-                                <a className='nav-link' href='/richiesta'>{  getLabelByName("forms_request_menu") }</a>
-                            </li>
-                            <li className='nav-item'>
-                                <a className='nav-link' href='/richiesta'>{  getLabelByName("forms_sector_menu") }</a>
-                            </li>
                         </ul>
-                        <span className='nav-item'>
-                        <a className='nav-link' href='/login'>{ isLogged ? name + " " + surname : 'Login' }</a>
+						{/*<span className='nav-item'>
+							<a className='nav-link' href='/login'>{ isLogged ? name + " " + surname : 'Login' }</a>
                         </span>
+						
+                        <span className='nav-item'>
+							<a className='nav-link' href='/login'>{ isLogged ? <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar> : 'Login' }</a>
+                        </span>*/}
+						
+						{/* inserire menu di 3 voci contenente Dettaglio utente - Info - Logout visibile al click sull'Avatar*/}
+						 <div>
+						  <Button style={{backgroundColor: 'transparent', color: '#000', padding: '10px 20px'}} variant="contained"  onClick={handleClick} startIcon={<Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>}>
+							{ isLogged ? name + " " + surname : 'Login' }
+						  </Button>
+						  <Collapse in={open} timeout="auto" unmountOnExit>
+							<List component="div" disablePadding>
+							  <ListItemButton href="/user-details">
+								  {/* Add icon for "Dettaglio Utente" */}
+								<ListItemText primary="Dettaglio Utente" />
+							  </ListItemButton>
+							  <ListItemButton href="/info">
+								  {/* Add icon for "Info" */}
+								<ListItemText primary="Info" />
+							  </ListItemButton>
+							  <ListItemButton href="/logout">
+								  {/* Add icon for "Logout" */}
+								<ListItemText primary="Logout" />
+							  </ListItemButton>
+							</List>
+						  </Collapse>
+						</div>
                     </div>
                 </div>
             </nav>
