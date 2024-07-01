@@ -1,11 +1,20 @@
-#dashboard {width: 100%; padding: 2em;}
-#dashboard  p {font-size: larger;  font-weight: bold; margin: 0.4em;}
+#dashboard {width: 100%; height: 100%;padding: 2em; padding-bottom: 0; }
+#dashboard  p {font-size: larger;  font-weight: bold; margin: 0.4em; text-align: center;}
 
-.dashbox {width: 30%;background-color: #f1f1f1; margin: 1.5em 0.5em; margin-left: 1em; border: 1px solid #ddd;   border-radius: 3px; float: left}
+#dashcontainer {margin: 2em auto; clear: both; align-items: center;}
+.dashbox {width: 31.2%;background-color: #f1f1f1; margin: 1.5em 1%;  border: 1px solid #ddd;   border-radius: 3px; float: left}
 .dashbox div { padding: 0.5em 0.8em;}
 .dashbox .role--heading {display: flex;justify-content: center;align-items: center;height:4em;font-weight:bold;text-align: center;border-bottom:1px solid #ddd;}
 .ruoloutente {color:#31709c;background-color: #d9edf6;}
 .ruoloresp {color:#3c765b;background-color: #e0efd8;}
+.ruolocomand {background-color: rgb(48, 5, 128);color:#fff;}
 .ruoloevas {background-color: #347ab8;color:#fff;}
 .dashbox a {text-decoration: none; color: #ffab41; }
 .dashbox a.ico {float: right; font-weight: bolder;}
+
+.dashboard-graphs {width: 100%;padding: 100px auto; clear: both;}
+.highcharts-figure, .highcharts-data-table table {width: 100%;margin: 0 auto;}
+.col-md-6, .col-sm-12 {margin-bottom: 2em;}
+
+#dashlegend {margin: 1em auto; margin-top: 4em;width: 100%}
+#dashlegend span {font-size: 0.6em; margin: 0; display: block; float: left; width:20%; padding: 0.6em;text-align: center;}
