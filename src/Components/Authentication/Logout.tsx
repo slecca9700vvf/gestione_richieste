@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Button, Alert } from "react-bootstrap";
 import { getLabelByName } from "../Exports/Labels";
-import { Navigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 
 const Logout = () => {
   const logoutDispatch = useDispatch();
-  const [logout, setLogout] = useState<boolean>(false)
+  const [logout, setLogout] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event:any) => {
     event.preventDefault();
@@ -14,12 +15,13 @@ const Logout = () => {
         type: "LOGOUT",
       });
       setLogout(true);
+      navigate("/");
   }
 
   return (
     <div className='main'>
       { !logout ? (
-        <div className="sign-out--wrapper">
+        <div className="sign-out--wrapper form--wrapper">
           {/* Overlay */}
           <div className="sign-out--backdrop"></div>
           <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
@@ -35,6 +37,5 @@ const Logout = () => {
     </div>
     );
 }
-
 
 export default Logout;

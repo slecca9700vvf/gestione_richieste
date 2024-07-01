@@ -109,7 +109,7 @@ const Login = () => {
     window.open( getLabelByName("auth_reset_psw_link"), "_blank");
   };
   return (
-    <div className="sign-in--wrapper">
+    <div className="sign-in--wrapper form--wrapper">
       {/* Overlay */}
       <div className="sign-in--backdrop"></div>
       

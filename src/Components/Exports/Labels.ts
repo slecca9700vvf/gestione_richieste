@@ -252,6 +252,12 @@ const Labels: Array<ILabel> = [
         language: "it"
     },
     {
+        name: "home_page_default_message",
+        value: "In questa sezione sarà visibile l'elenco di: Novità software, documentazione, contatti utili!",
+        language: "it"
+
+    },
+    {
         name: "forms_request_type_submit",
         value: "Compila la richiesta",
         language: "it"
