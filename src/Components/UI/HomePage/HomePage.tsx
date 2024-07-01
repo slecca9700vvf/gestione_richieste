@@ -1,33 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CheckAuth, RetrieveUserData } from '../../Authentication/RetrieveAuthUser';
-import labels from '../../../API-Labels/labels.json';
-import { IUser } from '../../../Interfaces/IUser';
+import Dashboard from '../Dashboard/Dashboard';
+import { getLabelByName } from "../../Exports/Labels";
+import TabNavigation from '../TabNavigation/TabNavigation';
+import tabs from '../../../API-Labels/defaultTabsHomePage.json'
 import DashboardGraphs from '../../../Components/Graphs/Dashboard/DashboardGraphs';
 
-function HomePage() {
-    const isLogged = CheckAuth();
-    const user = RetrieveUserData();
 
-    useEffect(() => {
-        // Forza il re-render del layout Flexbox
-        const appContent = document.querySelector('.app-content') as HTMLElement;
-        if (appContent) {
-            appContent.style.display = 'block';
-            setTimeout(() => {
-                appContent.style.display = 'flex';
-            }, 0);
-        }
-    }, []);
+const HomePage = () => {
+  const isLogged = CheckAuth();
+  const classes = "homepage--wrapper" + " " + (isLogged ? "auth-true" : "auth-false");
 
-    return (
-        <div className="homepage">
-            <h2>{labels.home_page.title}</h2>
-            <h3>{isLogged ? 'Sei Loggato come: ' + user?.name + " " + user.surname : 'Non sei loggato'}</h3>
-            <div className="dashboard-container">
-                <DashboardGraphs />
-            </div>
+  return (
+    <div className={ classes }>
+      { isLogged ? (
+        <div>
+            <Dashboard/>
+            <DashboardGraphs/>
         </div>
-    );
+      ) : (
+        <div>
+          <label className='homepage--auth-false--label'>{ getLabelByName("home_page_default_message") }</label>
+          <TabNavigation tabs_data={ tabs }></TabNavigation>
+        </div>
+      )
+      }
+    </div>
+  );
 }
 
 export default HomePage;

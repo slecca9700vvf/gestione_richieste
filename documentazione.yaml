@@ -14,6 +14,16 @@ Repository:
         branch:
             -   main
 
+Ambienti:
+    username: Localadmin
+    psw: Pa55w.rd1234
+
+
+    full address: s:40.85.131.42:3389 
+    prompt for credentials: i:1 
+    administrative session: i:1
+    username: s:localadmin
+
 Comandi utili su git:
     clone del repository (da fare per scaricare il progetto):
         -   git clone https://github.com/slecca9700vvf/gestione_richieste.git

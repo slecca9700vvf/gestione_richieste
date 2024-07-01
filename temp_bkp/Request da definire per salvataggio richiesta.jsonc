@@ -1,0 +1,38 @@
+{
+    data: [
+        {
+            id_modello: 6
+            dati_modello: [
+                {
+                    name: "nome_del_campo"
+                    value: "valore_inserito_dall'utente"
+                },
+                {
+                    name: "nome_del_campo"
+                    value: "valore_inserito_dall'utente"
+                },
+                {
+                    name: "ufficio_riferimento"
+                    value: "valore_inserito_dall'utente"
+                },
+            ]
+        },
+        {
+            id_modello: 3
+            dati_modello: [
+                {
+                    name: "nome_del_campo"
+                    value: "valore_inserito_dall'utente"
+                },
+                {
+                    name: "nome_del_campo"
+                    value: "valore_inserito_dall'utente"
+                },
+                {
+                    name: "ufficio_riferimento"
+                    value: "valore_inserito_dall'utente"
+                },
+            ]
+        },
+
+}

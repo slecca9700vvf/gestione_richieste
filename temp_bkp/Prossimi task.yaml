@@ -1,0 +1,25 @@
+Next Tasks -> 
+
+Home Page
+    Utente anonimo
+        Strutturare navigazione:
+            Modificare menu sidebar e verifica menu anteriore
+            Nel menu solo voci di Home Page e Login nella sidebar
+            Al centro:
+                | Novità software | Documentazione | Link utili |
+                | elenco nuove feautre | elenco pdf con manuali | contatti utili |
+    Utente loggato:
+        Visualizzazione dashboard con i vari retrieve dati dal database
+
+Login (anche qui stesso menu della home):
+    Alla login entro sulla home page dove c'è la dashboard
+    Nel menu in alto a dx avrò la possibilità di effettuare il logout (vedere branch sidebar dove c'è lo sviluppo del componente)
+
+    In caso di errore nella login dare enfasi al messaggio controlla i dati inseriti
+
+Dashboard:
+    Inserire dashboard
+    SUlla dashboard, e in generale da loggato posso utilizzare il menu di sinistra secondo le voci dell'utente
+
+Form richiesta:
+    Togliere dal menu le singole tipologie di richiesta ma inserire un campo nel form la tipologia e di conseguenza il form viene popolato in automatico secondo il modello di riferimento
