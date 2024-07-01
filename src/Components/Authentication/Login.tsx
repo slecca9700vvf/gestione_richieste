@@ -171,7 +171,7 @@ const Login = () => {
             { getLabelByName("auth_forget_password") }
             </Button>
         </div>
-      </Form>  
+      </Form>
     </div>
   );
 }

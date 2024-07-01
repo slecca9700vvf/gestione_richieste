@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CheckAuth, RetrieveUserData } from '../../Authentication/RetrieveAuthUser';
 import { getLabelByName } from "../../Exports/Labels";
+import Dashboard from '../Dashboard/Dashboard';
 
 const HomePage = () => {
   const isLogged = CheckAuth();
-  const user = RetrieveUserData();
 
+  //TODO Remove next line and setup components
+  const defultMessage = "In questa sezione sarà visibile l'elenco di: Novità software, documentazione, contatti utili!"
   return (
     <div className="homepage">
-      <h2>{ getLabelByName("home_page_title") }</h2>
-      <h3>{ isLogged ? 'Sei Loggato come: ' + user?.name + " " + user.surname: 'Non sei loggato' }</h3>
+      { isLogged ? (
+        <Dashboard/>
+      ) : (
+        defultMessage
+      )
+      }
     </div>
   );
 }

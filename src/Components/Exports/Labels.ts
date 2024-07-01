@@ -99,6 +99,12 @@ const Labels: Array<ILabel> = [
         language: "it"
     },
     {
+        name: "auth_logout_confirm",
+        value: "Continuando verrai disconnesso e trasferito alla Home Page",
+        language: "it"
+
+    },
+    {
         name: "auth_authenticated",
         value: "authenticated",
         language: "it"

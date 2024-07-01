@@ -1,6 +1,5 @@
 // TODO da verificare dopo implementazione WS
-
-export interface IDashboardData {
+interface IDashboardData {
     user: string,
     classRole: string,
     header: string,
