@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckAuth, RetrieveUserData } from '../../Authentication/RetrieveAuthUser';
+import { CheckAuth } from '../../Authentication/RetrieveAuthUser';
 import Avatar from '@mui/material/Avatar';
 import { deepPurple } from '@mui/material/colors';
 import List from '@mui/material/List';

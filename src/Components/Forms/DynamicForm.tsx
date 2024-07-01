@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Button } from "react-bootstrap";
 import { getLabelByName } from "../Exports/Labels";
 import DynamicFormField from './DynamicFormField';
-import { useParams } from 'react-router-dom';
 import { IResponse } from '../../Interfaces/IRequest';
-import { getApiByName } from '../Exports/API'
-import axios from 'axios'
 
 interface IForm {
   fields: IResponse | null
 }
 
 const DynamicForm = (fields:IForm) => {
-  let { request_id } = useParams();
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = (event:any) => {

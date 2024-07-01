@@ -1,5 +1,4 @@
 import { CheckAuth } from '../Authentication/RetrieveAuthUser';
-import { Navigate } from 'react-router-dom';
 
 const ProtectedRoute = ( { children }:any ) =>  {
   const isAuthenticated = CheckAuth();

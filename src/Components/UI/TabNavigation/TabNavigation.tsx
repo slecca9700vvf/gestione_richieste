@@ -11,7 +11,7 @@ interface ITabsProp {
 } 
 
 const TabNavigation = ({tabs_data}:ITabsProp) => {
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = React.useState<string>("1");
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
@@ -28,7 +28,7 @@ const TabNavigation = ({tabs_data}:ITabsProp) => {
         >
             {
               tabs_data?.map((tab:ITab, index) => (
-                  <Tab className={'tab-navigation--tabs--tab' + ' ' + 'bottom_color_'+tab.color} key={index} label={ tab.label } value={ tab.value }/>
+                  <Tab className={'tab-navigation--tabs--tab tab_item' + tab.color} key={index} label={ tab.label } value={ tab.value }/>
               ))
             }
         </Tabs>

@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Button } from "react-bootstrap";
 import { getLabelByName } from "../Exports/Labels";
-import DynamicFormField from './DynamicFormField';
 import { useParams } from 'react-router-dom';
 import { IResponse } from '../../Interfaces/IRequest';
 import { getApiByName } from '../Exports/API'
 import DynamicForm from './DynamicForm'
 import axios from 'axios'
-
 //TODO Remove next line
 import fieldsAll from '../../API-Labels/defaultRequestAll.json'
 
@@ -31,7 +29,7 @@ const Request = () => {
         }
     }
     fetchData();
-  }, []);
+  }, [request_id]);
 
   const handleSubmit = async (event:any) => {
     setLoading(true);
@@ -66,7 +64,6 @@ const Request = () => {
     </Form.Group>;
   }
     
-
   return (
     <div className='form--wrapper request--wrapper'>
       {!showPGRForm ? (
@@ -143,11 +140,6 @@ async function getFields(request_id:any) {
 
         return response_data;
       break;
-      default:
-        response_data = fieldsAll.data;
-        return response_data;
-      break;
-  }
-}
+  }}
 
 export default Request;
