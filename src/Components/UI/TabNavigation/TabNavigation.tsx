@@ -28,7 +28,7 @@ const TabNavigation = ({tabs_data}:ITabsProp) => {
         >
             {
               tabs_data?.map((tab:ITab, index) => (
-                  <Tab className={'tab-navigation--tabs--tab tab_item' + tab.color} key={index} label={ tab.label } value={ tab.value }/>
+                  <Tab className={'tab-navigation--tabs--tab tab_item ' + tab.color} key={index} label={ tab.label } value={ tab.value }/>
               ))
             }
         </Tabs>
