@@ -4,6 +4,8 @@ import Dashboard from '../Dashboard/Dashboard';
 import { getLabelByName } from "../../Exports/Labels";
 import TabNavigation from '../TabNavigation/TabNavigation';
 import tabs from '../../../API-Labels/defaultTabsHomePage.json'
+import DashboardGraphs from '../../../Components/Graphs/Dashboard/DashboardGraphs';
+
 
 const HomePage = () => {
   const isLogged = CheckAuth();
@@ -12,7 +14,10 @@ const HomePage = () => {
   return (
     <div className={ classes }>
       { isLogged ? (
-        <Dashboard/>
+        <div>
+            <Dashboard/>
+            <DashboardGraphs/>
+        </div>
       ) : (
         <div>
           <label className='homepage--auth-false--label'>{ getLabelByName("home_page_default_message") }</label>
