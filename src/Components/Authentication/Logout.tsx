@@ -15,12 +15,8 @@ const Logout = () => {
         type: "LOGOUT",
       });
       setLogout(true);
-      redirectHandler()
+      navigate('/', {state: {fromLogout: true}})
     }
-
-  const redirectHandler = () => {
-    navigate('/', {state: {fromLogout: true}})
-  }
 
   return (
     <div className='main'>
