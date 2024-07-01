@@ -1,8 +1,8 @@
 {
     "menu": [
+        { "titolo": "Link utili", "url": "/" },
         { "titolo": "Login", "url": "/login"},
         { "titolo": "Novità software", "url": "/" },
-        { "titolo": "Documentazione", "url": "/" },
-        { "titolo": "Link utili", "url": "/" }
+        { "titolo": "Documentazione", "url": "/" }
     ]
 }
