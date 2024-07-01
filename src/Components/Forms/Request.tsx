@@ -20,7 +20,7 @@ const Request = () => {
     const fetchData = async () => {
         try {
           setLoading(true)
-          const response_data = await getRequestTypes(request_id);
+          const response_data = await getRequestTypes();
           setRequestFormFields(response_data);
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -29,7 +29,7 @@ const Request = () => {
         }
     }
     fetchData();
-  }, [request_id]);
+  }, [request_id, setLoading]);
 
   const handleSubmit = async (event:any) => {
     setLoading(true);
@@ -89,7 +89,7 @@ const Request = () => {
   );
 }
 
-async function getRequestTypes(request_id:any) {
+async function getRequestTypes() {
 // TODO Uncomment next line
 //   let api = getApiByName("getRequestTypes").url;
 

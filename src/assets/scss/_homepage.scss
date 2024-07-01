@@ -3,6 +3,9 @@
 .homepage--wrapper {
     width: 100%;
 
+    &.auth-false {
+        padding: 100px;
+    }
     .homepage--auth-false--label {
         font-weight: unset;
         margin-bottom: 30px;

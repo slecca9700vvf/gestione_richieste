@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { ITab } from '../../../Interfaces/ITab';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -11,7 +11,7 @@ interface ITabsProp {
 } 
 
 const TabNavigation = ({tabs_data}:ITabsProp) => {
-  const [value, setValue] = React.useState<string>("1");
+  const [value, setValue] = useState<string>("1");
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };

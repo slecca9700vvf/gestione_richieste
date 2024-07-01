@@ -7,6 +7,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Button from '@mui/material/Button';
 import Collapse from '@mui/material/Collapse';
+import logo from '../../../assets/icons/logo.png'
 
 import { getLabelByName } from "../../Exports/Labels";
 
@@ -35,7 +36,7 @@ const Header = () => {
                         <ul className='navbar-nav'>
                             <li className='nav-item'>
                                 <a className='nav-link' aria-current='page' href='/'>
-                                    <img src='https://seeklogo.com/images/V/vigili-del-fuoco-logo-6CE6125E8E-seeklogo.com.png' width="20%" height="20%" title={ getLabelByName("home_page_menu") } alt={ getLabelByName("home_page_menu") }/> 
+                                    <img src={ logo } width="20%" height="20%" title={ getLabelByName("home_page_menu") } alt={ getLabelByName("home_page_menu") }/> 
                                 </a>
                             </li>
                         </ul>
