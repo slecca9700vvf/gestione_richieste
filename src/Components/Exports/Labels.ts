@@ -64,6 +64,31 @@ const Labels: Array<ILabel> = [
         language: "it"
     },
     {
+        name: "dashboard_legendtitle",
+        value: "Legenda Ruoli:",
+        language: "it"
+    },
+    {
+        name: "dashboard_legenduser",
+        value: "Ruolo Utente",
+        language: "it"
+    },
+    {
+        name: "dashboard_legendref",
+        value: "Ruolo Referente/Responsabile",
+        language: "it"
+    },
+    {
+        name: "dashboard_legendffev",
+        value: "Ruolo Ufficio Evasione",
+        language: "it"
+    },
+    {
+        name: "dashboard_legendcomand",
+        value: "Ruolo Comandante",
+        language: "it"
+    },
+    {
         name: "footer_title",
         value: "Dipartimento dei Vigili del Fuoco del Soccorso Pubblico e della Difesa Civile",
         language: "it"
