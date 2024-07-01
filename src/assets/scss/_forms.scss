@@ -28,6 +28,16 @@
         z-index: 1;
         // animation: showSignInForm 1s;
     }
+
+    button[type=submit], .btn-primary {
+        background-color: $submit-button;
+        border: 0;
+        // color: $submit-button
+
+        &:hover, &:active, &[disabled] {
+            background-color: $submit-button-hover !important;
+        }
+    }
   }
 
 // @keyframes showSignInForm {

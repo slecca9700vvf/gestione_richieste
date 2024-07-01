@@ -10,7 +10,7 @@ interface IReceivedData {
 const Dashbox = ({ classRole,header,link }: IReceivedData) => {
   return (
     <div className="dashbox">
-      <div className={classRole+' intestazione'}>
+      <div className={classRole + ' role--heading'}>
         {header}
       </div>
       <div>

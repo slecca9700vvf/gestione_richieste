@@ -21,7 +21,7 @@ const Logout = () => {
   return (
     <div className='main'>
       { !logout ? (
-        <div className="sign-out--wrapper">
+        <div className="sign-out--wrapper form--wrapper">
           {/* Overlay */}
           <div className="sign-out--backdrop"></div>
           <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>

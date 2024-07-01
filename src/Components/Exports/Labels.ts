@@ -99,6 +99,12 @@ const Labels: Array<ILabel> = [
         language: "it"
     },
     {
+        name: "auth_logout_confirm",
+        value: "Continuando verrai disconnesso e trasferito alla Home Page",
+        language: "it"
+
+    },
+    {
         name: "auth_authenticated",
         value: "authenticated",
         language: "it"
@@ -244,6 +250,12 @@ const Labels: Array<ILabel> = [
         name: "home_page_menu",
         value: "Home",
         language: "it"
+    },
+    {
+        name: "home_page_default_message",
+        value: "In questa sezione sarà visibile l'elenco di: Novità software, documentazione, contatti utili!",
+        language: "it"
+
     },
     {
         name: "forms_request_type_submit",

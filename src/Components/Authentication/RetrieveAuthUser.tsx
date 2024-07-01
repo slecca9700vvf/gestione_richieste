@@ -1,13 +1,11 @@
 
 import { useSelector } from "react-redux";
-import { IUser } from "../../Interfaces/IUser";
 
 export const CheckAuth = () => {
     const isLoggedIn = useSelector(
         (isLogged:any) => isLogged.Auth
     )
     return isLoggedIn;
-    
 };
 
 export const RetrieveUserData = () => {
