@@ -14,8 +14,6 @@ const DynamicForm = (fields:IForm) => {
   const handleSubmit = (event:any) => {
     setLoading(true);
     event.preventDefault();
-    console.log(event);
-
     alert("richiesta");
     setLoading(false);
   }
@@ -23,8 +21,6 @@ const DynamicForm = (fields:IForm) => {
 
   let renderedForm:any;
   if (fields.fields && Array.isArray(fields.fields)) {
-    console.log("qui2");
-
     renderedForm = 
       fields.fields?.map((field:any) => (
         <DynamicFormField field={field} setLoading={setLoading} loading={loading} key={field.name}/>

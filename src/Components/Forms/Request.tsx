@@ -35,7 +35,6 @@ const Request = () => {
     setLoading(true);
     event.preventDefault();
     let request_id = event.target[0].value;
-    console.log("richiesta con id " + request_id);
     setLoading(false);
     let formFields:IResponse = await getFields(event.target[0].value);
     setFormFields(formFields);
@@ -65,26 +64,28 @@ const Request = () => {
   }
     
   return (
-    <div className='form--wrapper request--wrapper'>
-      {!showPGRForm ? (
-          <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
-              { renderedForm }
+    <div className='main'>
+      <div className='form--wrapper request--wrapper'>
+        {!showPGRForm ? (
+            <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
+                { renderedForm }
 
-              {!loading ? (
-                <Button className="w-100" variant="primary" type="submit">
-                  { getLabelByName("forms_request_type_submit") }
-                </Button>
-              ) : (
-                <Button className="w-100 mt-10" variant="primary" type="submit" disabled>
-                  { getLabelByName("forms_request_type_submit") }
-                </Button>
-              )}
-          </Form>
-        ) : (
-          <DynamicForm fields={formFields}></DynamicForm>
-        )
-      }
-    </div>
+                {!loading ? (
+                  <Button className="w-100" variant="primary" type="submit">
+                    { getLabelByName("forms_request_type_submit") }
+                  </Button>
+                ) : (
+                  <Button className="w-100 mt-10" variant="primary" type="submit" disabled>
+                    { getLabelByName("forms_request_type_submit") }
+                  </Button>
+                )}
+            </Form>
+          ) : (
+            <DynamicForm fields={formFields}></DynamicForm>
+          )
+        }
+      </div>
+    </div>    
   );
 }
 
