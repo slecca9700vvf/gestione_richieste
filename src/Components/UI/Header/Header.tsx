@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { CheckAuth } from '../../Authentication/RetrieveAuthUser';
 import Avatar from '@mui/material/Avatar';
 import { deepPurple } from '@mui/material/colors';
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 import Button from '@mui/material/Button';
-import Collapse from '@mui/material/Collapse';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import logo from '../../../assets/icons/logo.png'
 
 import { getLabelByName } from "../../Exports/Labels";
@@ -24,9 +23,6 @@ const Header = () => {
 		  
     return (
         <header className='header'>
-            {/* TODO: Gestire voce di menu active 
-                <a className='nav-link active' ...>
-            */}
             <nav className='navbar navbar-expand-lg navbar-light navbar-top'>
                 <div className='container-fluid'>
                     <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation'>
@@ -40,36 +36,22 @@ const Header = () => {
                                 </a>
                             </li>
                         </ul>
-						{/*<span className='nav-item'>
-							<a className='nav-link' href='/login'>{ isLogged ? name + " " + surname : 'Login' }</a>
-                        </span>
-						
-                        <span className='nav-item'>
-							<a className='nav-link' href='/login'>{ isLogged ? <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar> : 'Login' }</a>
-                        </span>*/}
-						
-						{/* inserire menu di 3 voci contenente Dettaglio utente - Info - Logout visibile al click sull'Avatar*/}
-						 <div>
-						  <Button style={{backgroundColor: 'transparent', color: '#000', padding: '10px 20px'}} variant="contained"  onClick={handleClick} startIcon={<Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>}>
-							{ isLogged ? name + " " + surname : 'Login' }
-						  </Button>
-						  <Collapse in={open} timeout="auto" unmountOnExit>
-							<List component="div" disablePadding>
-							  <ListItemButton href="/user-details">
-								  {/* Add icon for "Dettaglio Utente" */}
-								<ListItemText primary="Dettaglio Utente" />
-							  </ListItemButton>
-							  <ListItemButton href="/info">
-								  {/* Add icon for "Info" */}
-								<ListItemText primary="Info" />
-							  </ListItemButton>
-							  <ListItemButton href="/logout">
-								  {/* Add icon for "Logout" */}
-								<ListItemText primary="Logout" />
-							  </ListItemButton>
-							</List>
-						  </Collapse>
-						</div>
+				
+                        <PopupState variant="popover" popupId="demo-popup-menu">
+                            {(popupState) => (
+                            <React.Fragment>
+                                <Button style={{backgroundColor: '#911d1b'}} variant="contained" startIcon={<Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>} {...bindTrigger(popupState)}>                                    
+                                    { isLogged ? name + " " + surname : 'Login' }
+                                </Button>
+                                <Menu {...bindMenu(popupState)}>
+                                    <MenuItem onClick={popupState.close}>Dettaglio Utente</MenuItem>
+                                    <MenuItem onClick={popupState.close}>Info</MenuItem>
+                                    <MenuItem onClick={popupState.close}>Logout</MenuItem>
+                                </Menu>
+                            </React.Fragment>
+                            )}
+                        </PopupState>
+
                     </div>
                 </div>
             </nav>
