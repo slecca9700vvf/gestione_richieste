@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { getLabelByName } from "../Exports/Labels";
 import { useNavigate, Navigate } from 'react-router-dom';
 
@@ -15,8 +15,8 @@ const Logout = () => {
         type: "LOGOUT",
       });
       setLogout(true);
-      navigate("/");
-  }
+      navigate('/', {state: {fromLogout: true}})
+    }
 
   return (
     <div className='main'>
@@ -32,7 +32,7 @@ const Logout = () => {
           </Form>  
       </div>
       ) : (
-        <Navigate to="/" />
+        <Navigate to="/"/>
       )}
     </div>
     );

@@ -32,7 +32,8 @@ const DynamicFormField = ({field, loading, setLoading}:IDynamicField) => {
         } else {
             setLoading(false);
         }
-    }, [field]);
+    }, [field, setLoading]);
+
     switch(field.type) {
         case "text":
             renderedField = 

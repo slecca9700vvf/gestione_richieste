@@ -1,4 +1,9 @@
 @import 'variables';
+html {
+  height:100%;
+  // min-height:100%;
+}
+
 body {
   margin: 0;
   font-family: -apple-system,BlinkMacSystemFont,"Roboto Mono",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
@@ -8,7 +13,11 @@ body {
   padding: 0;
   margin: 0;
   font-size: 1rem;
+  height: 100%;
+}
 
+#root {
+  height: 100%;
 }
 
 .form-container {
@@ -64,14 +73,13 @@ input[type="submit"] {
   background-color: #3e0000; /* Colore di sfondo per il pulsante */
 }
 
-
 .container {
-  padding: 0 1rem;
+  padding: 1rem;
 }
 
 .app-content {
-  min-height: 100%;
   display: flex;
+  min-height: 80vh;
 }
 
 .main {
@@ -89,3 +97,5 @@ input[type="submit"] {
     }
   }
 }
+
+.clear {clear: both}
