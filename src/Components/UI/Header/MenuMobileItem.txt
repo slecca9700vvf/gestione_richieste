@@ -1,0 +1,60 @@
+import React, { useState } from 'react';
+import { CheckAuth } from '../../Authentication/RetrieveAuthUser';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import defultMenu from '../../../API-Labels/defaultMenu.json'
+import { MenuItem} from '@mui/material';
+
+// Componente per ogni voce principale del menu
+const MenuMobileItem  = ( popupState:any,item:any ) => {
+  item = item.item;
+  let renderedElement = <div></div>;
+  item.sottovoci ? (
+    {item.sottovoci.map((subItem:any, index:number) => (
+        <SubItem key={index} subItem={subItem} />
+      )) : (
+        <MenuItem onClick={popupState.close} component="a" href="/dashboard">Dashboard</MenuItem>
+      )
+    
+    }
+
+  return (
+    {item.sottovoci ? (
+        {item.sottovoci.map((subItem:any, index:number) => (
+            <SubItem key={index} subItem={subItem} />
+          ))}
+    ) : (
+        <a className="item-link" href={item.url}>{item.titolo}</a>
+      )}
+    <MenuItem onClick={popupState.close} component="a" href="/dashboard">
+        Dashboard
+    </MenuItem>
+        {/* Se l'oggetto ha subItems, l'URL deve essere vuoto */}
+        {item.sottovoci ? (
+          <span className="item-title">{item.titolo}</span>
+        ) : (
+          <a className="item-link" href={item.url}>{item.titolo}</a>
+        )}
+        {item.sottovoci && (isOpen ? <FaChevronUp /> : <FaChevronDown />)}
+      </div>
+      {isOpen && item.sottovoci && (
+        <div className="subitem-container">
+          {item.sottovoci.map((subItem:any, index:number) => (
+            <SubItem key={index} subItem={subItem} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Componente per ogni voce del sotto-menu
+const SubItem = (subItem:any) => {
+  subItem = subItem.subItem;
+  return (
+    <div className="subitem">
+      <a className="item-link" href={subItem.url}>{subItem.titolo}</a>
+    </div>
+  );
+};
+
+export default MenuMobileItem;

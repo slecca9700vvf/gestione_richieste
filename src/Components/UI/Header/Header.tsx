@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import { CheckAuth } from '../../Authentication/RetrieveAuthUser';
-import Avatar from '@mui/material/Avatar';
-import { deepPurple } from '@mui/material/colors';
-import Button from '@mui/material/Button';
-import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import logo from '../../../assets/icons/logo.png'
-
+import logo_vvf_bianco from '../../../assets/icons/logo_vvf_bianco.png'
+import MenuMobile from './MenuMobile';
+import MenuUser from './MenuUser';
 import { getLabelByName } from "../../Exports/Labels";
 
 const Header = () => {
@@ -23,38 +19,30 @@ const Header = () => {
 		  
     return (
         <header className='header'>
-            <nav className='navbar navbar-expand-lg navbar-light navbar-top'>
-                <div className='container-fluid'>
-                    <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation'>
-                        <span className='navbar-toggler-icon'></span>
-                    </button>
-                    <div className='collapse navbar-collapse navbar-container' id='navbarNavDropdown'>
-                        <ul className='navbar-nav'>
-                            <li className='nav-item'>
-                                <a className='nav-link' aria-current='page' href='/'>
-                                    <img src={ logo } width="20%" height="20%" title={ getLabelByName("home_page_menu") } alt={ getLabelByName("home_page_menu") }/> 
-                                </a>
-                            </li>
-                        </ul>
-				
-                        <PopupState variant="popover" popupId="demo-popup-menu">
-                            {(popupState) => (
-                            <React.Fragment>
-                                <Button style={{backgroundColor: '#911d1b'}} variant="contained" startIcon={<Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>} {...bindTrigger(popupState)}>                                    
-                                    { isLogged ? name + " " + surname : 'Login' }
-                                </Button>
-                                <Menu {...bindMenu(popupState)}>
-                                    <MenuItem onClick={popupState.close}>Dettaglio Utente</MenuItem>
-                                    <MenuItem onClick={popupState.close}>Info</MenuItem>
-                                    <MenuItem onClick={popupState.close}>Logout</MenuItem>
-                                </Menu>
-                            </React.Fragment>
-                            )}
-                        </PopupState>
-
-                    </div>
+            
+                <div id="logovvf">
+                    <a className='nav-link' aria-current='page' href='/'>
+                        <img src={ logo } title={ getLabelByName("home_page_menu") } alt={ getLabelByName("home_page_menu") }/> 
+                    </a>
                 </div>
-            </nav>
+                
+                <div id="headwrap"></div>
+                
+                <div id="menutop">
+                    <MenuMobile />
+                </div>
+
+                <div id="logocentrale">
+                    <a className='nav-link' aria-current='page' href='/'>
+                        <img src={logo_vvf_bianco} title={ getLabelByName("home_page_menu") } alt={ getLabelByName("home_page_menu") }/> 
+                    </a>
+                </div>
+                
+                <div id="menuuser">
+                    <MenuUser />
+                </div>
+
+                 
 
             <div className='flag-container'>
                 <table className='flag-container-table'>
