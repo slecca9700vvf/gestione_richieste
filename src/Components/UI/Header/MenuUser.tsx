@@ -35,7 +35,7 @@ const MenuUser = () => {
                 >
                     <MenuItem onClick={popupState.close}>Dettaglio Utente</MenuItem>
                     <MenuItem onClick={popupState.close}>Info</MenuItem>
-                    <MenuItem onClick={popupState.close}>Logout</MenuItem>
+                    <MenuItem onClick={popupState.close} component="a" href="/logout">Logout</MenuItem>
                 </Menu>
             </React.Fragment>
             )}
