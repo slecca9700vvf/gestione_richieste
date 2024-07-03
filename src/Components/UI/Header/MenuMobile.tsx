@@ -4,10 +4,11 @@ import { Button, Menu, MenuItem} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import { IMenuItem } from '../../../Interfaces/IMenu';
+import { deftopmenu } from './defaultTopMenu';
 
 const MenuMobile = () => {
     const isLogged = CheckAuth();
-    let menuItems : Array<IMenuItem> = [];
+    //let menuItems : Array<IMenuItem> = [];
     let menuItemsTemp : Array<IMenuItem> = [];
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -21,13 +22,17 @@ const MenuMobile = () => {
     };
 
     if(isLogged) {
-        let menu = localStorage.getItem("menu");
-        menuItems = menu !== null ? JSON.parse(menu) : menuItems;
+        // TODO collegarsi a menu reale e verificare il funzionamento delle sottovoci
+        //let menu = localStorage.getItem("menu");
+       // menuItems = menu !== null ? JSON.parse(menu) : menuItems;
+        let menuItems = deftopmenu
         
         {menuItems.map((item) => (
             menuItemsTemp.push(item)
         ))}
       }
+    
+      //console.log(menuItemsTemp)
 
     function getIdMenu(indice:number)  {
         let getIdMenu = "nested-menu"+indice.toString()
@@ -69,7 +74,12 @@ const MenuMobile = () => {
                                 >
                                      {
                                     item.sottovoci.map((subItem,subIndex) => (
-                                        <MenuItem key={subIndex} onClick={popupState.close} component="a" href={subItem.url}>{subItem.titolo}</MenuItem>
+                                        <MenuItem key={subIndex} 
+                                        onClick={(ev) => {
+                                            popupState.close();
+                                            handleClose();
+                                          }}
+                                         component="a" href={subItem.url}>{subItem.titolo}</MenuItem>
                             
                                     ))
                                 }
