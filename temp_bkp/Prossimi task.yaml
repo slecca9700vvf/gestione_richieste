@@ -23,3 +23,30 @@ Dashboard:
 
 Form richiesta:
     Togliere dal menu le singole tipologie di richiesta ma inserire un campo nel form la tipologia e di conseguenza il form viene popolato in automatico secondo il modello di riferimento
+
+
+
+Integrazione:
+    fix menu utente (FE)
+    refresh token ogni 10 minuti (FE - a backenb expired token time 900000ms = 15 min)
+
+    api form tipologie richiesta -> mostrare solo se attivo = true (FE)
+    Salvataggio richiesta con i dati del form (FE)
+        aggiungere campo data per tutte le coppie chiavi-valore nel salvataggio che non sono mappate
+        il campo settoreUfficio passare statico come da json di prova
+        richiesta personale è true|false
+        Per i seguenti passare in entrambi i casi id_utente recuperato a login
+            "utenteUfficioRuoloStatoCorrente": {
+                "idUtenteUfficioRuolo": 1
+            },
+            "utenteUfficioRuoloStatoIniziale": {
+                "idUtenteUfficioRuolo": 1 //ID utente loggato
+            },
+
+    API uffici -> recuperare uffici dell'utente a BE (BE deve esporre)
+    API priorità    -> recuprere lista priorità da backend (BE deve esporre)
+    verificare a BE la correlazione tra token e accountname nel salvataggio richiesta (BE)
+    
+
+    
+

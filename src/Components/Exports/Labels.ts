@@ -291,5 +291,10 @@ const Labels: Array<ILabel> = [
         name: "forms_request_type_submit",
         value: "Compila la richiesta",
         language: "it"
-    }
+    },
+    {
+        name: "forms_all_offices",
+        value: "Uffici dell'utente",
+        language: "it"
+    },
 ]
