@@ -41,4 +41,9 @@ const API: Array<IApi> = [
         url: "/api/request/types",
         type: "GET",
     },
+    {
+        name: "getMenuUser",
+        url: "/api/utente/menuUser",
+        type: "GET",
+    },
 ]

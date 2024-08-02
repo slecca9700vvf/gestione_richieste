@@ -1,4 +1,5 @@
 import { IUser } from "../Interfaces/IUser";
+import { getMenuUser } from "../Components/Common/GetMenuUser";
 
 const capitalize = (string:string) => string && string[0].toUpperCase() + string.slice(1)
 
@@ -26,6 +27,7 @@ export const AuthReducer = (
                 localStorage.setItem("note", JSON.stringify(action.note)?.replaceAll("\"",""));
                 localStorage.setItem("user_name", JSON.stringify(capitalize(action.user.nome.toLowerCase()))?.replaceAll("\"",""));
                 localStorage.setItem("user_surname", JSON.stringify(capitalize(action.user.cognome.toLowerCase()))?.replaceAll("\"",""));
+                getMenuUser()
                 isLogged = true;
             }
             return isLogged;
@@ -37,6 +39,7 @@ export const AuthReducer = (
             localStorage.removeItem("token");
             localStorage.removeItem("menu");
             localStorage.removeItem("note");
+            localStorage.removeItem("menuUser");
             return isLogged;
         default:
             return isLogged;
