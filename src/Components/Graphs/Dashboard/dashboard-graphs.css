@@ -1,0 +1,12 @@
+.dashboard-graphs {
+    padding: 20px;
+}
+
+.highcharts-figure, .highcharts-data-table table {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.col-md-6, .col-sm-12 {
+    margin-bottom: 20px;
+}
