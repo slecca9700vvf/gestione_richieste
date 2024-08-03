@@ -24,6 +24,7 @@ export const AuthReducer = (
                 localStorage.setItem("token", JSON.stringify(action.token)?.replaceAll("\"",""));
                 localStorage.setItem("menu", JSON.stringify(action.menu));
                 localStorage.setItem("note", JSON.stringify(action.note)?.replaceAll("\"",""));
+                localStorage.setItem("user_id", JSON.stringify(action.user.idUtente)?.replaceAll("\"",""));
                 localStorage.setItem("user_name", JSON.stringify(capitalize(action.user.nome.toLowerCase()))?.replaceAll("\"",""));
                 localStorage.setItem("user_surname", JSON.stringify(capitalize(action.user.cognome.toLowerCase()))?.replaceAll("\"",""));
                 isLogged = true;

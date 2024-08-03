@@ -9,6 +9,7 @@ export interface IUser {
     cognome: string,
     cf: string,
     account: string,
+    idUtente: number
     // nome: string,
     // cognome: string,
     // cf: string,

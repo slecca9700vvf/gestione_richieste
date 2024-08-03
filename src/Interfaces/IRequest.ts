@@ -41,6 +41,7 @@ export interface IRequestFormField {
     name: string,
     label: string,
     type: AllowedFieldTypes,
+    id?: number,
     regex?: string,
     value?: string|number,
     default_value?: string|number,
@@ -52,5 +53,10 @@ export interface IRequestFormField {
 
 export interface IResponse {
     data: object | null,
-    status: string
+    status: string,
+    modelloJson?: IResponseModelloJson
+}
+
+export interface IResponseModelloJson {
+    data: Array<Object>
 }

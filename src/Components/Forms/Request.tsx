@@ -6,8 +6,7 @@ import { IResponse } from '../../Interfaces/IRequest';
 import { getApiByName } from '../Exports/API'
 import DynamicForm from './DynamicForm'
 import axios from 'axios'
-//TODO Remove next line
-import fieldsAll from '../../API-Labels/defaultRequestAll.json'
+import { IRequestFormField } from '../../Interfaces/IRequest';
 
 const Request = () => {
   let { request_id } = useParams();
@@ -35,8 +34,7 @@ const Request = () => {
     setLoading(true);
     event.preventDefault();
     let request_id = event.target[0].value;
-    setLoading(false);
-    let formFields:IResponse = await getFields(event.target[0].value);
+    let formFields:IResponse = await getFields(request_id);
     setFormFields(formFields);
     setShowPGRForm(true);
     setLoading(false);
@@ -50,12 +48,12 @@ const Request = () => {
         <Form.Select aria-label="field_request_type" required>
         <option></option>
           {          
-              requestFormFields?.map((item:any, index:number) => (
+              requestFormFields?.filter((item:any) => item.attivo).map((item:any, index:number) => (
                   <option 
-                      value={item.id_tipologia}
-                      data-value={item.name}
+                      value={item.idTipologiaRichiesta}
+                      data-value={item.descrizioneTipologiaRichiesta}
                       key={index}>
-                          {item.value}
+                          {item.descrizioneTipologiaRichiesta}
                   </option>
               ))
           } 
@@ -90,57 +88,74 @@ const Request = () => {
 }
 
 async function getRequestTypes() {
-// TODO Uncomment next line
-//   let api = getApiByName("getRequestTypes").url;
+  let api = getApiByName("getRequestTypes").url;
+  //TODO Verificare gestione token
+  let token = localStorage.getItem("token");
+  let response_data:any;
+  await axios.get<IResponse>(
+      api,
+      {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      }
 
-//TODO Remove next line
-    let api = "http://localhost:3000/tipologie_richiesta.json";
-
-    let response_data:any;
-    await axios.get<IResponse>(
-        api
-    ).then((response) => {
-        response_data = response.data.data
-    }).catch((error) => {
-        console.error(error)
-    });
-    return response_data;
+  ).then((response) => {
+      response_data = response.data
+  }).catch((error) => {
+      console.error(error)
+  });
+  return response_data;
 }
 
 async function getFields(request_id:any) {
-  let apiAll = getApiByName("getRequestFields").url + "all";
+  //TODO Remove next line
+  let apiAll = "http://localhost:3000/fields.json";
+  //TODO Uncomment next line
+  // let apiAll = getApiByName("getRequestFields").url + "all";
+
   let apiSpecific = getApiByName("getRequestFields").url + request_id;
 
-  let response_data:any;
-  let response_data_second:any;
+  //TODO Verificare gestione token
+  let token = localStorage.getItem("token");
 
-  switch(request_id) {
-    case "3":
-      break;
-    case "6":
-      //TODO Uncomment next lines
-        // await axios.get<IResponse>(
-        //   apiAll
-        // ).then((response) => {
-        //   response_data = response.data.data
-        // }).catch((error) => {
-        //     console.error(error)
-        // });
+  let response_data:any = [];
+  let response_data_second:any = [];
 
-        // await axios.get<IResponse>(
-        //   apiSpecific
-        // ).then((response) => {
-        //   response_data_second = response.data.data
-        // }).catch((error) => {
-        //     console.error(error)
-        // });
-        // response_data = response_data.concat(response_data_second);
-      
-    //TODO Remove next line
-          response_data = fieldsAll.data;
+  await axios.get<IResponse>(
+    apiAll,
+    {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  ).then((response) => {
+    response_data = response.data.data
+  }).catch((error) => {
+      console.error(error)
+  });
 
-        return response_data;
-      break;
-  }}
+  await axios.get<IResponse>(
+    apiSpecific,
+    {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  ).then((response) => {
+    response_data_second = response.data.modelloJson?.data
+  }).catch((error) => {
+      console.error(error)
+  });
+  response_data = response_data.concat(response_data_second);
+  const response = response_data.map((item:IRequestFormField, index:number) => {
+    return { ...item, id: index + 1 }; // Indice progressivo, inizia da 1
+  });
+
+  return response;
+}
 
 export default Request;
