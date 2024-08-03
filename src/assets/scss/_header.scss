@@ -2,26 +2,12 @@
 
 .header {
     background-color: $bg-header;
-    padding-top: 0;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
     
-    .navbar-top {
-        background-color: $bg-header;
-        width: 100%;    
-    }
-    
-    .navbar-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    
-    .header-block {
+   .header-block {
         background-color: #720000;
         width: 100%;
         display: flex;
@@ -32,6 +18,7 @@
     }
     
     .flag-container {
+        clear: both;
         width: 100%;
         .flag-container-table {
             margin: 0px;
@@ -50,4 +37,40 @@
             }
         }   
     }
+
+}
+
+/* mobile screen */
+#menutop,#logovvf, #headwrap, #logocentrale, #menuuser {display: block; float: left;text-align: center;padding:10px;}
+#logovvf, #headwrap { display: none;}
+#menuuser, #menutop { width: 100px;padding-top: 30px;}
+#menuuser {float: right;}
+#logocentrale { width: -moz-calc(100% - 200px);  width: -webkit-calc(100% - 200px);   width: calc(100% - 200px);}
+#logocentrale img  {width: 90%;max-width: 302px;}
+//#menutop,#logocentrale, #menuuser {  float: left;width: 100%; text-align: center;padding:0;margin-bottom: 1em;}
+#menutop button, #menuuser button {background-color: #911d1b; color: #fff;padding: 1em; }
+#menutop svg {font-size: 40px;}
+#menutop span, #menuuser span { margin: 0}
+
+/* menu mobile*/
+
+
+/* menu user */
+#menuuser a {color: #fff; text-decoration: none;}
+
+/* mid screen */
+@media  screen and (min-width: 768px) {
+//#logovvf, #headwrap, #logocentrale, #menuuser {display: block; float: left;text-align: center;padding:10px;}
+#logovvf, #headwrap {display: block; float: left;text-align: center;padding:10px;}
+#menutop { display: none;}
+#logovvf {width: 220px;}
+#logovvf img {width: 110px;height: 110px;}
+#logocentrale {width: -moz-calc(100% - 350px);  width: -webkit-calc(100% - 350px);   width: calc(100% - 350px);}
+#logocentrale img {width: 302px;height: 120px;}
+
+}
+
+/* wide screen */
+@media  screen and (min-width: 900px) {
+
 }
