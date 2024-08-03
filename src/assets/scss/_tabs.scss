@@ -1,15 +1,17 @@
 .tab-navigation--box {
     width: 100%;
 
-    .bottom_color_green {
-        border-top: solid 2px green;
-    }
-
-    .bottom_color_white {
-        border-top: solid 2px white;
-    }
-
-    .bottom_color_red {
-        border-top: solid 2px red;
-    }
+    .tab_item {
+        &.green {
+          border-top: solid 2px green;
+        }
+      
+        &.white {
+          border-top: solid 2px white;
+        }
+      
+        &.red {
+          border-top: solid 2px red;
+        }
+      }      
 }

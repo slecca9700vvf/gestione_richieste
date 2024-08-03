@@ -3,42 +3,28 @@ import { CheckAuth } from '../../Authentication/RetrieveAuthUser';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import defultMenu from '../../../API-Labels/defaultMenu.json'
 
-// Definizione delle interfacce per i props
-interface SidebarProps {
-  menuItems: MenuItem[];
-}
-
-interface MenuItem {
-  title: string;
-  url?: string;
-  subItems?: SubItem[];
-}
-
-interface SubItem {
-  title: string;
-  url: string;
-}
-
-// Componente Sidebar principale
 const Sidebar = () => {
   let menuItems = defultMenu.menu;
   const isLogged = CheckAuth();
+  let renderedElement = <div></div>;
   if(isLogged) {
     let menu = localStorage.getItem("menu");
     menuItems = menu !== null ? JSON.parse(menu) : menuItems;
+    renderedElement = 
+      <div className="sidebar-container">
+        {menuItems.map((item, index) => (
+          <SidebarItem key={index} item={item} />
+        ))}
+      </div>
   }
   
   return (
-    <div className="sidebar-container">
-      {menuItems.map((item, index) => (
-        <SidebarItem key={index} item={item} />
-      ))}
-    </div>
+      renderedElement
   );
 };
 
 // Componente per ogni voce principale del menu
-function SidebarItem ( item:any ) {
+const SidebarItem = ( item:any ) => {
   item = item.item;
   const [isOpen, setIsOpen] = useState(false); // Stato per gestire l'apertura/chiusura del sotto-menu
   const toggleOpen = () => {
@@ -58,7 +44,7 @@ function SidebarItem ( item:any ) {
       </div>
       {isOpen && item.sottovoci && (
         <div className="subitem-container">
-          {item.sottovoci.map((subItem:any, index:any) => (
+          {item.sottovoci.map((subItem:any, index:number) => (
             <SubItem key={index} subItem={subItem} />
           ))}
         </div>
@@ -68,7 +54,7 @@ function SidebarItem ( item:any ) {
 };
 
 // Componente per ogni voce del sotto-menu
-function SubItem(subItem:any) {
+const SubItem = (subItem:any) => {
   subItem = subItem.subItem;
   return (
     <div className="subitem">

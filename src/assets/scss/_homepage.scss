@@ -2,8 +2,10 @@
 
 .homepage--wrapper {
     width: 100%;
-    padding: 100px;
 
+    &.auth-false {
+        padding: 100px;
+    }
     .homepage--auth-false--label {
         font-weight: unset;
         margin-bottom: 30px;

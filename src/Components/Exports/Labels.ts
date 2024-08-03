@@ -64,6 +64,31 @@ const Labels: Array<ILabel> = [
         language: "it"
     },
     {
+        name: "dashboard_legendtitle",
+        value: "Legenda Ruoli:",
+        language: "it"
+    },
+    {
+        name: "dashboard_legenduser",
+        value: "Ruolo Utente",
+        language: "it"
+    },
+    {
+        name: "dashboard_legendref",
+        value: "Ruolo Referente/Responsabile",
+        language: "it"
+    },
+    {
+        name: "dashboard_legendffev",
+        value: "Ruolo Ufficio Evasione",
+        language: "it"
+    },
+    {
+        name: "dashboard_legendcomand",
+        value: "Ruolo Comandante",
+        language: "it"
+    },
+    {
         name: "footer_title",
         value: "Dipartimento dei Vigili del Fuoco del Soccorso Pubblico e della Difesa Civile",
         language: "it"
@@ -258,8 +283,18 @@ const Labels: Array<ILabel> = [
 
     },
     {
+        name: "home_page_success_logout_message",
+        value: "Logout effettuato correttamente!",
+        language: "it"
+    },
+    {
         name: "forms_request_type_submit",
         value: "Compila la richiesta",
         language: "it"
-    }
+    },
+    {
+        name: "forms_all_offices",
+        value: "Uffici dell'utente",
+        language: "it"
+    },
 ]

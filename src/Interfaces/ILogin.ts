@@ -12,3 +12,7 @@ export interface ILoginResponse {
     token: string,
     note?: string,
 }
+
+export interface ILogoutResponse {
+    token: string
+}
