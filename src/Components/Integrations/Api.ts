@@ -59,23 +59,26 @@ export const getRequest = async (api_url:string, token:boolean):Promise<any> => 
     }
 }
 
-export const postRequest = (api:IApi, data:any = [], token:boolean) => {
-    let response_data:any;
-    let headers:any = token ? {
-            'Authorization': `Bearer ${getToken()}`,
-            'Content-Type': 'application/json',
-        } : '';
+export const postRequest = async (api_url:string, data:any = [], token:boolean):Promise<any> => {
+    let headers: any = token ? {
+        'Authorization': `Bearer ${getToken()}`,
+        'Content-Type': 'application/json',
+    } : {};
 
-    axios.post<IResponse>(
-        api.url,
-        data,
-        {
-            headers
-        },
-    ).then((response) => {
-        response_data = response.data
-    }).catch((error) => {
-        console.error(error)
-    });
-    return response_data;
+    let tmpResponse:IResponse;
+    try {
+        const response = await axios.post(api_url, data, { headers });
+        if(Object.keys(response.data).length > 0) {
+            tmpResponse = {
+                data: response.data,
+                status: getLabelByName("labelOK"),
+            }
+            return tmpResponse;
+        } else {
+            throw "Reqeust KO"
+        }
+    } catch (error) {
+        console.error('Errore durante la richiesta POST:', error + " - " + getApiByUrl(api_url));
+        throw error;
+    }
 }

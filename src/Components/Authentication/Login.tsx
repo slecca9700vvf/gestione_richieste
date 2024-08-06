@@ -54,7 +54,6 @@ const Login = () => {
       }
       else {
         setErrorLogin(true)
-        console.error(userResponse)
       }
     }
     setLoading(false);

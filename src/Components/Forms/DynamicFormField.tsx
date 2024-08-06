@@ -186,7 +186,6 @@ const getData = async (field:IRequestFormField) => {
     }
     if(api !== null) {
         tmpResponse = await getRequest(api.url, true);
-        console.log(tmpResponse.data);
     }
     return tmpResponse;
 }
