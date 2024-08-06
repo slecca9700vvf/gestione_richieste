@@ -4,6 +4,7 @@ import { IRequestFormField, IResponse } from "../../Interfaces/IRequest";
 import axios from 'axios';
 import { getApiByName } from "../Exports/API";
 import { getLabelByName } from "../Exports/Labels";
+import { getRequest } from "../Integrations/Api";
 
 interface IDynamicField {
     field: IRequestFormField
@@ -17,13 +18,11 @@ const DynamicFormField = ({field, loading, setLoading}:IDynamicField) => {
 
     useEffect(() => {
         if (field.get_data) {
-            const fetchData = async () => {
+            const fetchData = async ():Promise<any> => {
                 try {
                     setLoading(true)
                     const response_data = await getData(field);
                     setData(response_data);
-                } catch (error) {
-                    console.error("Error fetching data:", error);
                 } finally {
                     setLoading(false);
                 }
@@ -97,19 +96,31 @@ const DynamicFormField = ({field, loading, setLoading}:IDynamicField) => {
             break;
         case "select":
             if (field.get_data && data && Array.isArray(data.data)) {
+                let options = 
+                    data?.data.map((item:any, index:number) => (
+                        <option 
+                            value={item.name} 
+                            key={index}>
+                                {item.value}
+                        </option>
+                    ))
+                ;
+                if (field.name === "forms_all_priority") {
+                    options = 
+                        data?.data.map((item:any, index:number) => (
+                            <option 
+                                value={item.idPriorita} 
+                                key={index}>
+                                    {item.descrizionePriorita}
+                            </option>
+                        ));
+                }
+
                 renderedField =
                     <Form.Group className="mb-2" controlId={field.name + "-" + field?.id}>
                         <Form.Label>{ getLabelByName(field.name) }</Form.Label>
                         <Form.Select aria-label={field.name + "-" + field?.id}>
-                            {
-                                data?.data.map((item:any, index:number) => (
-                                    <option 
-                                        value={item.name} 
-                                        key={index}>
-                                            {item.value}
-                                    </option>
-                                )
-                            )}
+                            { options }
                         </Form.Select>
                     </Form.Group>;
             } else {
@@ -161,38 +172,20 @@ const DynamicFormField = ({field, loading, setLoading}:IDynamicField) => {
     )
 }
 
-async function getData(field:IRequestFormField) {
-    let tmpResponse:IResponse = {
+const getData = async (field:IRequestFormField) => {
+    let tmpResponse:any = {
         data: null,
         status: "KO"
     }
     let api = getApiByName(field.get_data?.api || "");
-    let token = localStorage.getItem("token");
-
     switch(api.name) {
         case "getUserOffices": 
-                // api.url = "http://localhost:3000/uffici.json"
-                api.url = api.url + localStorage.getItem("user_id")
+                api.url = "http://localhost:3000/uffici.json"
+                // api.url = api.url + localStorage.getItem("user_id")
             break;
     }
-    
     if(api !== null) {
-        await axios.get<IResponse>(
-            api.url,
-            {
-                headers: {
-                  'Authorization': `Bearer ${token}`,
-                  'Content-Type': 'application/json',
-                },
-              }
-        ).then((response) => {
-            tmpResponse = {
-                data: response.data.data,
-                status: response.data.status
-            }
-        }).catch((error) => {
-            console.error(error)
-        })        
+        tmpResponse = await getRequest(api.url, true);
     }
     return tmpResponse;
 }

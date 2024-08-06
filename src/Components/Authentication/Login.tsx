@@ -7,6 +7,7 @@ import { getLabelByName } from "../Exports/Labels";
 import { sanitize } from '../Common/Sanitize';
 import { Form, Button } from "react-bootstrap";
 import { IResponse } from '../../Interfaces/IRequest'
+import { getRequest } from "../Integrations/Api";
 // import { IUserLogin } from '../../Interfaces/IUser';
 
 const Login = () => {
@@ -21,49 +22,16 @@ const Login = () => {
     if(accountName === "" || password === "") {
       return "Dati errati o vuoti!";
     }
-        
-    // TODO Login call    
+    const api_login_url = getApiByName("login").url;
+    // TODO Login call: getRequest -> postRequest
     // let userObj:IUserLogin = {
     //   accountName,
     //   password
     // }
-    
-    try {
-      //TODO Change call to post and use userObj as request -> uncomment next lines ;)
-      // const response = await axios.post<ILoginResponse>(
-      const api_login_url = getApiByName("login").url;
-
-      const response = await axios.get<ILoginResponse>(
-        api_login_url + accountName,
-        // userObj
-      );
-      
-      if(Object.keys(response.data).length > 0) {
-        let tmpResponse:IResponse = {
-          data: {
-            user: response.data.utente,
-            token: response.data.token,
-            menu: response.data.menu,              
-            note: response.data.note,              
-          },
-          status: getLabelByName("labelOK")
-        }        
-        return tmpResponse;
-      } else {
-        let tmpResponse:IResponse = {
-          data: null,
-          status: getLabelByName("labelKO")
-        }
-        return tmpResponse;
-      }
-    } catch (error) {
-      let tmpResponse:IResponse = {
-        data: { error },
-        status: getLabelByName("labelKO")
-      }
-      return tmpResponse;
-    }
-  };
+    // const response = await getRequest(api_login_url, false);
+    const response = await getRequest(api_login_url + accountName, false);
+    return response;
+  }
   
   const handleSubmit = async (event:any) => {
     event.preventDefault();
@@ -72,10 +40,13 @@ const Login = () => {
     if(userResponse.data !== null && userResponse.status === getLabelByName("labelOK")) {
       loginDispatch({
         type: "LOGIN",
-        user: userResponse.data.user,
+        user: userResponse.data.utente,
         token: userResponse.data.token,
         menu: userResponse.data.menu,
         note: userResponse.data.note
+        // TODO Integrare API di refreshToken con BE
+        //    TODO ricevere timestamp da backend con scadenza
+        //    token_expire: userResponse.data.token_expire
       });
     } else {
       if(userResponse.data === null) {
@@ -83,7 +54,6 @@ const Login = () => {
       }
       else {
         setErrorLogin(true)
-        console.error(userResponse)
       }
     }
     setLoading(false);
@@ -93,6 +63,7 @@ const Login = () => {
     event.preventDefault();
     window.open( getLabelByName("auth_reset_psw_link"), "_blank");
   };
+
   return (
     <div className="sign-in--wrapper form--wrapper">
       {/* Overlay */}
