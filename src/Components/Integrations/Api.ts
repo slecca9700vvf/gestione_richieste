@@ -51,12 +51,8 @@ export const getRequest = async (api_url:string, token:boolean):Promise<any> => 
             }
             return tmpResponse;
         } else {
-            tmpResponse = {
-                data: null,
-                status: getLabelByName("labelKO")
-            }
+            throw "Reqeust KO"
         }
-        return tmpResponse;
     } catch (error) {
         console.error('Errore durante la richiesta GET:', error + " - " + getApiByUrl(api_url));
         throw error;

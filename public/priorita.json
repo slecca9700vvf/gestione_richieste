@@ -1,0 +1,7 @@
+{
+    "data": [
+        {"idPriorita":1,"descrizionePriorita":"Alta"},
+        {"idPriorita":2,"descrizionePriorita":"Media"},
+        {"idPriorita":3,"descrizionePriorita":"Bassa"}
+    ]
+}

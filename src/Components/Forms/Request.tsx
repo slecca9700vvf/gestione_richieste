@@ -18,18 +18,13 @@ const Request = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-        try {
-          setLoading(true)
-          const response_data = await getRequestTypes();
-          if(response_data.status === getLabelByName("labelKO")) {
-            throw "Reqeust KO"
-          } 
-          setRequestFormFields(response_data.data);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        } finally {
-            setLoading(false);
-        }
+      try {
+        setLoading(true)
+        const response_data = await getRequestTypes();
+        setRequestFormFields(response_data.data);
+      } finally {
+          setLoading(false);
+      }
     }
     fetchData();
   }, [request_id, setLoading]);
