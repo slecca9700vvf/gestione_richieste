@@ -43,8 +43,11 @@ const Request = () => {
   let renderedForm:any;
   if (requestFormFields && Array.isArray(requestFormFields)) {
     renderedForm =
-      <Form.Group className="mb-5" controlId="field_request_type">
-        <Form.Label>{ getLabelByName("field_request_type") }</Form.Label>
+      <div>
+      <Form.Group className="form-label-title" controlId="field_request_type">
+          <Form.Label>{ getLabelByName("field_request_type") }</Form.Label>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="field_request_type">
         <Form.Select aria-label="field_request_type" required>
         <option></option>
           {          
@@ -58,7 +61,8 @@ const Request = () => {
               ))
           } 
         </Form.Select>
-    </Form.Group>;
+      </Form.Group>
+      </div>;
   }
     
   return (
@@ -67,7 +71,6 @@ const Request = () => {
         {!showPGRForm ? (
             <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
                 { renderedForm }
-
                 {!loading ? (
                   <Button className="w-100" variant="primary" type="submit">
                     { getLabelByName("forms_request_type_submit") }
@@ -146,13 +149,17 @@ async function getFields(request_id:any) {
       },
     }
   ).then((response) => {
-    response_data_second = response.data.modelloJson?.data
+    if (response.data?.attivo === true) {
+      response_data_second = response.data.modelloJson?.data;
+      if (response.data.descrizioneModello !== undefined)
+      localStorage.setItem("form_title", getLabelByName("form_request_title_label") + " " + response.data.descrizioneModello)
+    }
   }).catch((error) => {
       console.error(error)
   });
   response_data = response_data.concat(response_data_second);
   const response = response_data.map((item:IRequestFormField, index:number) => {
-    return { ...item, id: index + 1 }; // Indice progressivo, inizia da 1
+    return { ...item, id: index + 1 };
   });
 
   return response;

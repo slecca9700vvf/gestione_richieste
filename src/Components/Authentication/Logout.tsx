@@ -37,7 +37,6 @@ const Logout = () => {
           },
           status: getLabelByName("labelOK")
         }
-        console.log(tmpResponse)
         return tmpResponse;
       } else {
         let tmpResponse:IResponse = {

@@ -22,6 +22,12 @@
         }
     }
 
+    .form-label-title {
+        display: flex;
+        justify-content: center;
+        font-size: 1.2rem;
+    }
+
     form {
         width:40rem;
         max-width: 100%;

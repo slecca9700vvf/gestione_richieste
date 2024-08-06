@@ -54,7 +54,9 @@ export interface IRequestFormField {
 export interface IResponse {
     data: object | null,
     status: string,
-    modelloJson?: IResponseModelloJson
+    modelloJson?: IResponseModelloJson,
+    attivo?: boolean,
+    descrizioneModello?: string,
 }
 
 export interface IResponseModelloJson {

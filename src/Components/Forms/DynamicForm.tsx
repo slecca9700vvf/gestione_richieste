@@ -10,14 +10,26 @@ interface IForm {
 
 const DynamicForm = (fields:IForm) => {
   const [loading, setLoading] = useState<boolean>(false);
-
   const handleSubmit = (event:any) => {
     setLoading(true);
     event.preventDefault();
+
+    var data = new FormData(event.target);
+    let formObject = Object.fromEntries(data.entries());
+    console.log(formObject);
+
     alert("richiesta");
     setLoading(false);
   }
 
+  let renderedTitle;
+  const form_title = localStorage.getItem("form_title")
+  if (form_title !== undefined && form_title !== null) {
+    renderedTitle =                 
+      <Form.Group className="mb-2 form-label-title" controlId="form_title">
+        <Form.Label>{ form_title }</Form.Label>
+      </Form.Group>;
+  }
 
   let renderedForm:any;
   if (fields.fields && Array.isArray(fields.fields)) {
@@ -30,6 +42,7 @@ const DynamicForm = (fields:IForm) => {
   return (
     <div className='form--wrapper request--wrapper'>
       <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
+        { renderedTitle }
         { renderedForm }
         {!loading ? (
           <div>
