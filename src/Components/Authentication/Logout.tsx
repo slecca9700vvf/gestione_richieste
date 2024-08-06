@@ -7,6 +7,7 @@ import { useNavigate, Navigate } from 'react-router-dom';
 import { IResponse } from '../../Interfaces/IRequest';
 import { getApiByName } from '../Exports/API';
 import { ILogoutResponse } from '../../Interfaces/ILogin';
+import { postRequest } from '../Integrations/Api';
 
 const Logout = () => {
   const logoutDispatch = useDispatch();
@@ -16,42 +17,9 @@ const Logout = () => {
   const navigate = useNavigate();
 
   const logoutUser:any = async() => {
-    try {
-      const api_login_url = getApiByName("logout").url;
-      const token = localStorage.getItem("token");
-
-      const response = await axios.post<ILogoutResponse>(
-        api_login_url,
-        [],
-        {
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-      if(Object.keys(response.data).length > 0) {
-        let tmpResponse:IResponse = {
-          data: {
-            token: response.data,
-          },
-          status: getLabelByName("labelOK")
-        }
-        return tmpResponse;
-      } else {
-        let tmpResponse:IResponse = {
-          data: null,
-          status: getLabelByName("labelKO")
-        }
-        return tmpResponse;
-      }
-    } catch (error) {
-      let tmpResponse:IResponse = {
-        data: { error },
-        status: getLabelByName("labelKO")
-      }
-      return tmpResponse;
-    }
+      const api_logout_url = getApiByName("logout").url;
+      const response = await postRequest(api_logout_url, [], true);
+      return response;
   }
 
   const handleSubmit = async (event:any) => {
@@ -71,7 +39,6 @@ const Logout = () => {
       }
       else {
         setErrorLogout(true)
-        console.error(userResponse)
       }
     }
     setLoading(false);

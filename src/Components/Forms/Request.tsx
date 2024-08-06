@@ -7,6 +7,7 @@ import { getApiByName } from '../Exports/API'
 import DynamicForm from './DynamicForm'
 import axios from 'axios'
 import { IRequestFormField } from '../../Interfaces/IRequest';
+import { getRequest } from '../Integrations/Api';
 
 const Request = () => {
   let { request_id } = useParams();
@@ -17,15 +18,13 @@ const Request = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-        try {
-          setLoading(true)
-          const response_data = await getRequestTypes();
-          setRequestFormFields(response_data);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        } finally {
-            setLoading(false);
-        }
+      try {
+        setLoading(true)
+        const response_data = await getRequestTypes();
+        setRequestFormFields(response_data.data);
+      } finally {
+          setLoading(false);
+      }
     }
     fetchData();
   }, [request_id, setLoading]);
@@ -91,74 +90,33 @@ const Request = () => {
 }
 
 async function getRequestTypes() {
-  let api = getApiByName("getRequestTypes").url;
-  //TODO Verificare gestione token
-  let token = localStorage.getItem("token");
-  let response_data:any;
-  await axios.get<IResponse>(
-      api,
-      {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      }
-
-  ).then((response) => {
-      response_data = response.data
-  }).catch((error) => {
-      console.error(error)
-  });
-  return response_data;
+  let api_url = getApiByName("getRequestTypes").url;
+  const response = await getRequest(api_url, true);
+  return response;
 }
 
 async function getFields(request_id:any) {
-  //TODO Remove next line
-  let apiAll = "http://localhost:3000/fields.json";
-  //TODO Uncomment next line
-  // let apiAll = getApiByName("getRequestFields").url + "all";
+  // TODO Uncomment next line - Integrare API con BE
+  //  const api_url_all = getApiByName("getRequestFields").url + "all";
+  const api_url_all = "http://localhost:3000/fields.json";
+  const api_url_id = getApiByName("getRequestFields").url + request_id;
+  const response_all = await getRequest(api_url_all, true);
+  const response_id = await getRequest(api_url_id, true);
+  let responseTmp:any = [];
+  let response_all_data:any = [];
+  let response_id_data:any = [];
 
-  let apiSpecific = getApiByName("getRequestFields").url + request_id;
+  if(response_all.status === getLabelByName("labelOK")) {
+    response_all_data = response_all.data.data;
+    responseTmp = responseTmp.concat(response_all_data);
+  }
 
-  //TODO Verificare gestione token
-  let token = localStorage.getItem("token");
+  if(response_id.status === getLabelByName("labelOK")) {
+    response_id_data = response_id.data.modelloJson?.data;
+    responseTmp = responseTmp.concat(response_id_data);
+  }
 
-  let response_data:any = [];
-  let response_data_second:any = [];
-
-  await axios.get<IResponse>(
-    apiAll,
-    {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    }
-  ).then((response) => {
-    response_data = response.data.data
-  }).catch((error) => {
-      console.error(error)
-  });
-
-  await axios.get<IResponse>(
-    apiSpecific,
-    {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    }
-  ).then((response) => {
-    if (response.data?.attivo === true) {
-      response_data_second = response.data.modelloJson?.data;
-      if (response.data.descrizioneModello !== undefined)
-      localStorage.setItem("form_title", getLabelByName("form_request_title_label") + " " + response.data.descrizioneModello)
-    }
-  }).catch((error) => {
-      console.error(error)
-  });
-  response_data = response_data.concat(response_data_second);
-  const response = response_data.map((item:IRequestFormField, index:number) => {
+  const response = responseTmp.map((item:IRequestFormField, index:number) => {
     return { ...item, id: index + 1 };
   });
 
