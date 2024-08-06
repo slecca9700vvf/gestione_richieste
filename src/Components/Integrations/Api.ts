@@ -22,7 +22,7 @@ export const checkToken = () => {
 }
 
 export const refreshToken = () => {
-    let token = localStorage.getItem("token")
+    let token = localStorage.getItem("token");
     //TODO Integrare API di refreshToken con BE
         // Rimozione token salvato
             // localStorage.removeItem("token")
@@ -41,6 +41,7 @@ export const getRequest = async (api_url:string, token:boolean):Promise<any> => 
     } : {};
 
     let tmpResponse:IResponse;
+    console.log(api_url, getToken());
     try {
         const response = await axios.get(api_url, { headers });
         if(Object.keys(response.data).length > 0) {

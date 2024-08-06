@@ -36,6 +36,7 @@ export const AuthReducer = (
         case "LOGOUT":
             isLogged = false;
             localStorage.removeItem("user");
+            localStorage.removeItem("user_id");
             localStorage.removeItem("user_name");
             localStorage.removeItem("user_surname");
             localStorage.removeItem("token");

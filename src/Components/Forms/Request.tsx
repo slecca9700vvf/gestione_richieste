@@ -7,6 +7,7 @@ import { getApiByName } from '../Exports/API'
 import DynamicForm from './DynamicForm'
 import axios from 'axios'
 import { IRequestFormField } from '../../Interfaces/IRequest';
+import { getRequest } from '../Integrations/Api';
 
 const Request = () => {
   let { request_id } = useParams();
@@ -20,7 +21,10 @@ const Request = () => {
         try {
           setLoading(true)
           const response_data = await getRequestTypes();
-          setRequestFormFields(response_data);
+          if(response_data.status === getLabelByName("labelKO")) {
+            throw "Reqeust KO"
+          } 
+          setRequestFormFields(response_data.data);
         } catch (error) {
             console.error("Error fetching data:", error);
         } finally {
@@ -88,25 +92,9 @@ const Request = () => {
 }
 
 async function getRequestTypes() {
-  let api = getApiByName("getRequestTypes").url;
-  //TODO Verificare gestione token
-  let token = localStorage.getItem("token");
-  let response_data:any;
-  await axios.get<IResponse>(
-      api,
-      {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      }
-
-  ).then((response) => {
-      response_data = response.data
-  }).catch((error) => {
-      console.error(error)
-  });
-  return response_data;
+  let api_url = getApiByName("getRequestTypes").url;
+  const response = await getRequest(api_url, true);
+  return response;
 }
 
 async function getFields(request_id:any) {
