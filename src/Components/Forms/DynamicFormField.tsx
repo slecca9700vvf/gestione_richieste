@@ -4,6 +4,7 @@ import { IRequestFormField, IResponse } from "../../Interfaces/IRequest";
 import axios from 'axios';
 import { getApiByName } from "../Exports/API";
 import { getLabelByName } from "../Exports/Labels";
+import { getRequest } from "../Integrations/Api";
 
 interface IDynamicField {
     field: IRequestFormField
@@ -167,8 +168,6 @@ async function getData(field:IRequestFormField) {
         status: "KO"
     }
     let api = getApiByName(field.get_data?.api || "");
-    let token = localStorage.getItem("token");
-
     switch(api.name) {
         case "getUserOffices": 
                 // api.url = "http://localhost:3000/uffici.json"
@@ -177,22 +176,7 @@ async function getData(field:IRequestFormField) {
     }
     
     if(api !== null) {
-        await axios.get<IResponse>(
-            api.url,
-            {
-                headers: {
-                  'Authorization': `Bearer ${token}`,
-                  'Content-Type': 'application/json',
-                },
-              }
-        ).then((response) => {
-            tmpResponse = {
-                data: response.data.data,
-                status: response.data.status
-            }
-        }).catch((error) => {
-            console.error(error)
-        })        
+        tmpResponse = await getRequest(api.url, true);
     }
     return tmpResponse;
 }
