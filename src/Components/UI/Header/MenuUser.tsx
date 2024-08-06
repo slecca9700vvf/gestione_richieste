@@ -5,8 +5,9 @@ import Button from '@mui/material/Button';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-//import { getMenuUser } from '../../Common/GetMenuUser';
+import { getMenuUser } from '../../Common/GetMenuUser';
 import { IMenuItem } from '../../../Interfaces/IMenu';
+import { defusermenu } from './defaultTopMenu';
 
 const MenuUser = () => {
     const isLogged = CheckAuth(); 
@@ -25,11 +26,12 @@ const MenuUser = () => {
     }
 */
     const menuutente = localStorage.getItem("menuUser");
+    
     let menuUserItems : Array<IMenuItem> = [];
     
-    //console.log(menuutente)
     menuUserItems = menuutente !== null ? JSON.parse(menuutente) : menuUserItems;
-        
+    //menuUserItems = defusermenu
+
     console.log(menuUserItems)
     
 
