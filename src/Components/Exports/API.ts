@@ -20,6 +20,17 @@ export const getApiByName = (name:string) => {
     return value;
 }
 
+export const getApiByUrl = (url:string) => {
+    let value:string = "";
+
+    API.forEach((item:IApi) => {
+        if(item.url === url) {
+            value = item.name;
+        }
+    })
+    return value;
+}
+
 const API: Array<IApi> = [
     {
         name: "login",

@@ -98,49 +98,28 @@ async function getRequestTypes() {
 }
 
 async function getFields(request_id:any) {
-  //TODO Remove next line
-  let apiAll = "http://localhost:3000/fields.json";
-  //TODO Uncomment next line
-  // let apiAll = getApiByName("getRequestFields").url + "all";
+  // TODO Uncomment next line - Integrare API con BE
+  //  const api_url_all = getApiByName("getRequestFields").url + "all";
+  const api_url_all = "http://localhost:3000/fields.json";
+  const api_url_id = getApiByName("getRequestFields").url + request_id;
+  const response_all = await getRequest(api_url_all, true);
+  const response_id = await getRequest(api_url_id, true);
+  let responseTmp:any = [];
+  let response_all_data:any = [];
+  let response_id_data:any = [];
 
-  let apiSpecific = getApiByName("getRequestFields").url + request_id;
+  if(response_all.status === getLabelByName("labelOK")) {
+    response_all_data = response_all.data.data;
+    responseTmp = responseTmp.concat(response_all_data);
+  }
 
-  //TODO Verificare gestione token
-  let token = localStorage.getItem("token");
+  if(response_id.status === getLabelByName("labelOK")) {
+    response_id_data = response_id.data.modelloJson?.data;
+    responseTmp = responseTmp.concat(response_id_data);
+  }
 
-  let response_data:any = [];
-  let response_data_second:any = [];
-
-  await axios.get<IResponse>(
-    apiAll,
-    {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    }
-  ).then((response) => {
-    response_data = response.data.data
-  }).catch((error) => {
-      console.error(error)
-  });
-
-  await axios.get<IResponse>(
-    apiSpecific,
-    {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    }
-  ).then((response) => {
-    response_data_second = response.data.modelloJson?.data
-  }).catch((error) => {
-      console.error(error)
-  });
-  response_data = response_data.concat(response_data_second);
-  const response = response_data.map((item:IRequestFormField, index:number) => {
-    return { ...item, id: index + 1 }; // Indice progressivo, inizia da 1
+  const response = responseTmp.map((item:IRequestFormField, index:number) => {
+    return { ...item, id: index + 1 };
   });
 
   return response;

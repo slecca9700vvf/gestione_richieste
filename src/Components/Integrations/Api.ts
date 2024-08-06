@@ -2,6 +2,7 @@ import { IApi } from '../../Interfaces/IApi';
 import { IResponse } from '../../Interfaces/IRequest';
 import axios from 'axios'
 import { getLabelByName } from '../Exports/Labels';
+import { getApiByUrl } from '../Exports/API';
 
 export const getToken = () => {
     return checkToken();
@@ -41,7 +42,6 @@ export const getRequest = async (api_url:string, token:boolean):Promise<any> => 
     } : {};
 
     let tmpResponse:IResponse;
-    console.log(api_url, getToken());
     try {
         const response = await axios.get(api_url, { headers });
         if(Object.keys(response.data).length > 0) {
@@ -58,7 +58,7 @@ export const getRequest = async (api_url:string, token:boolean):Promise<any> => 
         }
         return tmpResponse;
     } catch (error) {
-        console.error('Errore durante la richiesta GET:', error);
+        console.error('Errore durante la richiesta GET:', error + " - " + getApiByUrl(api_url));
         throw error;
     }
 }
