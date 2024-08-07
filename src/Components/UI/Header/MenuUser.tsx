@@ -5,62 +5,38 @@ import Button from '@mui/material/Button';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { getMenuUser } from '../../Common/GetMenuUser';
 import { IMenuItem } from '../../../Interfaces/IMenu';
-import { defusermenu } from './defaultTopMenu';
+
+//TODO per menu user statico decommentare la riga sotto 
+//import { defusermenu } from './defaultTopMenu';
 
 const MenuUser = () => {
     const isLogged = CheckAuth(); 
     const name = localStorage.getItem("user_name");
     const surname = localStorage.getItem("user_surname");
-    /*
-    {
-        isLogged ? (
-            getMenuUser()
-        )
-        :
-        (
-            console.log("non loggato")
-        )
-       
-    }
-*/
-    const menuutente = localStorage.getItem("menuUser");
     
-    let menuUserItems : Array<IMenuItem> = [];
-    
-    menuUserItems = menuutente !== null ? JSON.parse(menuutente) : menuUserItems;
-    //menuUserItems = defusermenu
+    const menuUtente = localStorage.getItem("menuUser");
 
-    console.log(menuUserItems)
-    
+    let renderedElement = <div><a href="/login">Login</a></div>;
 
- 
-      
-    
-      
 
-    //const avatarname = Array.from(name?name:'-')[0]+Array.from(surname?surname:'-');
-    const avatarname = (name?name.charAt(0):'-')+(surname?surname.charAt(0):'-')
-    
 
-    return (
+    //TODO attualmente esiste un problema di sincronizzazione con il menu da BE
+    //si risolverà quando il menu sarà passato nel json di login
+    if(isLogged) {
+        
+        
+        let menuUserItems : Array<IMenuItem> = [];
+
+        //TODO per collegarsi al menu statico commentare la riga sotto e decommentare la seconda riga
+        menuUserItems = menuUtente !== null ? JSON.parse(menuUtente) : menuUserItems;
+        //menuUserItems = defusermenu
+        console.log(menuUserItems)
+        renderedElement = 
         <PopupState variant="popover" popupId="demo-popup-menu">
             {(popupState) => (
             <React.Fragment>
-                    
-                {
-                isLogged ? (
-                    <Button  variant="contained" startIcon={<Avatar sx={{color: '#911d1b' , backgroundColor: '#fff'  }}>{avatarname}</Avatar>} {...bindTrigger(popupState)} />                                    
-                )
-                :
-                (
-                    <a href="/login">Login</a>
-                )
-            }
-
-{
-                isLogged ? (
+                <Button  variant="contained" startIcon={<Avatar sx={{color: '#911d1b' , backgroundColor: '#fff'  }}>{avatarname}</Avatar>} {...bindTrigger(popupState)} />                                    
                 <Menu 
                     {...bindMenu(popupState)}
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
@@ -75,15 +51,22 @@ const MenuUser = () => {
                     
                     ))
                     }
-                </Menu>)
-                :
-                (
-                    <div></div>   
-                )
-            }
+                </Menu>
             </React.Fragment>
             )}
         </PopupState>
+        }
+    
+    
+    //menuUserItems = menuutente !== null ? JSON.parse(menuutente) : menuUserItems;
+    
+
+    //console.log(menuUserItems)
+    
+    const avatarname = (name?name.charAt(0):'-')+(surname?surname.charAt(0):'-')
+    
+    return (
+        renderedElement
     )
 }
 
