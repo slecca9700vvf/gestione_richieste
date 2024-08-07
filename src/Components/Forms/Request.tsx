@@ -41,8 +41,11 @@ const Request = () => {
   let renderedForm:any;
   if (requestFormFields && Array.isArray(requestFormFields)) {
     renderedForm =
-      <Form.Group className="mb-5" controlId="field_request_type">
-        <Form.Label>{ getLabelByName("field_request_type") }</Form.Label>
+      <div>
+      <Form.Group className="form-label-title" controlId="field_request_type">
+          <Form.Label>{ getLabelByName("field_request_type") }</Form.Label>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="field_request_type">
         <Form.Select aria-label="field_request_type" required>
         <option></option>
           {          
@@ -56,7 +59,8 @@ const Request = () => {
               ))
           } 
         </Form.Select>
-    </Form.Group>;
+      </Form.Group>
+      </div>;
   }
     
   return (
@@ -65,7 +69,6 @@ const Request = () => {
         {!showPGRForm ? (
             <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
                 { renderedForm }
-
                 {!loading ? (
                   <Button className="w-100" variant="primary" type="submit">
                     { getLabelByName("forms_request_type_submit") }

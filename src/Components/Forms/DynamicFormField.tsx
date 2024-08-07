@@ -36,7 +36,7 @@ const DynamicFormField = ({field, loading, setLoading}:IDynamicField) => {
     switch(field.type) {
         case "text":
             renderedField = 
-                <Form.Group className="mb-2" controlId={field.name + "-" + field?.id}>
+                <Form.Group className="mb-2" controlId={ field.name }>
                     <Form.Label>{ getLabelByName(field.name) }</Form.Label>
                     <Form.Control
                         type="text"
@@ -47,7 +47,7 @@ const DynamicFormField = ({field, loading, setLoading}:IDynamicField) => {
             break;
         case "number":
             renderedField = 
-                <Form.Group className="mb-2" controlId={field.name + "-" + field?.id}>
+                <Form.Group className="mb-2" controlId={ field.name }>
                     <Form.Label>{ getLabelByName(field.name) }</Form.Label>
                     <Form.Control
                         type="number"
@@ -58,7 +58,7 @@ const DynamicFormField = ({field, loading, setLoading}:IDynamicField) => {
             break;
         case "radio":
             renderedField = 
-                <Form.Group className="mb-2" controlId={field.name + "-" + field?.id}>
+                <Form.Group className="mb-2" controlId={ field.name }>
                     <Form.Label>{ getLabelByName(field.name) }</Form.Label>
                     <div className='radio-container'>
                         {
@@ -77,7 +77,7 @@ const DynamicFormField = ({field, loading, setLoading}:IDynamicField) => {
             break;
         case "checkbox":
             renderedField = 
-                <Form.Group className="mb-2" controlId={field.name + "-" + field?.id}>
+                <Form.Group className="mb-2" controlId={ field.name }>
                     <Form.Label>{ getLabelByName(field.name) }</Form.Label>
                     <div className='checbox-container'>
                         {
@@ -117,7 +117,7 @@ const DynamicFormField = ({field, loading, setLoading}:IDynamicField) => {
                 }
 
                 renderedField =
-                    <Form.Group className="mb-2" controlId={field.name + "-" + field?.id}>
+                    <Form.Group className="mb-2" controlId={ field.name }>
                         <Form.Label>{ getLabelByName(field.name) }</Form.Label>
                         <Form.Select aria-label={field.name + "-" + field?.id}>
                             { options }
@@ -125,9 +125,9 @@ const DynamicFormField = ({field, loading, setLoading}:IDynamicField) => {
                     </Form.Group>;
             } else {
                 renderedField = 
-                    <Form.Group className="mb-2" controlId={field.name + "-" + field?.id}>
+                    <Form.Group className="mb-2" controlId={ field.name }>
                         <Form.Label>{ getLabelByName(field.name) }</Form.Label>
-                        <Form.Select aria-label={field.name + "-" + field?.id}>
+                        <Form.Select aria-label={ field.name }>
                             {
                                 field.subitems?.map((item:any, index:number) => (
                                     <option 
@@ -146,7 +146,7 @@ const DynamicFormField = ({field, loading, setLoading}:IDynamicField) => {
             break;
         case "date":
             renderedField = 
-                <Form.Group className="mb-2" controlId={field.name + "-" + field?.id}>
+                <Form.Group className="mb-2" controlId={ field.name }>
                     <Form.Label>{ getLabelByName(field.name) }</Form.Label>
                     <Form.Control
                         type="date"                         
@@ -154,9 +154,9 @@ const DynamicFormField = ({field, loading, setLoading}:IDynamicField) => {
                     />
                 </Form.Group>;
             break;
-        case "textarea":         
+        case "textarea":
             renderedField = 
-                <Form.Group className="mb-2" controlId={field.name + "-" + field?.id}>
+                <Form.Group className="mb-2" controlId={ field.name }>
                     <Form.Label>{ getLabelByName(field.name) }</Form.Label>
                     <Form.Control
                         type="textarea"
