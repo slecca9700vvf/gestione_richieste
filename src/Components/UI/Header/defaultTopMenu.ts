@@ -40,3 +40,17 @@ export const deftopmenu: Array<IMenuItem> =
       ]
     }
   ]
+
+
+  export const defusermenu: Array<IMenuItem> = 
+    [
+      {
+        "titolo": "Info",
+        "url": "#"
+      },
+      {
+        "titolo": "Logout",
+        "url": "/logout"
+      },
+   
+  ]
