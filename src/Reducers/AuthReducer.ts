@@ -8,9 +8,10 @@ export const AuthReducer = (
     action: {
         type: string,
         user?: IUser,
-        token?: string,
         menu?: string,
-        note?: string
+        note?: string,
+        token?: string,
+        token_expire?: number
     },
 ) => {
     switch(action.type) {
@@ -25,22 +26,28 @@ export const AuthReducer = (
                 localStorage.setItem("token", JSON.stringify(action.token)?.replaceAll("\"",""));
                 localStorage.setItem("menu", JSON.stringify(action.menu));
                 localStorage.setItem("note", JSON.stringify(action.note)?.replaceAll("\"",""));
+                localStorage.setItem("user_id", JSON.stringify(action.user.idUtente)?.replaceAll("\"",""));
                 localStorage.setItem("user_name", JSON.stringify(capitalize(action.user.nome.toLowerCase()))?.replaceAll("\"",""));
                 localStorage.setItem("user_surname", JSON.stringify(capitalize(action.user.cognome.toLowerCase()))?.replaceAll("\"",""));
                 //TODO va tolta la riga sotto, inserito il menu user nel json restituito al login e aggiunto sotto il setitem menuuser 
                 getMenuUser()
+                //TODO Integrare API di refreshToken con BE
+                // localStorage.setItem("token_expire", JSON.stringify(action.token_expire));
                 isLogged = true;
             }
             return isLogged;
         case "LOGOUT":
             isLogged = false;
             localStorage.removeItem("user");
+            localStorage.removeItem("user_id");
             localStorage.removeItem("user_name");
             localStorage.removeItem("user_surname");
             localStorage.removeItem("token");
             localStorage.removeItem("menu");
             localStorage.removeItem("note");
             localStorage.removeItem("menuUser");
+            //TODO Integrare API di refreshToken con BE
+            // localStorage.removeItem("token_expire");
             return isLogged;
         default:
             return isLogged;

@@ -6,8 +6,8 @@ import { IResponse } from '../../Interfaces/IRequest';
 import { getApiByName } from '../Exports/API'
 import DynamicForm from './DynamicForm'
 import axios from 'axios'
-//TODO Remove next line
-import fieldsAll from '../../API-Labels/defaultRequestAll.json'
+import { IRequestFormField } from '../../Interfaces/IRequest';
+import { getRequest } from '../Integrations/Api';
 
 const Request = () => {
   let { request_id } = useParams();
@@ -18,15 +18,13 @@ const Request = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-        try {
-          setLoading(true)
-          const response_data = await getRequestTypes();
-          setRequestFormFields(response_data);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        } finally {
-            setLoading(false);
-        }
+      try {
+        setLoading(true)
+        const response_data = await getRequestTypes();
+        setRequestFormFields(response_data.data);
+      } finally {
+          setLoading(false);
+      }
     }
     fetchData();
   }, [request_id, setLoading]);
@@ -35,8 +33,7 @@ const Request = () => {
     setLoading(true);
     event.preventDefault();
     let request_id = event.target[0].value;
-    setLoading(false);
-    let formFields:IResponse = await getFields(event.target[0].value);
+    let formFields:IResponse = await getFields(request_id);
     setFormFields(formFields);
     setShowPGRForm(true);
     setLoading(false);
@@ -50,12 +47,12 @@ const Request = () => {
         <Form.Select aria-label="field_request_type" required>
         <option></option>
           {          
-              requestFormFields?.map((item:any, index:number) => (
+              requestFormFields?.filter((item:any) => item.attivo).map((item:any, index:number) => (
                   <option 
-                      value={item.id_tipologia}
-                      data-value={item.name}
+                      value={item.idTipologiaRichiesta}
+                      data-value={item.descrizioneTipologiaRichiesta}
                       key={index}>
-                          {item.value}
+                          {item.descrizioneTipologiaRichiesta}
                   </option>
               ))
           } 
@@ -90,57 +87,37 @@ const Request = () => {
 }
 
 async function getRequestTypes() {
-// TODO Uncomment next line
-//   let api = getApiByName("getRequestTypes").url;
-
-//TODO Remove next line
-    let api = "http://localhost:3000/tipologie_richiesta.json";
-
-    let response_data:any;
-    await axios.get<IResponse>(
-        api
-    ).then((response) => {
-        response_data = response.data.data
-    }).catch((error) => {
-        console.error(error)
-    });
-    return response_data;
+  let api_url = getApiByName("getRequestTypes").url;
+  const response = await getRequest(api_url, true);
+  return response;
 }
 
 async function getFields(request_id:any) {
-  let apiAll = getApiByName("getRequestFields").url + "all";
-  let apiSpecific = getApiByName("getRequestFields").url + request_id;
+  // TODO Uncomment next line - Integrare API con BE
+  //  const api_url_all = getApiByName("getRequestFields").url + "all";
+  const api_url_all = "http://localhost:3000/fields.json";
+  const api_url_id = getApiByName("getRequestFields").url + request_id;
+  const response_all = await getRequest(api_url_all, true);
+  const response_id = await getRequest(api_url_id, true);
+  let responseTmp:any = [];
+  let response_all_data:any = [];
+  let response_id_data:any = [];
 
-  let response_data:any;
-  let response_data_second:any;
+  if(response_all.status === getLabelByName("labelOK")) {
+    response_all_data = response_all.data.data;
+    responseTmp = responseTmp.concat(response_all_data);
+  }
 
-  switch(request_id) {
-    case "3":
-      break;
-    case "6":
-      //TODO Uncomment next lines
-        // await axios.get<IResponse>(
-        //   apiAll
-        // ).then((response) => {
-        //   response_data = response.data.data
-        // }).catch((error) => {
-        //     console.error(error)
-        // });
+  if(response_id.status === getLabelByName("labelOK")) {
+    response_id_data = response_id.data.modelloJson?.data;
+    responseTmp = responseTmp.concat(response_id_data);
+  }
 
-        // await axios.get<IResponse>(
-        //   apiSpecific
-        // ).then((response) => {
-        //   response_data_second = response.data.data
-        // }).catch((error) => {
-        //     console.error(error)
-        // });
-        // response_data = response_data.concat(response_data_second);
-      
-    //TODO Remove next line
-          response_data = fieldsAll.data;
+  const response = responseTmp.map((item:IRequestFormField, index:number) => {
+    return { ...item, id: index + 1 };
+  });
 
-        return response_data;
-      break;
-  }}
+  return response;
+}
 
 export default Request;

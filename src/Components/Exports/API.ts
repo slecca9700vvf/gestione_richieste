@@ -20,6 +20,17 @@ export const getApiByName = (name:string) => {
     return value;
 }
 
+export const getApiByUrl = (url:string) => {
+    let value:string = "";
+
+    API.forEach((item:IApi) => {
+        if(item.url === url) {
+            value = item.name;
+        }
+    })
+    return value;
+}
+
 const API: Array<IApi> = [
     {
         name: "login",
@@ -27,18 +38,29 @@ const API: Array<IApi> = [
         type: "GET",
     },
     {
+        name: "logout",
+        url: "/api/utente/logout",
+        type: "GET",
+    },
+    {
         name: "getUserOffices",
-        url: "/api/utente/uffici",
+        url: "/api/utente/getUfficiUtente?idUtente=",
         type: "GET",
     },
     {
         name: "getRequestFields",
-        url: "/api/request/fields?request_id=",
+        url: "/api/richiesta/visualizzaFormModello/",
         type: "GET",
     },
     {
         name: "getRequestTypes",
-        url: "/api/request/types",
+        url: "/api/richiesta/tipologieRichieste/",
+        type: "GET",
+    },   
+    {
+        //Verificare
+        name: "getPriorities",
+        url: "/api/richiesta/getPriorityList/",
         type: "GET",
     },
     {
