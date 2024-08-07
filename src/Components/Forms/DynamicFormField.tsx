@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Form } from 'react-bootstrap';
 import { IRequestFormField, IResponse } from "../../Interfaces/IRequest";
-import axios from 'axios';
 import { getApiByName } from "../Exports/API";
 import { getLabelByName } from "../Exports/Labels";
 import { getRequest } from "../Integrations/Api";
+import { getItem } from "../Common/RetrieveData";
 
 interface IDynamicField {
     field: IRequestFormField
@@ -181,7 +181,7 @@ const getData = async (field:IRequestFormField) => {
     switch(api.name) {
         case "getUserOffices": 
                 api.url = "http://localhost:3000/uffici.json"
-                // api.url = api.url + localStorage.getItem("user_id")
+                // api.url = api.url + getItem("user_id")
             break;
     }
     if(api !== null) {

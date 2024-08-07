@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from './Login';
-import { CheckAuth } from './RetrieveAuthUser';
+import { CheckAuth } from '../Common/RetrieveData';
 import { Navigate } from 'react-router-dom';
 
 const Authentication = () => {

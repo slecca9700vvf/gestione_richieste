@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckAuth } from '../../Authentication/RetrieveAuthUser';
+import { CheckAuth } from '../../Common/RetrieveData';
 import logo from '../../../assets/icons/logo.png'
 import logo_vvf_bianco from '../../../assets/icons/logo_vvf_bianco.png'
 import MenuMobile from './MenuMobile';
@@ -8,9 +8,6 @@ import { getLabelByName } from "../../Exports/Labels";
 
 const Header = () => {
     const isLogged = CheckAuth(); 
-    const name = localStorage.getItem("user_name");
-    const surname = localStorage.getItem("user_surname");
-
 	const [open, setOpen] = useState(false); 
 
 	const handleClick = () => {

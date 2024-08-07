@@ -1,4 +1,4 @@
-import { CheckAuth } from '../Authentication/RetrieveAuthUser';
+import { CheckAuth } from './RetrieveData';
 
 const ProtectedRoute = ( { children }:any ) =>  {
   const isAuthenticated = CheckAuth();

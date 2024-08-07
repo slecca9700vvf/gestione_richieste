@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckAuth, RetrieveUserData } from '../../Authentication/RetrieveAuthUser';
+import { CheckAuth, RetrieveUserData } from '../../Common/RetrieveData';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';

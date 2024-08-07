@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckAuth } from '../../Authentication/RetrieveAuthUser';
+import { CheckAuth, getItem } from '../../Common/RetrieveData';
 import { Button, Menu, MenuItem} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
@@ -21,7 +21,7 @@ const MenuMobile = () => {
     };
 
     if(isLogged) {
-        let menu = localStorage.getItem("menu");
+        let menu = getItem("menu");
         let menuItems : Array<IMenuItem> = [];
         // TODO collegarsi a menu reale e verificare il funzionamento delle sottovoci
         // TODO per collegarsi a menu sidebar da BE (quando sarà quello giusto) decommentare riga sotto e commentare la seconda riga
