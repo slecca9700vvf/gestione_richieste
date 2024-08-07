@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CheckAuth } from '../../Authentication/RetrieveAuthUser';
+import { CheckAuth } from '../../Common/RetrieveData';
 import Dashboard from '../Dashboard/Dashboard';
 import { getLabelByName } from "../../Exports/Labels";
 import TabNavigation from '../TabNavigation/TabNavigation';

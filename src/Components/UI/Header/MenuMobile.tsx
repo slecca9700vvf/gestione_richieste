@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckAuth } from '../../Authentication/RetrieveAuthUser';
+import { CheckAuth, getItem } from '../../Common/RetrieveData';
 import { Button, Menu, MenuItem} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
@@ -8,7 +8,6 @@ import { deftopmenu } from './defaultTopMenu';
 
 const MenuMobile = () => {
     const isLogged = CheckAuth();
-    //let menuItems : Array<IMenuItem> = [];
     let menuItemsTemp : Array<IMenuItem> = [];
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -22,10 +21,12 @@ const MenuMobile = () => {
     };
 
     if(isLogged) {
+        let menu = getItem("menu");
+        let menuItems : Array<IMenuItem> = [];
         // TODO collegarsi a menu reale e verificare il funzionamento delle sottovoci
-        //let menu = localStorage.getItem("menu");
-       // menuItems = menu !== null ? JSON.parse(menu) : menuItems;
-        let menuItems = deftopmenu
+        // TODO per collegarsi a menu sidebar da BE (quando sarà quello giusto) decommentare riga sotto e commentare la seconda riga
+        //menuItems = menu !== null ? JSON.parse(menu) : menuItems;
+        menuItems = deftopmenu
         
         {menuItems.map((item) => (
             menuItemsTemp.push(item)

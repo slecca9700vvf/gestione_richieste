@@ -1,4 +1,5 @@
 import { IUser } from "../Interfaces/IUser";
+import { removeItem, setItem } from '../Components/Common/RetrieveData';
 
 const capitalize = (string:string) => string && string[0].toUpperCase() + string.slice(1)
 
@@ -7,6 +8,7 @@ export const AuthReducer = (
     action: {
         type: string,
         user?: IUser,
+        user_menu?: string,
         menu?: string,
         note?: string,
         token?: string,
@@ -20,30 +22,35 @@ export const AuthReducer = (
                 action.user !== undefined &&
                 action.token !== undefined &&
                 action.menu !== undefined
-            ) {                
-                localStorage.setItem("user", JSON.stringify(action.user));
-                localStorage.setItem("token", JSON.stringify(action.token)?.replaceAll("\"",""));
-                localStorage.setItem("menu", JSON.stringify(action.menu));
-                localStorage.setItem("note", JSON.stringify(action.note)?.replaceAll("\"",""));
-                localStorage.setItem("user_id", JSON.stringify(action.user.idUtente)?.replaceAll("\"",""));
-                localStorage.setItem("user_name", JSON.stringify(capitalize(action.user.nome.toLowerCase()))?.replaceAll("\"",""));
-                localStorage.setItem("user_surname", JSON.stringify(capitalize(action.user.cognome.toLowerCase()))?.replaceAll("\"",""));
+            ) {             
+                setItem("user", JSON.stringify(action.user));
+                setItem("token", JSON.stringify(action.token)?.replaceAll("\"",""));
+                setItem("menu", JSON.stringify(action.menu));
+                setItem("note", JSON.stringify(action.note)?.replaceAll("\"",""));
+                setItem("user_id", JSON.stringify(action.user.idUtente)?.replaceAll("\"",""));
+                setItem("user_name", JSON.stringify(capitalize(action.user.nome.toLowerCase()))?.replaceAll("\"",""));
+                setItem("user_surname", JSON.stringify(capitalize(action.user.cognome.toLowerCase()))?.replaceAll("\"",""));
                 //TODO Integrare API di refreshToken con BE
-                // localStorage.setItem("token_expire", JSON.stringify(action.token_expire));
+                // setItem("token_expire", JSON.stringify(action.token_expire));
+            } else {
+                /* Autenticare l'utente solo una volta che è presente il menu -> per ulteriori dubbi si rimanda al componente login */
+                setItem("user_menu", JSON.stringify(action.user_menu));
                 isLogged = true;
             }
+
             return isLogged;
         case "LOGOUT":
             isLogged = false;
-            localStorage.removeItem("user");
-            localStorage.removeItem("user_id");
-            localStorage.removeItem("user_name");
-            localStorage.removeItem("user_surname");
-            localStorage.removeItem("token");
-            localStorage.removeItem("menu");
-            localStorage.removeItem("note");
+            removeItem("user");
+            removeItem("user_id");
+            removeItem("user_name");
+            removeItem("user_surname");
+            removeItem("token");
+            removeItem("menu");
+            removeItem("note");
+            removeItem("user_menu");
             //TODO Integrare API di refreshToken con BE
-            // localStorage.removeItem("token_expire");
+            // removeItem("token_expire");
             return isLogged;
         default:
             return isLogged;

@@ -63,4 +63,9 @@ const API: Array<IApi> = [
         url: "/api/richiesta/getPriorityList/",
         type: "GET",
     },
+    {
+        name: "getMenuUser",
+        url: "/api/utente/menuUser",
+        type: "GET",
+    },
 ]

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckAuth } from '../../Authentication/RetrieveAuthUser';
+import { CheckAuth, getItem } from '../../Common/RetrieveData';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import defultMenu from '../../../API-Labels/defaultMenu.json'
 
@@ -8,7 +8,7 @@ const Sidebar = () => {
   const isLogged = CheckAuth();
   let renderedElement = <div></div>;
   if(isLogged) {
-    let menu = localStorage.getItem("menu");
+    let menu = getItem("menu");
     menuItems = menu !== null ? JSON.parse(menu) : menuItems;
     renderedElement = 
       <div className="sidebar-container">

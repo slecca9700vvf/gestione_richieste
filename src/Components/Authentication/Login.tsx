@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import axios from 'axios';
 import { useDispatch } from "react-redux";
-import { ILoginResponse } from "../../Interfaces/ILogin";
 import { getApiByName } from "../Exports/API";
 import { getLabelByName } from "../Exports/Labels";
 import { sanitize } from '../Common/Sanitize';
 import { Form, Button } from "react-bootstrap";
-import { IResponse } from '../../Interfaces/IRequest'
 import { getRequest } from "../Integrations/Api";
 // import { IUserLogin } from '../../Interfaces/IUser';
 
@@ -28,8 +25,14 @@ const Login = () => {
     //   accountName,
     //   password
     // }
-    // const response = await getRequest(api_login_url, false);
+    // const response = await postRequest(api_login_url, userObj, false);
     const response = await getRequest(api_login_url + accountName, false);
+    return response;
+  }
+
+  const getMenuUser:any = async() => {
+    const api_url = getApiByName("getMenuUser").url;
+    const response = await getRequest(api_url, true);
     return response;
   }
   
@@ -38,15 +41,25 @@ const Login = () => {
     setLoading(true);
     const userResponse = await verifyUser(sanitize(accountName), sanitize(password));
     if(userResponse.data !== null && userResponse.status === getLabelByName("labelOK")) {
+      /* E' necessario triggerare due volte il dispatch login in modo da garantire:
+         - il salvataggio in storage dei dati utente tra cui il token (trigger 1)
+         - il menu utente che necessità di utilizzare il token appena salvato
+      */
       loginDispatch({
         type: "LOGIN",
         user: userResponse.data.utente,
         token: userResponse.data.token,
         menu: userResponse.data.menu,
-        note: userResponse.data.note
+        note: userResponse.data.note,
         // TODO Integrare API di refreshToken con BE
         //    TODO ricevere timestamp da backend con scadenza
         //    token_expire: userResponse.data.token_expire
+      });
+
+      const userMenu = await getMenuUser();
+      loginDispatch({
+        type: "LOGIN",
+        user_menu: userMenu.data
       });
     } else {
       if(userResponse.data === null) {

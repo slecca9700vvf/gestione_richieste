@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import axios from 'axios'
 import { useDispatch } from 'react-redux';
 import { Form, Button } from "react-bootstrap";
 import { getLabelByName } from "../Exports/Labels";
 import { useNavigate, Navigate } from 'react-router-dom';
-import { IResponse } from '../../Interfaces/IRequest';
 import { getApiByName } from '../Exports/API';
-import { ILogoutResponse } from '../../Interfaces/ILogin';
 import { postRequest } from '../Integrations/Api';
 
 const Logout = () => {

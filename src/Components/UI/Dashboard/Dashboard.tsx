@@ -1,5 +1,5 @@
 import React from 'react';
-import { RetrieveUserData } from '../../Authentication/RetrieveAuthUser';
+import { RetrieveUserData } from '../../Common/RetrieveData';
 import Dashbox from './Dashbox';
 import { getLabelByName } from "../../Exports/Labels";
 // TODO da verificare dopo implementazione WS

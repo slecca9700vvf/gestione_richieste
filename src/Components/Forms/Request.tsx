@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import { IResponse } from '../../Interfaces/IRequest';
 import { getApiByName } from '../Exports/API'
 import DynamicForm from './DynamicForm'
-import axios from 'axios'
 import { IRequestFormField } from '../../Interfaces/IRequest';
 import { getRequest } from '../Integrations/Api';
 
