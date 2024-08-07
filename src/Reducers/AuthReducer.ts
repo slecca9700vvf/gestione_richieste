@@ -1,5 +1,4 @@
 import { IUser } from "../Interfaces/IUser";
-import { getMenuUser } from "../Components/Common/GetMenuUser";
 
 const capitalize = (string:string) => string && string[0].toUpperCase() + string.slice(1)
 
@@ -8,6 +7,7 @@ export const AuthReducer = (
     action: {
         type: string,
         user?: IUser,
+        user_menu?: string,
         menu?: string,
         note?: string,
         token?: string,
@@ -21,7 +21,7 @@ export const AuthReducer = (
                 action.user !== undefined &&
                 action.token !== undefined &&
                 action.menu !== undefined
-            ) {                
+            ) {             
                 localStorage.setItem("user", JSON.stringify(action.user));
                 localStorage.setItem("token", JSON.stringify(action.token)?.replaceAll("\"",""));
                 localStorage.setItem("menu", JSON.stringify(action.menu));
@@ -29,8 +29,7 @@ export const AuthReducer = (
                 localStorage.setItem("user_id", JSON.stringify(action.user.idUtente)?.replaceAll("\"",""));
                 localStorage.setItem("user_name", JSON.stringify(capitalize(action.user.nome.toLowerCase()))?.replaceAll("\"",""));
                 localStorage.setItem("user_surname", JSON.stringify(capitalize(action.user.cognome.toLowerCase()))?.replaceAll("\"",""));
-                //TODO va tolta la riga sotto, inserito il menu user nel json restituito al login e aggiunto sotto il setitem menuuser 
-                getMenuUser()
+                localStorage.setItem("user_menu", JSON.stringify(action.user_menu));
                 //TODO Integrare API di refreshToken con BE
                 // localStorage.setItem("token_expire", JSON.stringify(action.token_expire));
                 isLogged = true;
@@ -45,7 +44,7 @@ export const AuthReducer = (
             localStorage.removeItem("token");
             localStorage.removeItem("menu");
             localStorage.removeItem("note");
-            localStorage.removeItem("menuUser");
+            localStorage.removeItem("user_menu");
             //TODO Integrare API di refreshToken con BE
             // localStorage.removeItem("token_expire");
             return isLogged;

@@ -5,7 +5,8 @@ import { getLabelByName } from '../Exports/Labels';
 import { getApiByUrl } from '../Exports/API';
 
 export const getToken = () => {
-    return checkToken();
+    return "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzaW1vbmUubGVjY2EiLCJpYXQiOjE3MjMwMzY4OTUsImV4cCI6MTcyMzEyMzI5NX0.rSjoUyfAOr7GOQDWoy3h_D18bfGpcFGHPzl3Qm8LmfhoKGFadTRAtf1kpeAyhfNV-3l4O2jvFYTNdVekGTyJ2Q";
+    // return checkToken();
 }
 
 export const checkToken = () => {

@@ -28,8 +28,14 @@ const Login = () => {
     //   accountName,
     //   password
     // }
-    // const response = await getRequest(api_login_url, false);
+    // const response = await postRequest(api_login_url, userObj, false);
     const response = await getRequest(api_login_url + accountName, false);
+    return response;
+  }
+
+  const getMenuUser:any = async() => {
+    const api_url = getApiByName("getMenuUser").url;
+    const response = await getRequest(api_url, true);
     return response;
   }
   
@@ -37,13 +43,15 @@ const Login = () => {
     event.preventDefault();
     setLoading(true);
     const userResponse = await verifyUser(sanitize(accountName), sanitize(password));
+    const userMenu = await getMenuUser();
     if(userResponse.data !== null && userResponse.status === getLabelByName("labelOK")) {
       loginDispatch({
         type: "LOGIN",
         user: userResponse.data.utente,
         token: userResponse.data.token,
         menu: userResponse.data.menu,
-        note: userResponse.data.note
+        note: userResponse.data.note,
+        user_menu: userMenu.data,
         // TODO Integrare API di refreshToken con BE
         //    TODO ricevere timestamp da backend con scadenza
         //    token_expire: userResponse.data.token_expire
