@@ -1,5 +1,5 @@
 import { IUser } from "../Interfaces/IUser";
-import { getMenuUser } from "../Components/Common/getMenuUser";
+import { getMenuUser } from "../Components/Common/GetMenuUser";
 
 const capitalize = (string:string) => string && string[0].toUpperCase() + string.slice(1)
 
