@@ -60,3 +60,12 @@ export interface IResponse {
 export interface IResponseModelloJson {
     data: Array<Object>
 }
+
+export interface IRequestsList {
+    idRichiesta: number,
+    numeroRichiesta: string,
+    priorita: string|number,
+    statoRichiesta: string,
+    tipologiaRichiesta: string,
+    ufficio: string,
+}

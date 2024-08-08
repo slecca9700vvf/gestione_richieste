@@ -64,6 +64,16 @@ const Labels: Array<ILabel> = [
         language: "it"
     },
     {
+        name: "richieste_title",
+        value: "Pagina Elenco Richieste",
+        language: "it"
+    },
+    {
+        name: "richieste_subtitle",
+        value: "da sistemare",
+        language: "it"
+    },
+    {
         name: "dashboard_legendtitle",
         value: "Legenda Ruoli:",
         language: "it"

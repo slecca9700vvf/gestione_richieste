@@ -23,6 +23,7 @@ import Logout from './Components/Authentication/Logout';
 import Request from './Components/Forms/Request';
 import Sector from './Components/Forms/Sector';
 import Sidebar from './Components/UI/Sidebar/Sidebar';
+import Richieste from './Components/UI/Requests/Richieste';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -49,6 +50,11 @@ root.render(
                   <Logout/>
                 </ProtectedRoute>}
               />
+              <Route path="/richieste" element={
+                <ProtectedRoute>
+                  <Richieste/>
+                </ProtectedRoute>
+              }/>
               <Route path="/richiesta/:request_id?" element={
                 <ProtectedRoute>
                   <Request/>

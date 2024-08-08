@@ -68,4 +68,9 @@ const API: Array<IApi> = [
         url: "/api/utente/menuUser",
         type: "GET",
     },
+    {
+        name: "ricerca",
+        url: "/api/richiesta/cerca?attivo=true",
+        type: "GET",
+    },
 ]
