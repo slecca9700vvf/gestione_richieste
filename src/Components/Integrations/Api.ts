@@ -1,31 +1,32 @@
 import { IResponse } from '../../Interfaces/IRequest';
 import axios from 'axios'
 import { getLabelByName } from '../Exports/Labels';
-import { getApiByUrl } from '../Exports/API';
+import { getApiByName, getApiByUrl } from '../Exports/API';
 import { getItem, removeItem, setItem } from '../Common/RetrieveData';
 
 export const getToken = async() => {
     let token = getItem("token");
     const currentTimestamp = Date.now();
-
+    const token_expire = Number(getItem("token_expire"))
+    // const token_expire = 999999999999999;
     //TODO Integrare API di refreshToken con BE
-    // let token_expire = Number(getItem("token_expire"))
-    let token_expire = 999999999999;
     if(currentTimestamp >= token_expire) {
-        token = await refreshToken();   
+        token = await refreshToken(token);   
     }
     return token;
 }
 
-export const refreshToken = async() => {
-    let token = getItem("token");
-    //TODO Integrare API di refreshToken con BE
+export const refreshToken = async(old_token:string|null) => {
+    let token = old_token ? old_token : getItem("token");
+    //TODO Integrare API di refreshToken con BE -> verificare se necessario passare anche il token vecchio
         // Rimozione token salvato
             // removeItem("token")
             // removeItem("token_expire");
         // Salvataggio nuovo token
             // setItem("token", JSON.stringify(token)?.replaceAll("\"",""));
             // setItem("token_expire", JSON.stringify(token_expire));
+    // const api_url = getApiByName("refresh_token_api").url;
+    // let data = await getRequest(api_url, true);
     return token;
 }
 

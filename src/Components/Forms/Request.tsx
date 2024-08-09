@@ -101,23 +101,32 @@ async function getFields(request_id:any) {
   const api_url_id = getApiByName("getRequestFields").url + request_id;
   const response_all = await getRequest(api_url_all, true);
   const response_id = await getRequest(api_url_id, true);
+
+  console.log(api_url_id)
   let responseTmp:any = [];
   let response_all_data:any = [];
   let response_id_data:any = [];
 
+  console.log("fields")
+
   if(response_all.status === getLabelByName("labelOK")) {
     response_all_data = response_all.data.data;
     responseTmp = responseTmp.concat(response_all_data);
+    console.log("qui!");
   }
 
   if(response_id.status === getLabelByName("labelOK")) {
     response_id_data = response_id.data.modelloJson?.data;
     responseTmp = responseTmp.concat(response_id_data);
+    console.log("qui 2!");
   }
 
   const response = responseTmp.map((item:IRequestFormField, index:number) => {
     return { ...item, id: index + 1 };
   });
+
+  console.log(responseTmp, response)
+
 
   return response;
 }
